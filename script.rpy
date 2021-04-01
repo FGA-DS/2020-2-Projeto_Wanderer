@@ -36,6 +36,15 @@ image anao = "images/anao.png"
 image velha = "images/velha.png"
 image porteiro   = "images/PW minotauro.png"
 image oseamus    = "images/duende.png"
+image mordomo = "images/mordomo macabro.png"
+image gark = "images/gark.png"
+image bibliotecario = "images/bibliotecario.png"
+image orcs = "images/orcs.png"
+image mesa = "images/mesa.png"
+image maguito = "images/maguito.png"
+image leviata = "images/leviata.png"
+image heitoba = "images/heitoba.png"
+image calacorm = "images/calacorm.png"
 
 ## backgrounds
 image entrada_caos = "images/PW entrada cidadela.jpg"
@@ -53,6 +62,12 @@ image fumaca = "images/fumaca.jpg"
 image bg = "images/bg.jpg"
 image corredor_escuro = "images/corredor escuro.png"
 image esgoto = "images/esgoto.jpg"
+image bg2 = "images/bg2.jpg"
+image bg3 = "images/PW dentro fortaleza3.jpg"
+image bg5 = "images/bg5.jpg"
+image biblioteca = "images/biblioteca.jpg"
+image salao = "images/PW sala jantar.jpg"
+image prisao = "images/prisao.jpg"
 
 # The game starts here.
 
@@ -873,6 +888,9 @@ campainha - pende ao lado da porta."
             jump tres61
 
 label quatro0:
+    scene bg2 at truecenter:
+        zoom 1.5
+    show mordomo at center
     n "Depois de vários minutos, a porta se abre lentamente, e uma criatura corcunda e deformada, com
 dentes podres, cabelos desgrenhados e roupas esfarrapadas, aparece na sua frente. 'Sim senhor (heh, heh) - o que posso
 fazer pelo senhor?' rosna a criatura semi-humana."
@@ -881,25 +899,25 @@ comportamento e gagueja, sem saber se entra em conflito com você ou não."
     n "'Onde é a recepção?' você pergunta. Ele olha para você de soslaio com um dos olhos e faz um gesto na direção de uma
 bifurcação para a esquerda, a pouca distância dali."
     n "Você, de maneira receosa, acreditará nele e tomará a bifurcação para a esquerda"
+    hide mordomo
     jump dois43
 
 
 label dois43:
-    n "A passagem se estende por vários metros e depois termina em uma porta. Você escuta junto à porta
-e ouve uma respiração profunda e pesada vindo lá de dentro, como se alguma criatura de grande
-porte estivesse dormindo ali."
-    n "Cuidadosamente, você experimenta a maçaneta, e a porta abre. Logona entrada, embora o aposento
+    n "A passagem se estende por vários metros e depois termina em uma porta. Você estando junto à porta, percebe que há uma critura muito grande dormindo ali."
+    n "Cuidadosamente, você experimenta a maçaneta, e a porta abre. Logo na entrada, embora o aposento
 esteja escuro, você consegue ver uma criatura muito grande, semelhante a um Goblin, adormecida no chão."
-    n "Você pode se arriscar a entrar no aposento na ponta dos pés"
+    n "Você se arrisca a entrar no aposento na ponta dos pés"
     jump tres52
 
 label tres52:
-    #show gark at right
+    scene bg3
+    show gark at right
     n "Você entra no aposento na ponta dos pés. Está escuro lá dentro, e o ar está úmido. Há um poste de
 madeira rústica pregado em uma das paredes, com diversos ganchos nele. Há duas portas na parede do outro
 lado que levam adiante."
     n "No poste, pendurado, há um espelho improvisado, mas, quando sua tocha ilumina o espelho,
-seu reflexo é projetado sobre os olhos do gigante adormecido, que grunhe e se mexe."
+seu reflexo é projetado sobre os olhos do gigante, que grunhe e se mexe."
     n "Um dos olhos se abre, depois o outro, ele salta de pé! Ele pega uma acha, que usava como travesseiro, e
 rapidamente retira a bainha de couro, revelando uma afiada cabeça de bronze."
     n "Esta criatura gigantesca é um GARK! Grandes e brutos, os Garks são meio Goblins, meio
@@ -993,6 +1011,8 @@ label batalha_gark:
 
     hide screen batalha_generica
     'Oponente derrotado e você parte em direção às portas!'
+    hide gark
+    hide bg3
     jump nove9
 
 label um1:
@@ -1028,11 +1048,16 @@ label dois94:
 posto."
     n "Por insistência dele, você concorda em não dizer nada a ninguém. A criatura se oferece para
 levar a sua túnica, mas você recusa o oferecimento e segue em frente."
+    hide gark
+    hide bg3
+
     jump nove9
 
 label tres91:
     n "O Gark pega as suas três Peças de Ouro, coloca-as em uma bolsa presa em volta da cintura e mostra
 o caminho para seguir na direção das portas."
+    hide gark
+    hide bg3
     #$ dinheiro retirado (notify)
     jump nove9
 
@@ -1044,6 +1069,8 @@ label tres6:
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "você lança o encanto com sucesso, o gark acredita no ouro falso e permite a sua passagem, apontando a direção das portas."
+        hide gark
+        hide bg3
         jump nove9
     else:
         $renpy.notify("fracasso de sorte")
@@ -1053,6 +1080,7 @@ label tres6:
         jump um6
 
 label nove9:
+    scene bg5
     n "Ao chegar nas duas portas, você escolhe para qual entrar"
     menu:
         "Porta da direita (biblioteca)":
@@ -1074,9 +1102,10 @@ Quando sua mão toca a maçaneta, uma voz diz: 'Não bata; simplesmente entre!' 
             jump cinco2
 
 label um32:
-    n "Ao entrar, há livro do chão até o teto em cada uma das paredes, e diversas mesas e cadeiras
-estão alinhadas no centro do aposento. Do outro lado, há um homem de pele escura sentado, que levanta os olhos de um livro para olhar
-para você por cima de óculos estreitos."
+    scene biblioteca
+    show bibliotecario at right:
+    n "Ao entrar, há livro do chão até o teto em cada uma das paredes, e diversas prateleiras estão alinhadas nos cantos do aposento. Do outro lado, há um homem de idade avançada, que
+levanta os olhos de seu relógio para olhar para você."
     n "Há uma porta atrás dele. 'Sim, o que é?', ele diz. 'Que livro você está procurando?'. Você examina as várias
 estantes, que possuem legendas. Você pedirá a ele:"
     menu:
@@ -1090,25 +1119,35 @@ estantes, que possuem legendas. Você pedirá a ele:"
 label um8:
     n "Ele aponta para uma seção logo acima do chão, que você examina. Finalmente, você escolhe um
 volume e senta para ler."
+    hide bibliotecario
     n "Balthus Dire aparentemente é o terceiro de uma linhagem de Feiticeiros Senhores da Guerra que governa a Torre
 Negra e o Reino da Rocha Escarpada. Chegou ao poder depois da morte de seu pai, Craggen Dire, há alguns anos atrás."
     n "Os Dires são mestres de Magia Negra há gerações, mas sua força e poder duram somente no período noturno; a luz do sol é uma
 espécie de veneno para eles."
     n "Pouco tempo depois da morte de seu pai, Balthus Dire casou-se com Lady Lucretia, ela também uma Feiticeira de Magia Negra, e desde então eles vem reinando juntos
 sobre o Reino da Rocha Escarpada."
-    n "Ao terminar o livro, você repara que o bibliotecário está com a mão junto ao ouvido, aparentemente escutando alguma coisa. Ele dirige a você um olhar
+    show bibliotecario at truecenter
+    with dissolve
+    n "Ao terminar o livro, você repara que o bibliotecário está aparentemente escutando alguma coisa. Ele dirige a você um olhar
 inquisitivo."
     menu:
         "Você pode procurar outro livro útil, que possa ajudá-lo na sua empreitada":
+            hide bibliotecario
             jump oito4
         "Ou tentar sair da biblioteca pela porta atrás dele":
+            hide bibliotecario
             jump tres1
 
 label oito4:
     n "Ao examinar as prateleiras, você ouve uma grande movimentação atrás de você. Você se vira rapidamente, a tempo de ver criaturas
 semelhantes a Orcas, armadas e em guarda, materializaram-se uma após a outra diante de você."
+    show orcs at center:
+        zoom 0.5
     n "Elas avançam e cercam você. O mais alto chega o rosto perto do seu e solta um bafo de respiração diretamente sobre os seus olhos."
     n "O aposento gira e você desaba no chão, inconsciente."
+    hide orcs
+    hide biblioteca
+    with fade
     jump dois34
 
 label tres1:
@@ -1122,7 +1161,8 @@ label dois38:
     n "Ele indica uma seção das estantes, e você leva um livro para uma das mesas para ler. O livro é extremamente informativo, traçando a história da Cidadela.
 A Torre Negra foi construída pelo avô de Balthus Dire."
     n "À medida em que foi se tornando um santuário para as forças do mal, a lei e a ordem foram gradualmente dando lugar ao caos, devido à luta das criaturas monstruosas para
-ascender na hierarquia do poder. O avô de Dire acabou se vendo na necessidade de se proteger de seus próprios seguidores, criando vários sistemas de segurança entre as criaturas e seus próprios
+ascender na hierarquia do poder."
+    n "O avô de Dire acabou se vendo na necessidade de se proteger de seus próprios seguidores, criando vários sistemas de segurança entre as criaturas e seus próprios
 aposentos, destacando-se entre eles a Armadilha do Poço da Perdição e uma Fechadura de Combinação mágica na porta de seu próprio quarto. A combinação da fechadura é 217."
     n "Você lê mais sobre a Cidadela e então escolhe perguntar ao homem:"
     menu:
@@ -1145,11 +1185,21 @@ decepcionado ao descobrir que a seção foi arrancada do livro!"
     jump tres1
 
 label cinco2:
-    n "A porta abre e você segue adiante, batendo-a para que se feche atrás de você. Pouca distância à frente, você chega a um cruzamento de três caminhos,
-no qual você toma a passagem que vai na direção norte."
-    n "Ela continua por vários metros, conduzindo a uma outra porta. Você pode ouvir risos e vozes alegres do outro lado. Cautelosamente, você abre
-a porta que dá para um grande aposento, onde um grupo de mais ou menos doze criaturas, de todas as formas, tamanhos e cores, estão se divertindo com jogos."
-    n "Quando você entra no aposento, uma voz grita: 'Olhem esse deve ser Glaz-Doz-Fut!', com o que todos eles cumprimentam você,  convidando-o para juntar-se à
+    scene salao at truecenter:
+        zoom 1.5
+    show mesa at right:
+        zoom 0.7
+        xpos 1563
+    show maguito at left:
+        xpos 500
+        zoom 1.2
+    show leviata at right:
+        zoom 1.7
+    show heitoba at center:
+        zoom 0.2
+    n "A porta abre e você segue adiante, batendo-a para que se feche atrás de você. É possível ouvir risos e vozes alegres do outro lado. Cautelosamente, você entra
+no grande aposento, onde um grupo de criaturas, de todas as formas, tamanhos e cores, estão se divertindo com jogos."
+    n "Ao entrar, uma voz grita: 'Olhem esse deve ser Glaz-Doz-Fut!', com o que todos eles cumprimentam você,  convidando-o para juntar-se à
 brincadeira.Evidentemente eles estão esperando alguém e confundiram você com o convidado que está faltando."
     menu:
         "Você continua fingindo e junta-se a eles":
@@ -1168,13 +1218,24 @@ o aposento escurece, quando você perde a consciência."
     jump dois34
 
 label dois34:
+    hide maguito
+    hide leviata
+    hide heitoba
+    hide salao
+    hide mesa
+    with fade
+    scene prisao at truecenter:
+        zoom 2.8
     n "Você acorda em um aposento sujo, com paredes ásperas cortadas na rocha. As barras de ferro na janela e na porta confirmam que você está em algum tipo de cela de prisão, conforme você
 desconfiava. Não há muito que você possa fazer, além de ficar sentado no colchão de palha que está em um canto até que alguém apareça."
-    n "Mais ou menos uma hora depois, você ouve o barulho de alguma coisa que se arrasta do lado de fora. Olhando através das barras da porta, você pode ver uma
-criatura com aparência de lagarto que se arrasta descendo o corredor, trazendo nas mãos uma moringa e uma terrina."
-    n "O animal tem duas cabeças que conversam entre si enquanto ele caminha. Sua pele é cinzenta e coberta de escamas, e uma cauda longa se estende pela passagem atrás dele."
-    n "Ele para na sua porta e empurra a moringa e a terrina por uma pequena abertura para dentro de sua cela, e depois se afasta para sentar-se a uma mesa do outro lado do corredor. Você recebeu pão e
+    n "Mais ou menos uma hora depois, você ouve o barulho de alguma coisa que se arrasta do lado de fora. Você pode ver uma
+criatura com aparência de lagarto que se arrasta descendo o corredor."
+    show calacorm at center:
+        zoom 1.5
+    n "Sua pele é avermelhada e coberta de escamas, e uma cauda longa se estende pela passagem atrás dele."
+    n "Ele para na sua porta e empurra a comida por uma pequena abertura para dentro de sua cela, e depois se afasta para sentar-se a uma mesa do outro lado do corredor. Você recebeu pão e
 caldo."
+    hide calacorm
     menu:
         "Você vai comer e beber?":
             jump tres97
@@ -1198,6 +1259,8 @@ label um93:
     if (d20roll>=12):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
+        show calacorm at center:
+            zoom 1.5
         n "Você oferece a ele as pedrinhas que se transformaram em ouro. Ele desabafa sobre a vida pacata que ele leva na prisão, e, rapidamente te libera de sua cela"
         jump um74
     else:
@@ -1216,6 +1279,9 @@ a não ser que se já dado aos Ganjees para o divertimento deles."
 
 label batalha_calacorm:
     n "A criatura entra em seu aposento e parte para cima de você!"
+    show calacorm at right:
+        zoom 1.5
+    with fade
     show mc normal at left:
         zoom 0.6
     with dissolve
@@ -1282,24 +1348,6 @@ label batalha_calacorm:
 label um74:
     n "A porta de saída está logo ali!"
     jump sete
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 label tres44:
     n "Você desce os degraus. O ar está fresco e estagnado. Há uma porta ao pé da escadaria. Você tentará
