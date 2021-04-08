@@ -11,6 +11,8 @@ init python:
     velo_ouro      = False
 
 define flash = Fade(.25, 0, .75, color="#fff")
+transform flip:
+    xzoom -1.0
 
 ##define config.menu_include_disabled = True
 
@@ -21,6 +23,7 @@ define flash = Fade(.25, 0, .75, color="#fff")
 
 define n  = Character("narrador")
 define mc = Character("Mago")
+define l  = Character("Lucretia")
 define b  = Character("Balthus")
 
 image Mapa = "images/Mapa.png"
@@ -33,18 +36,20 @@ image guarda2    = "images/lobinho2.png"
 image gremlim1 = "images/gremlim1.png"
 image tentaculo = "images/tentaculos.png"
 image hydra = "images/hydra.png"
+image hydra_shiny = "images/hydra shiny.png"
 image homem1 = "images/homem1.png"
 image homem2 = "images/homem2.png"
 image goblin1 = "images/goblin1.png"
 image goblin2 = "images/goblin2.png"
-image orca = "images/orca.webp"
+image orquisa = "images/orca.webp"
 image anao = "images/anao.png"
 image velha = "images/velha.png"
 image porteiro   = "images/PW minotauro.png"
 image oseamus    = "images/duende.png"
+image cobra_esgoto = "images/cobra.png"
 image pedroso    = "images/pedra.png"
 image morena     = "images/morena.png"
-image morena2    = "images/PW succubus4"
+image morena 2    = "images/PW succubus4.png"
 image goblins    = "images/Goblin_Troop.png"
 image mordomo = "images/mordomo macabro.png"
 image gark = "images/gark.png"
@@ -56,7 +61,7 @@ image heitoba = "images/heitoba.png"
 image calacorm = "images/calacorm.png"
 image balthus normal = "images/balthus.png"
 image balthus bombado = "images/balthus 2.png"
-
+image ganjee          = "images/ganjee.png"
 
 ## backgrounds
 image entrada_caos     = "images/PW entrada cidadela.jpg"
@@ -64,6 +69,7 @@ image caminho_cidadela = "images/PW campo escuro.jpg"
 image cidadela1        = "images/PW cidadela.jpg"
 image poco             = "images/fundo-poco.jpg"
 image portao           = "images/portao.jpg"
+image portao aberto    = "images/portao aberto.png"
 image corredor         = "images/corredor.jpg"
 image sala_oseamus     = "images/sala oseamus.jpg"
 image game_over        = "images/game_over.jpeg"
@@ -94,12 +100,39 @@ image fim_lorde        = "images/trono lorde do caos.jpg"
 image fim_alvor        = "images/alvorecer.jpg"
 image escada           = "images/escadas.jpg"
 image quarto_escuro    = "images/escuro.jpg"
+image tutorial1        = "images/Tutorial Wanderer 1.png"
+image tutorial2        = "images/Tutorial Wanderer 2.png"
+image tutorial3        = "images/Tutorial Wanderer 3.png"
+image tutorial4        = "images/Tutorial Wanderer 4.png"
+image quarto_hydra     = "images/quarto hydra 3.jpg"
+image entrada_balthus  = "images/original.jpg"
 
 # The game starts here.
 
 label start:
 
     stop music
+
+    play music "musics/tutorial.mp3"
+
+    scene tutorial1 at truecenter:
+        zoom 1.3
+    window hide
+    $renpy.notify("clique na tela!")
+    pause
+    scene tutorial2 at truecenter:
+        zoom 1.3
+    window hide
+    pause
+    scene tutorial3 at truecenter:
+        zoom 1.3
+    window hide
+    pause
+    $renpy.notify("notificação exemplo!")
+    scene tutorial4 at truecenter:
+        zoom 1.3
+    window hide
+    pause
 
     play music "musics/inicio_epico.mp3"
 
@@ -563,7 +596,7 @@ label tres21:
         xpos 1300
         zoom 1.9
     n "À direita, você pode ver duas figuras de aparência humana conversando sob uma tocha presa à parede."
-    show orca at left:
+    show orquisa at left:
         zoom 1.2
     show anao at left:
         zoom 0.5
@@ -581,7 +614,7 @@ label tres21:
             jump dois69
 
 label dois69:
-    hide orca
+    hide orquisa
     hide anao
     hide goblin1
     hide goblin2
@@ -610,7 +643,7 @@ label dois25:
 label tres39:
     hide homem1 with dissolve
     hide homem2 with dissolve
-    n "Há um time eclético sentado em volta do fogo. Uma orca está distribuindo magros bocados de carne mal passada para os outros."
+    n "Há um time eclético sentado em volta do fogo. Uma orquisa está distribuindo magros bocados de carne mal passada para os outros."
     n "Um anão de pele gastada rosna e reclama do tamanho do seu pedaço, enquanto dois globins, homem e mulher, estão se acariciando. Eles riem e se sacodem, e de
     vez em quando ela dá um tapa na cara feia do macho, causando ainda mais risos."
     n "Quando você se aproxima, eles param e olham para você com rostos poucos amigáveis. Olham com desprezo para a sua aparência asseada, e a Globin fêmea
@@ -626,7 +659,7 @@ label tres39:
 label um34:
     n "Eles ficam admirados com a sua audácia. Ao invés de esperar que eles falem, você age agressivamente e exige saber como entrar na Cidadela. Eles apontam para a entrada principal,
     obviamente um tanto espantados com seu modo confiante e cochicham entre eles."
-    n "A orca diz a você que será preciso uma senha, 'CIMITARRA', para entrar. Você pergunta a respeito do frasco de líquido dentro da caixa, o que faz com que eles fiquem agitados, então você:"
+    n "A orquisa diz a você que será preciso uma senha, 'CIMITARRA', para entrar. Você pergunta a respeito do frasco de líquido dentro da caixa, o que faz com que eles fiquem agitados, então você:"
     menu:
         "Os pressiona para obter mais informações sobre o frasco":
             jump seis0
@@ -635,14 +668,14 @@ label um34:
 
 label seis0:
     n "As criaturas ficam desconfiadas quando você as pressiona buscando informações. O anão salta rapidamente de pé, brandindo uma clava de madeira, enquanto o goblin
-    e a orca pegam espadas e olham com raiva de você."
+    e a orquisa pegam espadas e olham com raiva de você."
     n "A namorada do goblin grita e recua vários passos, enquanto os outros avançam na sua direção. Você terá que lutar contra eles."
     jump batalha_criaturas
 
 label dois45:
     hide mc normal
     hide anao
-    hide orca
+    hide orquisa
     hide goblin1
     scene bg at truecenter:
         zoom 2
@@ -850,12 +883,15 @@ label dois18:
     menu:
         "chamar o guarda":
             jump um18
-        "encanto força(ainda em desenvolvimento)":
+        "encanto força(teste de sorte)":
             jump nove4
 
 label um18:
 
     play sound "musics/efeito_sonoro/batendo-porta.mp3"
+
+    scene portao aberto
+    with dissolve
 
     n "A porta abre e uma criatura grande e abrutalhada sai. sua aparencia remete a de uma besta e
     sua pele parece ser recoberta de armadura."
@@ -869,20 +905,60 @@ label um18:
     n "Rosna para saber o que você quer e exige a senha antes
     de deixar que você entre. Você sabe a senha?"
     menu:
-        "Ganjees (ainda em desenvolvimento)":
+        "Ganjees":
             jump dois55
-        "Kraken (ainda em desenvolvimento)":
+        "Kraken":
             jump quatro9
         "Cimitarra":
             jump tres71
-        "tentar se passar como especialista em ervas (ainda em desenvolvimento)":
+        "tentar se passar como especialista em ervas":
             jump um98
 
-label nove4: ##incompleto
+label nove4:
+    play sound "musics/efeito_sonoro/dados.mp3"
 
-label dois55: ##incompleto
+    $ d20roll = renpy.random.randint(1, 20)
 
-label quatro9: ##incompleto
+    if (d20roll>=8):
+        $renpy.notify("sucesso de sorte")
+        play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
+        n "Você sente o seu próprio poder crescendo. Você corre na direção da porta e a golpeia firme como
+        ombro... mas ela nem se mexe! Você bate com força para chamar o guarda."
+        jump um18
+    else:
+        $renpy.notify("fracasso de sorte")
+        play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
+        n "você erra algumas palavras do encanto e se joga na porta sem fazer nenhuma diferença!
+        Você bate com força para chamar o guarda."
+        jump um18
+
+label dois55:
+    n "A criatura olha para você. Seus olhos se estreitam. Há uma lança longa em suas mãos, que ela
+    rapidamente aponta na sua direção. 'Esta não é a senha!' ela grita e sai para a batalha. Teste a sua
+    Sorte."
+    $ d20roll = renpy.random.randint(1, 20)
+
+    if (d20roll>=8):
+        $renpy.notify("sucesso de sorte")
+        play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
+        n "você pensa rapidamente em um blefe!"
+        jump um98
+    else:
+        $renpy.notify("fracasso de sorte")
+        play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
+        n "você gagueja e a criatura avança para lutar!"
+        jump dois90
+
+label dois90:
+    n "O porteiro dá um passo adiante e desfere uma estocada com sua lança na sua direção. Você
+    pula rapidamente e se desvia. Embora ele não esteja usando uma armadura, seu couro grosso parece
+    ser proteção suficiente."
+    jump batalha_porteiro
+
+label quatro9:
+    n "A criatura fica olhando fixamente para você com ar inquisitivo, como se estivesse insegura em
+    relação a você."
+    jump dois55
 
 label tres71:
 
@@ -892,7 +968,24 @@ label tres71:
 
     jump um77
 
-label um98: ##incompleto
+label um98:
+    n "Você pensa rapidamente, e depois enfia a mão em sua mochila e tira um punhado de ervas.
+    Mostrando-as à criatura, você explica que é um especialista em plantas medicinais e veio tratar do
+    bibliotecário do Senhor, que está doente, em estado crítico."
+    n "O mensageiro não disse nada quanto a
+    senhas. Será que ele vai acreditar em você? Teste a sua Sorte."
+    $ d20roll = renpy.random.randint(1, 20)
+
+    if (d20roll>=8):
+        $renpy.notify("sucesso de sorte")
+        play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
+        n "o guarda acredita no seu blefe e te deixa passar!"
+        jump um77
+    else:
+        $renpy.notify("fracasso de sorte")
+        play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
+        n "ele diz que nao pode deixar entrar sem senha e avança em sua direçao com a lança em riste!"
+        jump dois90
 
 label um77:
 
@@ -904,7 +997,7 @@ label um77:
     n " A meio caminho, descendo a passagem, pode-se ver um arco, de onde alguns degraus levam para baixo.
     Você vai prosseguir na direção da porta ou se arriscará a descer as escadas?"
     menu:
-        "seguir na direção da porta (ainda em desenvolvimento)":
+        "seguir na direção da porta":
             jump cinco
         "descer as escadas":
             jump tres44
@@ -1108,7 +1201,7 @@ label um8:
 
 label oito4:
     n "Ao examinar as prateleiras, você ouve uma grande movimentação atrás de você. Você se vira rapidamente, a tempo de ver criaturas
-    semelhantes a Orcas, armadas e em guarda, materializaram-se uma após a outra diante de você."
+    semelhantes a orquisas, armadas e em guarda, materializaram-se uma após a outra diante de você."
     show orcs at center:
         zoom 0.5
     n "Elas avançam e cercam você. O mais alto chega o rosto perto do seu e solta um bafo de respiração diretamente sobre os seus olhos."
@@ -1566,13 +1659,16 @@ label tres23:
 
     $espelho = True
 
-    menu:
+    menu sala_oseamus:
         "abrir a porta com maçaneta de latao?":
             jump tres86
-        "abrir a porta com maçaneta de cobre?":
-            jump um44
-        "abrir a porta com maçaneta de bronze?":
-            jump tres38
+        "abrir a porta com maçaneta de cobre?(ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump sala_oseamus
+
+        "abrir a porta com maçaneta de bronze? (ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump sala_oseamus
 
 label tres86:
 
@@ -1600,6 +1696,7 @@ label um08:
     n "Você agarra a corda firmemente, recua e toma impulso na direção do rio pútrido. Subitamente, a
     corda passa a se movimentar e se contorcer com vontade própria! Você a larga rapidamente e cai no
     chão."
+    show cobra_esgoto at truecenter
     n "A corda cai por cima de você e se enrola em volta de você. Você compreende que não é uma
     corda, mas, na realidade, uma longa COBRA DE ESGOTO, que se enrosca em torno do seu corpo e
     de seu pescoço."
@@ -1639,7 +1736,16 @@ label dois82:
     flamejantes, queimando-a fatalmente."
     jump um12
 
-label dois04: ##imcompleto
+label dois04:
+    n "Você prende a respiração e dá um passo adiante, entrando na água lodosa. Pouco depois, você sente
+    alguma coisa puxando a sua perna. Levantando a perna da água, você descobre que algum tipo de
+    trepadeira se enroscou na sua perna."
+    n "Você salta de volta para a margem, e a trepadeira continua agarrada. Saindo da água, uma das pontas da trepadeira se ergue, contorce-se no ar, como se
+    estivesse olhando para você, e depois cai na água de volta com estrépito."
+    show cobra_esgoto at truecenter
+    n "Você compreende que não é uma trepadeira, mas sim uma longa COBRA DE ESGOTO, que agora está deslizando na sua
+    direção."
+    jump sete3
 
 label um12:
 
@@ -1647,9 +1753,10 @@ label um12:
     sem maiores incidentes, mas está com certeza ansioso para tomar um banho rápido!"
     n " Você continua ao longo da passagem até chegar a uma encruzilhada, onde pode seguir em frente ou tomar a
     passagem da esquerda."
-    menu:
-        "ir para a esquerda?":
-            jump dois12
+    menu cobra:
+        "ir para a esquerda? (ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump cobra
         "seguir em frente?":
             jump tres67
 
@@ -1699,12 +1806,16 @@ label dois57:
     n "Possui aproximadamente uma forma humana, ainda que um tanto maior. Seus olhos estão
     dirigidos diretamente para você, mas você não consegue ter certeza de que ela esteja de fato vendo
     você! Você:"
-    menu:
+    menu sala_golem:
         "correr para a porta do outro lado do aposento?":
             jump dois37
-        "tentar falar com a criatura?":
+        "tentar falar com a criatura? (ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump sala_golem
             jump tres57
-        "avançar lentamente na direção das caixas no canto?":
+        "avançar lentamente na direção das caixas no canto? (ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump sala_golem
             jump dois00
 
 label dois37:
@@ -1780,15 +1891,39 @@ label um97:
     n "As escadas estão bastante gastas e estalam sob o seu peso. Cuidadosamente, você sobe até a sacada."
     jump tres63
 
-label tres17: ##incompleto
+label tres17:
+    n "Os quadros são retratos de vários Senhores e Condes de destaque no Reino da Rocha Escarpada.
+    Atrás de uma cadeira, na cabeceira da mesa, há um retrato do próprio Balthus Dire."
 
-label um51: ##incompleto
+    show balthus normal at center:
+        zoom 0.7
+    with dissolve
+
+    n "Ele realmente aparenta ser um adversário poderoso. Você pode agora continuar pela escadaria do lado esquerdo, ou pela escadaria do lado direito."
+    menu:
+        "ir pela escadaria da esquerda?":
+            jump um9
+        "ir pela escadaria da direita?":
+            jump um97
+
+label um51:
+    n "Os conjuntos de armaduras são de vários tamanhos e formatos, e você fica arrepiado de pensar nas
+    criaturas estranhas para as quais eles devem ter sido feitos; talvez você ainda encontre algumas
+    delas."
+    n "Ao examinar um conjunto particularmente suntuoso, a manopla dele subitamente se ergue e
+    bate forte em seu rosto! Você cambaleia para trás, cuspindo sangue."
+    n "Mas a armadura não se mexe mais, e você resolve que pode ser prudente continuar
+    subindo, seja pela escada do lado esquerdo ou pela escada do lado direito."
+    menu:
+        "ir pela escadaria da esquerda?":
+            jump um9
+        "ir pela escadaria da direita?":
+            jump um97
 
 label tres63:
 
     scene portais at center:
         zoom 2.0
-
     n "Há três portais ao longo da sacada. Você experimentará:"
     menu:
         "o portal da esquerda?":
@@ -1848,7 +1983,6 @@ label seis4:
     scene portais at center:
         zoom 2.0
 
-
     n "Você ouve junto à porta e consegue escutar vozes esganiçadas rindo e brigando. Você experimenta
     a maçaneta e a porta abre. O lado de dentro é um aposento de cores vivas."
     scene quarto_goblin
@@ -1862,11 +1996,16 @@ label seis4:
     n "No meio do assoalho, e olhando para você com curiosidade, estão algumas pequenas criaturas. Têm aparência
     humana, mas possuem pele verde, orelhas pontudas e olhos muito apertados. Qual será a sua
     atitude? Você:"
-    menu:
+    menu portal_centro:
         "Desembainhará a sua espada e se preparará para lutar contra eles?":
             jump dois86
-        "Procurará em sua mochila alguma coisa para oferecer a eles?":
-            jump tres
+        "oferecer um punhado de amoras para eles?":
+            if(amoras):
+                jump tres
+            else:
+                play sound "musics/efeito_sonoro/nao tem o item.mp3"
+                $renpy.notify("você não possui esse item!")
+                jump portal_centro
         "Caminhará confiantemente através do aposento para a porta do outro lado?":
             jump tres66
 
@@ -1878,11 +2017,26 @@ label dois86:
     batalha tão fácil e dirige-se para a porta do outro lado do aposento."
     jump um40
 
-label tres: ##incompleto
+label tres:
+    n "Eles aceitam as suas Amoras de bom grado, jogando-as para dentro da boca e mastigando. Alguns
+    segundos depois, eles adormecem um por um."
+    n "Quando todos os três estão dormindo, você caminha
+    até a caixa para investigar. A tampa se abre, revelando diversas outras bonecas do lado de dentro,
+    iguais às que estão no chão, e vários outros brinquedos de madeira."
+    n "Não parece haver nada
+    verdadeiramente de valor ali, por isso você sai do aposento pela porta do outro lado."
+    jump um40
 
-label tres66: ##incompleto
+label tres66:
+    n "Quando você passa pelas pequenas criaturas, elas ficam olhando para você silenciosamente. Elas
+    parecem simplesmente achar que você é interessante. Você sente que alguma coisa não vai bem por
+    aqui."
+
+    jump um40
 
 label um40:
+
+    play music "musics/'descoberta'.mp3"
 
     scene escadas at center
 
@@ -1890,39 +2044,12 @@ label um40:
     de uma escada. É uma escada em espiral que leva diretamente ao interior da Torre da Cidadela."
     n "Você sobe os degraus cautelosamente e acaba chegando em uma pequena plataforma com duas
     portas à sua frente. você testa a porta da direita primeiro, esta que esta extremamente emperrada, apenas lhe restando seguir pela esquerda"
-    jump dois5
-
-label dois5:
-
-    n "A porta abre, dando para um aposento grande e circular. Você coça a cabeça, intrigado."
-    n "No centro do aposento, vê uma pequena 'ilha', cercada por um fosso largo, na qual está uma arca, trancada
-    por ferrolhos metálicos."
-    n "O fosso é largo demais para ser pulado e é muito fundo. Logo na entrada,
-    há um pedaço de corda. Existe uma outra porta do outro lado do aposento, dando para fora dele.
-    Você:"
-    menu:
-        "Ignora a caixa e contorna o fosso até a outra porta?":
-            jump dois06
-        "Lança um Encanto da Força e salta sobre o fosso? (teste de sorte)":
-            jump um33
-        "Pega a corda e formula um plano?":
-            jump dois39
-
-label dois06:
-    n "Você sai pela porta e se encontra ao pé de outra escada em espiral que leva ao interior da Terra
-    Negra."
-    n "Subindo a escadaria, você acaba chegando a uma plataforma onde uma única porta é a
-    maneira que existe para seguir adiante, sem outra opção. Você experimenta a porta. Ela abre
-    lentamente."
     jump um82
-
-label um33: ##incompleto
-
-label dois39: ##incompleto
 
 label um82:
 
-    scene quarto_escuro at center
+    scene quarto_escuro at center:
+        zoom 1.5
 
     n "Você se sente sugado para o interior do aposento. Como que por um passe de mágica, sua tocha
     tremula e se apaga. O aposento está escuro como breu. De nenhum lugar, mas ainda assim de toda
@@ -1931,17 +2058,23 @@ label um82:
     o último lugar que você verá na sua vida... Ah, mas é claro, você não está vendo nada, está?"
     n "' Mas nós estamos vendo você, não estamos irmãos?' Vozes que riem chegam de toda parte à sua volta.
     De repente, um rosto luminoso, branco e fantasmagórico, vem voando na sua direção."
+
+    show ganjee at truecenter
+
     n "Você se encolhe horrorizado, atira-se no chão e começa a se sentir muito assustado. Por causa desse medo extremo, qualquer batalha contra essas criaturas vai ser de extrema dificuldade!"
     n "você pensa nas seguintes opções:"
-    menu:
+    menu quarto_ganjee:
         "usar encanto?":
             jump oito5
-        "desembainhar a sua espada?":
-            jump dois48
+        "desembainhar a sua espada? (ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump quarto_ganjee
         "procurar um artefato na mochila?":
             jump tres22
 
-label oito5: ##incompleto
+label oito5:
+    n "as ganjees riam da sua atitude e nao causa nenhum efeito! so lhe resta procurar um artefato na mochila!"
+    jump tres22
 
 label dois48: ##incompleto
 
@@ -1996,6 +2129,12 @@ label dois91:
     jump tres28
 
 label tres28:
+
+    hide ganjee
+
+    scene quarto_hydra at truecenter:
+        zoom 1.5
+
     n "Você fecha a porta atrás de você e chega ao pé de outra escadaria, que sobe em espirais para o
     interior da torre. Subindo os degraus, você chega a uma outra sacada, onde uma única porta é a
     alternativa que existe para seguir adiante."
@@ -2003,6 +2142,9 @@ label tres28:
     quando você empurra a porta, um ruído alto de silvos vem lá de dentro. Você entra e fica gelado, ao
     ver uma imensa HIDRA de seis cabeças se arrastando na sua direção sobre os corpos das vítimas
     anteriores!"
+    show hydra at truecenter:
+        zoom 2
+    with dissolve
     n "Suas seis cabeças de serpente atacam você com seus dentes aguçados e cruéis. Você fica
     encurralado em um canto. O que você fará:"
     menu hidra:
@@ -2035,6 +2177,13 @@ label tres28:
                 jump hidra
 
 label dois29:
+
+    hide hydra
+    hide hydra_shiny
+    hide mc
+    scene entrada_balthus at center:
+        zoom 2.0
+
     n "Você bate a porta, fechando-a ao passar. Você segue por uma passagem curta e estreita, que dá
     muitas voltas e conduz você ao pé de outra escadaria, levando diretamente ao topo da Cidadela. Um
     letreiro na parede diz: 'PARE. Ninguém poderá passar, a não ser com ordem de Balthus Dire.'"
@@ -2084,6 +2233,11 @@ label tres7:
     n "Quando você está na metade do caminho, uma das cabeças se projeta e arranca o velo
     das suas mãos. Mas, ao invés de atacar você, a Hidra se encolhe de volta em um dos cantos. Você
     segue para a porta cautelosamente."
+
+    $renpy.notify("véu retirado!")
+
+    play sound "musics/efeito_sonoro/item perdido.mp3"
+
     jump dois29
 
 label dois92:
@@ -2119,9 +2273,73 @@ label tres76:
 
     n "Você lança seu Encanto do Escudo. Que lástima, este Encanto não faz efeito contra armas mágicas!"
     n "Você percebe que dialogo nao vai adiantar e se prepara para lutar"
-    jump batalha_morena
+    jump batalha_morena1
 
-label quatro2: ##incompleto
+label despertar_morena:
+
+    hide mc
+
+    show morena at center
+    with dissolve
+
+    l "Você jamais chegará ao Balthus!"
+
+    play sound "musics/efeito_sonoro/tranformacao Balthus.mp3"
+
+    show morena 2 at truecenter:
+    with flash
+    with dissolve
+
+    l "Essa será a ultima coisa que você verá!"
+
+    jump batalha_morena2
+
+label morte_morena:
+
+    hide morena
+    hide mc
+
+    n "você encontra um veu de ouro!"
+    $velo_ouro = True
+    $renpy.notify("adquiriu véu de ouro!")
+
+    play sound "musics/efeito_sonoro/item encontrado.mp3"
+
+
+    n "o caminho está limpo, avance com cautela!"
+
+    jump um40
+
+label quatro2:
+
+    n "Ela olha para a sua oferta e seus olhos se arregalam. 'Deixe-me ver isso', ela ordena. Você avança
+    cuidadosamente na direção dela e mostra a escova. Ela pega o objeto e passa vários minutos
+    admirando-o."
+    n "'Isto é de fato uma obra de arte', ela diz, e se levanta da cama para experimentá-la
+    em frente ao espelho. Ao escovar os cabelos dela, eles assumem um brilho incomum, cintilando
+    suavemente. Ela fica fascinada com seu presente, e esta é a sua chance de sair sem ser notado pela
+    porta existente no canto mais distante."
+    n "Você pode tentar levar com você um Véu de Ouro que se
+    encontra sobre a cama. Teste a sua Sorte."
+
+    $ d20roll = renpy.random.randint(1, 20)
+
+    if (d20roll>= 10):
+        $renpy.notify("sucesso de sorte")
+        play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
+        n "voce teve sorte e conseguiu pegar o véu de ouro!"
+
+        $velo_ouro = True
+        $renpy.notify("adquiriu véu de ouro!")
+
+        play sound "musics/efeito_sonoro/item encontrado.mp3"
+        jump um40
+
+    else:
+        $renpy.notify("fracasso de sorte")
+        play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
+        n "Você não teve sorte e saiu sem o véu de ouro"
+        jump um40
 
 label tres04: ##incompleto
 
@@ -2366,6 +2584,7 @@ label batalha_guardas:
     jump dois51
 
 label batalha_criaturas:
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
     #hide guarda1
     hide goblin2
 
@@ -2373,7 +2592,7 @@ label batalha_criaturas:
         zoom 0.6
     with dissolve
 
-    show orca at right:
+    show orquisa at right:
         zoom 1.2
         ypos 1050
     show anao at right:
@@ -2443,7 +2662,82 @@ label batalha_criaturas:
     'oponentes derrotados!!!'
     jump dois45
 
+label batalha_porteiro:
+    show mc normal at left:
+        zoom 0.6
+    with dissolve
+
+    show porteiro at right:
+        zoom 1.5
+    with dissolve
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+
+    $ oponente_max_hp = 30
+    $ mago_max_hp = 50
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixir_left = 13
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu:
+
+                "Ataque com espada (2 a 3 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+                "Bola de fogo (3 a 7 de dano)":
+
+                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                    $ mago_damage = renpy.random.randint(3, 7)
+                    $ oponente_hp -= mago_damage
+                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+
+
+
+                "Raio arcano (3 a 10 de dano)":
+
+                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                    $ mago_damage = renpy.random.randint(3, 10)
+                    $ oponente_hp -= mago_damage
+                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+
+                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
+                    $ mago_hp = min(mago_hp+5, mago_max_hp)
+                    $ elixir_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
+        else:
+            hide screen batalha_generica
+            jump final_ruim
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(2, 6)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*o oponente te ataca com a lança!!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    'Fernando12000 derrotado!!!'
+    jump um77
+
 label batalha_tentaculo:
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
 
     $ oponente_max_hp = 30
     $ mago_max_hp = 50
@@ -2507,6 +2801,9 @@ label batalha_tentaculo:
     jump dois18
 
 label batalha_contra_um:
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
     #hide guarda1
     #hide guarda2
 
@@ -2588,22 +2885,12 @@ label batalha_contra_um:
     jump dois18
 
 label batalha_contra_dois:
-    #hide guarda1
-    #hide guarda2
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
 
     show mc normal at left:
         zoom 0.6
     with fade
-
-    #show guarda1 at right:
-        #zoom 1.3
-    #with dissolve
-
-    #show guarda2:
-        #xpos 1050
-        #ypos 400
-        #zoom 0.9
-    #with dissolve
 
     $ oponente_max_hp = 30
     $ mago_max_hp = 50
@@ -2669,6 +2956,9 @@ label batalha_contra_dois:
     jump dois18
 
 label batalha_calacorm:
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
     n "A criatura entra em seu aposento e parte para cima de você!"
     show mc normal at left:
         zoom 0.6
@@ -2734,6 +3024,9 @@ label batalha_calacorm:
     jump um74
 
 label batalha_gark:
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
     show mc normal at left:
         zoom 0.6
     with dissolve
@@ -2798,9 +3091,238 @@ label batalha_gark:
     'Oponente derrotado e você parte em direção às portas!'
     jump nove9
 
-label batalha_cobras: ##incompleto
+label batalha_cobras:
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+    show mc normal at left:
+        zoom 0.6
+    with fade
+
+    show cobra_esgoto at right:
+        zoom 1.3
+    with dissolve
+
+    $ oponente_max_hp = 30
+    $ mago_max_hp = 50
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixir_left = 13
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu:
+
+                "Ataque com espada (2 a 3 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+                "Bola de fogo (3 a 7 de dano)":
+
+                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                    $ mago_damage = renpy.random.randint(3, 7)
+                    $ oponente_hp -= mago_damage
+                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+
+
+
+                "Raio arcano (3 a 10 de dano)":
+
+                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                    $ mago_damage = renpy.random.randint(3, 10)
+                    $ oponente_hp -= mago_damage
+                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+
+                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
+                    $ mago_hp = min(mago_hp+5, mago_max_hp)
+                    $ elixir_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
+        else:
+            hide screen batalha_generica
+            jump final_ruim
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(2, 6)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*a cobra te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    'oponente derrotado!!!'
+    jump um12
+
+label batalha_morena1:
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+    show mc normal at left:
+        zoom 0.6
+    with fade
+
+    show morena at right:
+        zoom 1.3
+    with dissolve
+
+    $ oponente_max_hp = 30
+    $ mago_max_hp = 50
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixir_left = 13
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu:
+
+                "Ataque com espada (2 a 3 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+                "Bola de fogo (3 a 7 de dano)":
+
+                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                    $ mago_damage = renpy.random.randint(3, 7)
+                    $ oponente_hp -= mago_damage
+                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+
+
+
+                "Raio arcano (3 a 10 de dano)":
+
+                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                    $ mago_damage = renpy.random.randint(3, 10)
+                    $ oponente_hp -= mago_damage
+                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+
+                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
+                    $ mago_hp = min(mago_hp+5, mago_max_hp)
+                    $ elixir_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
+        else:
+            hide screen batalha_generica
+            jump final_ruim
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(2, 6)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*a morena te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    'Lucretia derrotada!!!'
+    jump despertar_morena
+
+label batalha_morena2:
+
+    play music "musics/morena's battle.mp3"
+
+    show mc normal at left:
+        zoom 0.6
+    with fade
+
+    show morena 2 at right:
+        zoom 0.9
+    with dissolve
+
+    $ oponente_max_hp = 30
+    $ mago_max_hp = 50
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixir_left = 13
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu:
+
+                "Ataque com espada (2 a 3 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+                "Bola de fogo (3 a 7 de dano)":
+
+                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                    $ mago_damage = renpy.random.randint(3, 7)
+                    $ oponente_hp -= mago_damage
+                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+
+
+
+                "Raio arcano (3 a 10 de dano)":
+
+                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                    $ mago_damage = renpy.random.randint(3, 10)
+                    $ oponente_hp -= mago_damage
+                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+
+                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
+                    $ mago_hp = min(mago_hp+5, mago_max_hp)
+                    $ elixir_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
+        else:
+            hide screen batalha_generica
+            jump final_ruim
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(2, 6)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*a morena te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    'Lucretia derrotada!!!'
+    jump morte_morena
 
 label batalha_hidra:
+
+    show mc normal at left:
+        zoom 0.6
+    with dissolve
+
+    show hydra at right:
+        zoom 2
+        ypos 900
+    with dissolve
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
 
     $ oponente_max_hp = 30
     $ mago_max_hp = 50
@@ -2864,6 +3386,79 @@ label batalha_hidra:
     jump dois29
 
 label batalha_hidra_vs_hidra:
+    show hydra_shiny at flip, left:
+        zoom 0.7
+        ypos 900
+    with dissolve
+
+    show hydra at right:
+        zoom 2
+        ypos 900
+    with dissolve
+
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+
+    $ oponente_max_hp = 30
+    $ mago_max_hp = 50
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixir_left = 13
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu:
+
+                "Ataque com garras (2 a 3 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ oponente_hp -= mago_damage
+                    "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+                "Avanço das cabeças(3 a 7 de dano)":
+
+                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                    $ mago_damage = renpy.random.randint(3, 7)
+                    $ oponente_hp -= mago_damage
+                    "Raaaah!!!!!!! (dano causado - [mago_damage]hp)"
+
+
+
+                "Sopro flamejante (3 a 10 de dano)":
+
+                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                    $ mago_damage = renpy.random.randint(3, 10)
+                    $ oponente_hp -= mago_damage
+                    "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
+                    $ mago_hp = min(mago_hp+5, mago_max_hp)
+                    $ elixir_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
+        else:
+            hide screen batalha_generica
+            jump final_ruim
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(2, 6)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*o oponente te arrasta para o seu covil!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    'oponente derrotado!!!'
+    jump dois29
 
 label batalha_balthus1:
 
