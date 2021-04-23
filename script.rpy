@@ -9,60 +9,114 @@ init python:
     vidro_ungento  = False
     aranha_garrafa = False
     velo_ouro      = False
+    sabe_senha     = False
+    essencia_porco = False
 
 define flash = Fade(.25, 0, .75, color="#fff")
 transform flip:
     xzoom -1.0
 
-##define config.menu_include_disabled = True
+init python:
+    credits1 = ('Wanderer é uma produção grupo 7', 'UNB FGA'), ('PO(product owner)','André Corrêa'), ('Scrum master', 'João Pedro de Camargo Vaz'), ('Scrum team', 'Vinicius Assumpção'), ('Scrum team', 'César Umeda'),('Scrum team', 'Gabriel Roger'),('Artista Responsável', '@qEROsene'), ('Direção de arte', 'Dartmol203'), ('Direção de arte', 'Viniman27'), ('Edição', 'Cesarheroyuki')
+    credits2 = ('formatação', 'Djonga'), ('formatação', 'Roger'), ('agradecimento ao material fornecido por', 'Editora Marques Saraiva'), ('agradecimento ao material fornecido por', 'GDC game audio'), ('agradecimento ao material fornecido por', "Ren'py engine"), ('agradecimento ao material fornecido por', 'Breaking Copyrights'), ('agradecimento ao material fornecido por', 'netFontes'), ('agradecimento ao material fornecido por', 'pngWing'), ('agradecimento ao material fornecido por', 'Fantasy Background Music'), ('agradecimento ao material fornecido por', 'Rush Garcia')
+    credits3 = ('E um muito obrigado a todos que participaram da beta aberta!', 'MARIANAR GAMER'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Katsuia'), ('E um muito obrigado a todos que participaram da beta aberta!', 'quEROSene'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Mikkhaelll'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Pedro Henrique Elias Pereira'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Neeko'), ('E um muito obrigado a todos que participaram da beta aberta!', 'HeregeD'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Gabrielle'), ('E um muito obrigado a todos que participaram da beta aberta!', 'O Bram'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Felpeldel')
+    credits4 = ('E um muito obrigado a todos que participaram da beta aberta!', '(GS) Luw'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Alamux'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Akaeboshi'), ('E um muito obrigado a todos que participaram da beta aberta!', 'lulinha'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Milton'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Ada Amaris'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Isabella'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Srta Fooshang'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Flávio'), ('E um muito obrigado a todos que participaram da beta aberta!', 'ITZdeath')
+    credits5 = ('E um muito obrigado a todos que participaram da beta aberta!', 'Caio26'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Furyjoker'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Lucas Soares'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Manuzini'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Lucas Rodrigues Lopes'), ('E um muito obrigado a todos que participaram da beta aberta!', 'XXX_Lima_XXX'), ('E um muito obrigado a todos que participaram da beta aberta!', '404SkillNotFound'), ('E um muito obrigado a todos que participaram da beta aberta!', 'impunky_e'), ('E o autor que tornou esse projeto possivel', 'Steve Jackson')
+    credits_s = "{size=80}Créditos\n\n"
+    c1 = ''
+    for c in credits1:
+        if not c1==c[0]:
+            credits_s += "\n{size=40}" + c[0] + "\n"
+        credits_s += "{size=60}" + c[1] + "\n"
+        c1=c[0]
+    for c in credits2:
+        if not c1==c[0]:
+            credits_s += "\n{size=40}" + c[0] + "\n"
+        credits_s += "{size=60}" + c[1] + "\n"
+        c1=c[0]
+    for c in credits3:
+        if not c1==c[0]:
+            credits_s += "\n{size=40}" + c[0] + "\n"
+        credits_s += "{size=60}" + c[1] + "\n"
+        c1=c[0]
+    for c in credits4:
+        if not c1==c[0]:
+            credits_s += "\n{size=40}" + c[0] + "\n"
+        credits_s += "{size=60}" + c[1] + "\n"
+        c1=c[0]
+    for c in credits5:
+        if not c1==c[0]:
+            credits_s += "\n{size=40}" + c[0] + "\n"
+        credits_s += "{size=60}" + c[1] + "\n"
+        c1=c[0]
+    credits_s += "\n{size=40}Engine\n{size=60}Ren'py\n7.4.4.1239" #Don't forget to set this to your Ren'py version
 
-##default allow_choice = False
+init:
+#    image cred = Text(credits_s, font="myfont.ttf", text_align=0.5) #use this if you want to use special fonts
+    image cred = Text(credits_s, text_align=0.5)
+    image theend = Text("{size=80}O Fim!", text_align=0.5)
+    image thanks = Text("{size=80}obrigado por jogar!", text_align=0.5)
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define n  = Character("narrador")
-define mc = Character("Mago")
-define l  = Character("Lucretia")
-define b  = Character("Balthus")
+define n               = Character("narrador")
+define mc              = Character("Mago")
+define l               = Character("Lucretia")
+define b               = Character("Balthus")
 
 image Mapa = "images/Mapa.png"
 
 ## personagens
-image mc normal  = "images/mc a.png"
-image mc bombado = "images/mc.png"
+image mc normal        = "images/mc a.png"
+image mc bombado       = "images/mc.png"
 image mc invertido     = "images/mc invertido.png"
-image guarda1    = "images/mamaco.png"
-image guarda2    = "images/lobinho2.png"
-image gremlim1 = "images/gremlim1.png"
-image tentaculo = "images/tentaculos.png"
-image hydra = "images/hydra.png"
-image hydra_shiny = "images/hydra shiny.png"
-image homem1 = "images/homem1.png"
-image homem2 = "images/homem2.png"
-image goblin1 = "images/goblin1.png"
-image goblin2 = "images/goblin2.png"
-image orquisa = "images/orca.webp"
-image anao = "images/anao.png"
-image velha = "images/velha.png"
-image porteiro   = "images/PW minotauro.png"
-image oseamus    = "images/duende.png"
-image cobra_esgoto = "images/cobra.png"
-image pedroso    = "images/pedra.png"
-image morena     = "images/morena.png"
-image morena 2    = "images/PW succubus4.png"
-image goblins    = "images/Goblin_Troop.png"
-image mordomo = "images/mordomo macabro.png"
-image gark = "images/gark.png"
-image bibliotecario = "images/bibliotecario.png"
-image orcs = "images/orcs.png"
-image maguito = "images/maguito.png"
-image leviata = "images/leviata.png"
-image heitoba = "images/heitoba.png"
-image calacorm = "images/calacorm.png"
-image balthus normal = "images/balthus.png"
-image balthus bombado = "images/balthus 2.png"
-image ganjee          = "images/ganjee.png"
+image guarda1          = "images/mamaco.png"
+image guarda2          = "images/lobinho2.png"
+image gremlim1         = "images/gremlim1.png"
+image tentaculo        = "images/tentaculos.png"
+image hydra            = "images/hydra.png"
+image hydra_shiny      = "images/hydra shiny.png"
+image homem1           = "images/homem1.png"
+image homem2           = "images/homem2.png"
+image goblin1          = "images/goblin1.png"
+image goblin2          = "images/goblin2.png"
+image orquisa          = "images/orca.webp"
+image anao             = "images/anao.png"
+image velha            = "images/velha.png"
+image porteiro         = "images/PW minotauro.png"
+image oseamus          = "images/duende.png"
+image cobra_esgoto     = "images/cobra.png"
+image pedroso          = "images/pedra.png"
+image morena           = "images/morena.png"
+image morena 2         = "images/PW succubus4.png"
+image goblins          = "images/Goblin_Troop.png"
+image mordomo          = "images/mordomo macabro.png"
+image gark             = "images/gark.png"
+image bibliotecario    = "images/bibliotecario.png"
+image orcs             = "images/orcs.png"
+image maguito          = "images/maguito.png"
+image leviata          = "images/leviata.png"
+image heitoba          = "images/heitoba.png"
+image calacorm         = "images/calacorm.png"
+image balthus normal   = "images/balthus.png"
+image balthus bombado  = "images/balthus 2.png"
+image morte_balthus1   = "images/morte_balthus1.png"
+image morte_balthus2   = "images/morte_balthus2.png"
+image morte_balthus3   = "images/morte_balthus3.png"
+image morte_balthus4   = "images/morte_balthus4.png"
+image morte_balthus5   = "images/morte_balthus5.png"
+image morte_balthus6   = "images/morte_balthus6.png"
+image morte_balthus7   = "images/morte_balthus7.png"
+image morte_balthus8   = "images/morte_balthus8.png"
+image morte_balthus9   = "images/morte_balthus9.png"
+image morte_balthus10  = "images/morte_balthus10.png"
+image morte_balthus11  = "images/morte_balthus11.png"
+image morte_balthus12  = "images/morte_balthus12.png"
+image morte_balthus13  = "images/morte_balthus13.png"
+image morte_balthus14  = "images/morte_balthus14.png"
+image morte_balthus15  = "images/morte_balthus15.png"
+image ganjee           = "images/ganjee.png"
 image giras            = "images/giras.png"
 image velha1           = "images/velha1.png"
 image velha2           = "images/velha2.png"
@@ -70,9 +124,8 @@ image velha3           = "images/velha3.png"
 image devlin           = "images/devlin.png"
 image cria1            = "images/cria1.png"
 image cria2            = "images/cria2.png"
-image elfo_negro       = "images/elfo_negro.png"
-image mulher_roupa     = "images/mulher_roupa.png"
-image fantasmagorico   = "images/fantasmagorico.png"
+image gargula          = "images/gargula.png"
+image gargula_clone    = "images/gargula2.png"
 
 ## backgrounds
 image entrada_caos     = "images/PW entrada cidadela.jpg"
@@ -86,7 +139,7 @@ image sala_oseamus     = "images/sala oseamus.jpg"
 image game_over        = "images/game_over.jpeg"
 image templo           = "images/temple.jpg"
 image aposento         = "images/PW dentro fortaleza.jpg"
-image templo_floresta  = "images/templo_floresta.jpg"
+image templo_floresta  = "images/templo floresta.jpg"
 image fumaca           = "images/fumaca.jpg"
 image bg               = "images/bg.jpg"
 image corredor_escuro  = "images/corredor escuro.png"
@@ -124,10 +177,8 @@ image bg9              = "images/bg9.jpg"
 image bg10             = "images/bg10.jpg"
 image bg11             = "images/bg11.jpg"
 image bg12             = "images/bg12.jpg"
-image bg13             = "images/bg13.jpg"
-image bg14             = "images/bg14.png"
-image bg15             = "images/bg15.jpg"
-
+image sala_gargula     = "images/sala estatuas.jpg"
+image creditos         = "images/creditos/creditos.png"
 
 # The game starts here.
 
@@ -141,7 +192,7 @@ label start:
         zoom 1.3
     window hide
     $renpy.notify("clique na tela!")
-    pause
+    pause 7
     scene tutorial2 at truecenter:
         zoom 1.3
     window hide
@@ -156,7 +207,9 @@ label start:
     window hide
     pause
 
-    play music "musics/inicio_epico.mp3"
+    stop music fadeout 1
+    play music "musics/inicio_epico.mp3" fadein 1
+
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -216,7 +269,7 @@ label start:
     Há um caminho melhor para atravessar a Cidadela. Se você o descobrir, terá êxito com um  mínimo de risco para a sua pessoa.
     Talvez você precise de várias viagens para descobrir o caminho  mais fácil para atravessar a Cidadela"
 
-    n "antes da sua saida, o rei te chama e entrega um saco de couro com um punhado de moedas de ouro para auxiliar na sua jornada."
+    n "antes da sua saida, o rei te chama e te entraga um saco de couro com um punhado de moedas de ouro para auxiliar na sua jornada."
 
     $renpy.notify("adquiriu dinheiro!")
 
@@ -259,7 +312,7 @@ label um:
     n "Enquanto você pondera as possibilidades, e as histórias que terá que contar aos guardas, acaba  chegando à trilha principal que conduz aos portões.
     Duas lanternas brilham em cada um dos lados da porta levadiça. "
 
-    play sound "musics/efeito_sonoro/macacor.mp3"
+    play sound "musics/efeito_sonoro/macacor.mp3" volume 0.6
 
     show guarda1 at left:
         zoom 1.3
@@ -289,10 +342,10 @@ label um:
             jump dois0
 
 label dois61:
-    n "O Macaco e o Cachorro pedem para ver as suas ervas. Por sorte, você tinha apanhado alguns punhados de ervas no caminho, e você mostra isso a eles."
+    n "O Macaco-Cachorro pede para ver as suas ervas. Por sorte, você tinha apanhado alguns punhados de ervas no caminho, e você mostra isso a eles."
 
-    n "Inclinando a cabeça para um lado, as criaturas olha para você com desconfiança.
-    Perguntam a você então o nome do guarda que veio tratar, uma coisa que não estava nos seus planos!"
+    n "Inclinando a cabeça para um lado, a criatura olha para você com desconfiança.
+    Pergunta a você então o nome do guarda que veio tratar, uma coisa que não estava nos seus planos!"
 
     n "Você pensa rapidamente em um nome para enganar a criatura:"
     menu:
@@ -304,13 +357,13 @@ label dois61:
             jump tres94
 
 label oito1:
-    n "O Macaco e o Cachorro riem e dizem a você que Kylltrog é um preguiçoso que não serve para nada, e que não vale a pena salvá-lo.
-    Você solta um suspiro de alívio quando eles caminham de volta e gritam para chamar o porteiro.
+    n "O Macaco-Cachorro ri e diz a você que Kylltrog é um preguiçoso que não serve para nada, e que não vale a pena salvá-lo.
+    Você solta um suspiro de alívio quando ele caminha de volta e grita para chamar o porteiro.
     Alguns momentos depois, o porteiro aparece e abre uma pequena porta para deixar você entrar."
     jump dois51
 
 label um75:
-    n "As criaturas nunca ouviram falar de nenhum Pincus no interior da Cidadela. O Cachorro que está segurando a clava rosna e dá um passo adiante."
+    n "A criatura nunca ouviu falar de nenhum Pincus no interior da Cidadela. O Cachorro que está segurando a clava rosna e dá um passo adiante."
     menu:
         "Escolher outro nome rapidamente (Teste de sorte)":
             jump um10
@@ -336,7 +389,7 @@ label um10:
 label tres94:
     n "As criaturas se olham, como se o nome não fosse estranho para eles, mas elas não conseguiram se lembrar exatamente de onde o conheciam.
     Você rapidamente acrescenta que ele está na turma do primeiro andar."
-    n "Eles dão de ombros e acabam por decidir que você deve estar falando a verdade. O Macaco e o Cachorro chamam o porteiro, que finalmente aparece para deixar você entrar."
+    n "Eles dão de ombros e acabam por decidir que você deve estar falando a verdade. O Macaco-Cachorro chama o porteiro, que finalmente aparece para deixar você entrar."
     jump dois51
 
 label dois30:
@@ -351,7 +404,8 @@ label dois30:
 
 label dois0:
 
-    n "O Macaco e o Cachorro dizem que não é permitido a ninguém entrar na Torre Negra depois que anoitece, você terá que procurar abrigo em outro lugar."
+    n "O Macaco-Cachorro diz que não é permitido a ninguém entrar na Torre Negra depois que anoitece
+    você terá que procurar abrigo em outro lugar."
 
 
     n "Você pode se resignar a lutar. Ou pode pegar uma pedra e lançar um Encanto do Ouro dos Tolos sobre ela, oferecendo-a como uma pepita
@@ -374,11 +428,12 @@ label dois88:
     n "os guardas avançam em sua direçao!"
 
     play music "musics/Makai Symphony - Dragon Castle.mp3"
+    #with fade
 
     jump batalha_guardas
 
 label suborno:
-    n "os guardas regojizam-se com o pequeno punhado de moedas de ouro que você entregou e o deixa passar"
+    n "os guardas regojizam-se com o pequeno punhado de moedas de ouro que você entregou e o deixam passar"
 
     $renpy.notify("dinheiro retirado!")
 
@@ -390,9 +445,9 @@ label nove6:
 
     play sound "musics/efeito_sonoro/dados.mp3"
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d201roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=12):
+    if (d201roll>=12):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "Eles aceitam a sua oferta e convocam o porteiro, que abre uma pequena porta dentro da porta
@@ -430,7 +485,7 @@ label um79:
     play music "musics/sb_phoenix.mp3"
     n "Quando você sai das sombras na direção do centro do pátio, uma voz no vento grita: 'Pare! Fique onde está!'
     Você olha a sua volta, mas não consegue ver ninguém que esteja se dirigindo a você."
-    n "Você dá mais dois passos. A voz sinistra ordena de novo que você pare, e, dessa vez, uma flecha zune pelo ar e cai próximo ao seu pé esquerdo.
+    n "Você dá mais dois passos. A voz sinistra ordena de novo que você parem, e, dessa vez, uma flecha zune pelo ar e cai próximo ao seu pé esquerdo.
     Você pula para trás. Porém, ainda assim não vê ninguém e não pode se mexer."
     n "Dessa forma, você: "
     menu:
@@ -443,9 +498,9 @@ label um79:
 
 label um25:
     n "Quando você começa a correr, três flechas partem em sua direção, vindas de nenhum lugar, testando a sua sorte."
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d202roll = renpy.random.randint(1, 20)
 
-    if (d20roll>= 10):
+    if (d202roll>= 14):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "Você foi muito sortudo e todas as flechas não o acertaram, e, com isso, conseguiu chegar ileso sob a cobertura do monumento."
@@ -466,7 +521,7 @@ label tres41:
 
 label tres78:
     n "Você dá alguns passos adiante, e uma outra flecha erra por pouco o seu pé."
-    n "Mais uns poucos passos e uma flecha rasga a sua túnica, arranhando o seu antebraço.
+    n "Mais uns poucos passos e uma flecha rasga a sua túnica, arranhando o seu antibraço.
     Você ainda não consegue ver ninguém, nem de onde as flechas estão vindo."
     n "Depois de alguns passos, surge mais uma flecha, mas essa rasga a sua perna. Você grita alto"
     play sound "musics/efeito_sonoro/gemido-combate.mp3"
@@ -491,6 +546,9 @@ label tres62:
     show gremlim1 at center:
         ypos 1000
         zoom 0.7
+
+    play sound "musics/efeito_sonoro/gremlin.mp3"
+
 
     n "A porta abre, e o pequeno aposento no interior é iluminado a luz de vela. Cautelosamente, você olha lá para dentro e vê uma cena estranha.
     Sobre uma mesa de madeira no canto do aposento, há três recipientes, cada um contendo um líquido de cor diferente: um claro, outro vermelho e outro leitoso."
@@ -527,8 +585,8 @@ label um56:
     #hide gremlim1 with fade
     #hide gremlim2 with fade
     #hide gremlim3 with fade
-    scene templo_floresta at truecenter with fade:
-        zoom 1
+    scene templo_floresta at truecenter with dissolve:
+        zoom 2.7
     show mc normal at left:
         zoom 0.6
     with fade
@@ -612,7 +670,7 @@ label um14:
 label tres21:
     n "Cautelosamente, e mantendo-se fora da área visível, você se esgueira pelas bordas do pátio na escuridão. Há dois grupos de criaturas à sua frente."
     show homem2 at right:
-        zoom 0.9
+        zoom 1.2
     show homem1 at center:
         xpos 1300
         zoom 1.9
@@ -681,6 +739,9 @@ label um34:
     n "Eles ficam admirados com a sua audácia. Ao invés de esperar que eles falem, você age agressivamente e exige saber como entrar na Cidadela. Eles apontam para a entrada principal,
     obviamente um tanto espantados com seu modo confiante e cochicham entre eles."
     n "A orquisa diz a você que será preciso uma senha, 'CIMITARRA', para entrar. Você pergunta a respeito do frasco de líquido dentro da caixa, o que faz com que eles fiquem agitados, então você:"
+    $sabe_senha = True
+    $renpy.notify("agora você sabe a senha! mas aonde vai usar?")
+
     menu:
         "Os pressiona para obter mais informações sobre o frasco":
             jump seis0
@@ -725,9 +786,9 @@ label tres90:
 
 label quatro7:
     n "Com a pressão gerada pela situação, teste sua sorte ao conjurar o Encanto."
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d203roll = renpy.random.randint(1, 20)
 
-    if (d20roll>= 10):
+    if (d203roll>= 12):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "Ela observa espantada o aparecimento de uma réplica perfeita dela mesma entre vocês dois. Ela recua um pouco, e você orienta a sua criação para o ataque."
@@ -758,9 +819,9 @@ label um4:
 
     play sound "musics/efeito_sonoro/dados.mp3"
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d204roll = renpy.random.randint(1, 20)
 
-    if (d20roll>= 10):
+    if (d204roll>= 11):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "você vê uma corda e se segura nela, recobrando o equilíbrio"
@@ -778,9 +839,9 @@ label um00:
 
     play sound "musics/efeito_sonoro/dados.mp3"
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d205roll = renpy.random.randint(1, 20)
 
-    if (d20roll>= 14):
+    if (d205roll>= 14):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "você volta para a fora do poço e segue seu caminho"
@@ -810,9 +871,9 @@ label dois76:
         "usar encanto! teste de sorte.":
             play sound "musics/efeito_sonoro/dados.mp3"
 
-            $ d20roll = renpy.random.randint(1, 20)
+            $ d206roll = renpy.random.randint(1, 20)
 
-            if (d20roll>= 12):
+            if (d206roll>= 11):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 jump um65
@@ -840,9 +901,9 @@ label um65:
         "usar encanto! teste de sorte.":
             play sound "musics/efeito_sonoro/dados.mp3"
 
-            $ d20roll = renpy.random.randint(1, 20)
+            $ d207roll = renpy.random.randint(1, 20)
 
-            if (d20roll>= 10):
+            if (d207roll>= 11):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 jump tres98
@@ -935,16 +996,24 @@ label um18:
         "Kraken":
             jump quatro9
         "Cimitarra":
-            jump tres71
+
+            n "o porteiro te indaga para saber quem te contou a senha"
+
+            if(sabe_senha):
+                n "você diz que é um convidado especial do bibliotecario e veio auxiliar em um estudo com uma lingua ancestral"
+                jump tres71
+            else:
+                n "você gagueja, nao sendo capaz de explicar como sabe a senha!"
+                jump dois90
         "tentar se passar como especialista em ervas":
             jump um98
 
 label nove4:
     play sound "musics/efeito_sonoro/dados.mp3"
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d208roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=8):
+    if (d208roll>=8):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "Você sente o seu próprio poder crescendo. Você corre na direção da porta e a golpeia firme como
@@ -961,9 +1030,9 @@ label dois55:
     n "A criatura olha para você. Seus olhos se estreitam. Há uma lança longa em suas mãos, que ela
     rapidamente aponta na sua direção. 'Esta não é a senha!' ela grita e sai para a batalha. Teste a sua
     Sorte."
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d209roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=8):
+    if (d209roll>=15):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "você pensa rapidamente em um blefe!"
@@ -999,9 +1068,9 @@ label um98:
     bibliotecário do Senhor, que está doente, em estado crítico."
     n "O mensageiro não disse nada quanto a
     senhas. Será que ele vai acreditar em você? Teste a sua Sorte."
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d2010roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=8):
+    if (d2010roll>=10):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "o guarda acredita no seu blefe e te deixa passar!"
@@ -1045,9 +1114,9 @@ label tres61:
     de alarme! Teste a sua Sorte."
     play sound "musics/efeito_sonoro/dados.mp3"
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d2011roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=13):
+    if (d2011roll>=14):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "..."
@@ -1096,9 +1165,9 @@ label tres16:
     n "Você usará um Encanto do Escudo para se proteger (Teste de sorte)."
     play sound "musics/efeito_sonoro/dados.mp3"
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d2012roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=13):
+    if (d2012roll>=15):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "As facas atingem o seu escudo mágico e caem ao chão. Você conseguiu escapar das criaturas."
@@ -1119,7 +1188,7 @@ label tres46:
     jump batalha_giras
 
 label dois20:
-    play music "musics/Keys of Moon - Enchanted.mp3"
+    play music "musics/Savfk - The Travelling Symphony.mp3"
     n "Você poderá tomar a passagem do lado esquerdo, ou a passagem do lado direito."
     menu:
         "Passagem pela esquerda":
@@ -1185,9 +1254,9 @@ label dois31:
     n "Você bate na porta com o ombro para derrubá-la (Teste de sorte)."
     play sound "musics/efeito_sonoro/dados.mp3"
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d2013roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=13):
+    if (d2013roll>=13):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "A porta cede e abre."
@@ -1271,7 +1340,7 @@ label um36:
             jump tres89
 
 label um7:
-    play music "musics/Keys of Moon - Enchanted.mp3"
+    play music "musics/musica tensao.mp3"
     hide devlin with dissolve
     hide mc normal
     n "Ao investigar os armários todos os tipos de alimentos estranhos podem ser encontrados. Globos oculares, línguas,
@@ -1285,6 +1354,12 @@ label um7:
 label nove3:
     n "Do lado de fora, você olha para sua garrafa. É uma garrafa de Essência de Erva de Porco,
     aparentemente útil para repelir criaturas de base em pedra."
+    $essencia_porco = True
+
+    $renpy.notify("adquiriu Essência de Erva de Porco!")
+
+    play sound "musics/efeito_sonoro/item encontrado.mp3"
+
     n "Isso pode ser útil, e você a guarda cuidadosamente em sua mochila. Seguindo em frente pelo corredor, você chega a uma outra porta,
     que abre, deixando que você passe para um grande aposento."
     jump um69
@@ -1306,9 +1381,9 @@ label tres89:
         "Usa magia (Teste de sorte).":
             play sound "musics/efeito_sonoro/dados.mp3"
 
-            $ d20roll = renpy.random.randint(1, 20)
+            $ d2014roll = renpy.random.randint(1, 20)
 
-            if (d20roll>=13):
+            if (d2014roll>=14):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 n "Você lança o encanto com sucesso, e o Devlin se apaga. Você ganha a chance de inspecionar outro item da cozinha."
@@ -1434,7 +1509,7 @@ label dois43:
     n "A passagem se estende por vários metros e depois termina em uma porta. Você escuta junto à porta
     e ouve uma respiração profunda e pesada vindo lá de dentro, como se alguma criatura de grande
     porte estivesse dormindo ali."
-    n "Cuidadosamente, você experimenta a maçaneta, e a porta abre. Logo na entrada, embora o aposento
+    n "Cuidadosamente, você experimenta a maçaneta, e a porta abre. Logona entrada, embora o aposento
     esteja escuro, você consegue ver uma criatura muito grande, semelhante a um Goblin, adormecida no chão."
     n "Você pode se arriscar a entrar no aposento na ponta dos pés"
     jump tres52
@@ -1483,9 +1558,9 @@ label um1:
     n "Você opta por usar o Encanto da Fraqueza para tentar o atordoar e, assim, conseguirá seguir adiante em direção a porta."
     play sound "musics/efeito_sonoro/dados.mp3"
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d2015roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=13):
+    if (d2015roll>=16):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "você lança o encanto com sucesso, o gark fica fraco e cai, enquanto você parte em direção às portas."
@@ -1522,9 +1597,9 @@ label tres91:
 
 label tres6:
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d2016roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=13):
+    if (d2016roll>=6):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "você lança o encanto com sucesso, o gark acredita no ouro falso e permite a sua passagem, apontando a direção das portas."
@@ -1538,7 +1613,7 @@ label tres6:
 
 label nove9:
 
-    play music "musics/Keys of Moon - Enchanted.mp3"
+    play music "musics/the-medieval-banquet.mp3"
 
     hide gark
     hide bg3
@@ -1623,8 +1698,7 @@ label dois38:
     n "Ele indica uma seção das estantes, e você leva um livro para uma das mesas para ler. O livro é extremamente informativo, traçando a história da Cidadela.
     A Torre Negra foi construída pelo avô de Balthus Dire."
     n "À medida em que foi se tornando um santuário para as forças do mal, a lei e a ordem foram gradualmente dando lugar ao caos, devido à luta das criaturas monstruosas para
-    ascender na hierarquia do poder."
-    n "O avô de Dire acabou se vendo na necessidade de se proteger de seus próprios seguidores, criando vários sistemas de segurança entre as criaturas e seus próprios
+    ascender na hierarquia do poder. O avô de Dire acabou se vendo na necessidade de se proteger de seus próprios seguidores, criando vários sistemas de segurança entre as criaturas e seus próprios
     aposentos, destacando-se entre eles a Armadilha do Poço da Perdição e uma Fechadura de Combinação mágica na porta de seu próprio quarto. A combinação da fechadura é 217."
     n "Você lê mais sobre a Cidadela e então escolhe perguntar ao homem:"
     menu:
@@ -1694,10 +1768,10 @@ label dois34:
     criatura com aparência de lagarto que se arrasta descendo o corredor, trazendo nas mãos uma moringa e uma terrina."
     show calacorm at center:
         zoom 1.5
-    n "O animal tem a pele alaranjada e coberta de escamas, e uma cauda longa se estende pela passagem atrás dele."
+    n "O animal tem duas cabeças que conversam entre si enquanto ele caminha. Sua pele é cinzenta e coberta de escamas, e uma cauda longa se estende pela passagem atrás dele."
     n "Ele para na sua porta e empurra a moringa e a terrina por uma pequena abertura para dentro de sua cela, e depois se afasta para sentar-se a uma mesa do outro lado do corredor. Você recebeu pão e
     caldo."
-    hide calacorm with dissolve
+    hide calacorm
     menu:
         "Você vai comer e beber?":
             jump tres97
@@ -1716,9 +1790,9 @@ label tres97:
 label um93:
     play sound "musics/efeito_sonoro/dados.mp3"
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d2017roll = renpy.random.randint(1, 20)
 
-    if (d20roll>=12):
+    if (d2017roll>=8):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "Você oferece a ele as pedrinhas que se transformaram em ouro. Ele desabafa sobre a vida pacata que ele leva na prisão, e, rapidamente te libera de sua cela"
@@ -1728,7 +1802,7 @@ label um93:
     else:
         $renpy.notify("fracasso de sorte")
         play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
-        n "Infelizmente, já tentaram subornar a criatura, e ela não cai no seu Encanto!"
+        n "Infelizmente, já tentaram subornar a critura, e ela não cai no seu Encanto!"
         jump batalha_calacorm
 
 label seis9:
@@ -1753,9 +1827,9 @@ label tres44:
 
 label sete:
 
-    play music "musics/the-medieval-banquet.mp3"
 
-    n "A porta está trancada. Você pode tentar por ela abaixo, batendo nela com o ombro, ou
+
+    n "A porta está trancada. Você pode tentar pô-la abaixo, batendo nela com o ombro, ou
     pode lançar um Encanto da Força sobre você mesmo e tentar arrancar a porta das suas dobradiças."
 
     menu:
@@ -1808,13 +1882,13 @@ label dois10:
     tipo direto na sua direção. Vai atingir você, a não ser que você use um Encanto do Escudo!"
 
     menu:
-        "usar encanto de escudo":
+        "usar encanto de escudo (teste de sorte)":
 
             play sound "musics/efeito_sonoro/dados.mp3"
 
-            $ d20roll = renpy.random.randint(1, 20)
+            $ d2018roll = renpy.random.randint(1, 20)
 
-            if (d20roll>=12):
+            if (d2018roll>=12):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 n "você lança o encanto com sucesso"
@@ -1976,9 +2050,9 @@ label um88:
         "usa encanto de fraqueza? (teste de sorte)":
             play sound "musics/efeito_sonoro/dados.mp3"
 
-            $ d20roll = renpy.random.randint(1, 20)
+            $ d2019roll = renpy.random.randint(1, 20)
 
-            if (d20roll>=12):
+            if (d2019roll>=14):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 n "você lança o encanto com sucesso"
@@ -2021,9 +2095,9 @@ label cinco1:
         "usar encanto de fraqueza? (teste de sorte)":
             play sound "musics/efeito_sonoro/dados.mp3"
 
-            $ d20roll = renpy.random.randint(1, 20)
+            $ d2020roll = renpy.random.randint(1, 20)
 
-            if (d20roll>=12):
+            if (d2020roll>=14):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 n "você lança o encanto com sucesso"
@@ -2076,10 +2150,12 @@ label tres23:
     menu sala_oseamus:
         "abrir a porta com maçaneta de latao?":
             jump tres86
-        "abrir a porta com maçaneta de cobre?":
+        "abrir a porta com maçaneta de cobre?(ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump sala_oseamus
             jump um44
 
-        "abrir a porta com maçaneta de bronze?":
+        "abrir a porta com maçaneta de bronze? (ainda em desenvolvimento)":
             $renpy.notify("opção invalida!")
             jump sala_oseamus
             jump tres38
@@ -2102,435 +2178,9 @@ label tres86:
         "agarrar a corda e se balançar para o outro lado?":
             jump um08
 
-label um44:
+label um44: ##incompleto
 
-    scene bg13 at truecenter:
-        zoom 2.8
-    n "A porta abre e você entra em um corredor estreito. Você segue por ele algum tempo, até que
-finalmente chega a uma outra porta: desta vez é uma porta larga entalhada, com a inscrição 'Adega
-de Vinhos' gravada nela."
-    n "Você experimenta a maçaneta e ela abre. Você espia do lado de dentro, esticando o pescoço,
-e vê filas e mais filas de prateleiras cheias de garrafas contendo... vinho? O
-aposento é pouco iluminado pela luz de várias velas."
-    n "O fato de você abrir a porta fez com que uma
-pequena sineta soasse, e uma figura vem na sua direção por um dos corredores. Assim, você:"
-    scene bg14 at truecenter:
-        zoom 1.09
-    show elfo_negro at right:
-        zoom 1.7
-    with dissolve
-    menu:
-        "Desembainhará a sua espada e se preparará para se defender":
-            jump um54
-        "Verá o que este sujeito pode ter a dizer":
-            jump cinco6
-
-label cinco6:
-    n "O Elfo Negro que se aproxima de você é maltrapilho. Ele pergunta se você é um
-convidado ou um aventureiro. Você diz que é um convidado que veio até embaixo para provar o
-vinho que ele guarda em sua famosa Adega de Vinhos."
-    n "Com um certo orgulho, ele mostra a você as garrafas de safras que ele guarda para seu Senhor, o Feiticeiro.
-Algumas delas, ele afirma, possuem poderes mágicos. Ele pergunta se você não quer experimentar o vinho. Você prefere: "
-    menu:
-        "Provar o vinho tinto":
-            jump um20
-        "Provar o vinho rosé":
-            jump tres34
-        "Recusar a oferta dele e seguir adiante no seu caminho":
-            jump nove5
-
-label um20:
-    n "Você prova o vinho e balança a cabeça afirmativamente. A safra é excelente de fato, com um sabor
-revigorante e rico. Você agradece ao Elfo e segue adiante."
-    jump nove5
-
-label tres34:
-    n "Você toma dois goles. Não é ruim! Você enche a boca, mas, ao fazê-lo, fica imaginando porque o
-Elfo está rindo. De repente, ele pergunta se você é realmente um convidado."
-    n "Embora sua mente esteja confirmando que você é de fato um convidado, sua voz está dizendo que não é, que você veio
-para pôr um fim nos planos de conquista de Balthus Dire! Você pragueja ao compreender que o
-vinho deve conter uma dose de Soro da Verdade."
-    n "O Elfo Negro agora sabe da sua missão e deve ser impedido de dizer a outros.
-Você desembainha a sua espada e, ao fazê-lo, ele puxa um pequeno mecanismo metálico da bolsa presa em volta da cintura dele.
-Com um toque, isso se transforma em uma arma de lâmina em serra."
-    jump dois75
-
-label nove5:
-    n "No lado mais distante da Adega de Vinhos, há uma porta de madeira, que você experimenta. Ela
-abre para uma passagem que conduz adiante por vários metros."
-    jump tres67
-
-
-
-label um54:
-    n "Quando você puxa a espada, a figura para e pega alguma coisa da bolsa em sua cintura. Quando ele
-se aproxima mais, você pode ver que a criatura é um ELFO NEGRO; alto e magro."
-    n "Na sua mão, ele traz um pequeno mecanismo de algum tipo.
-    Ele vê você, manipula o mecanismo que subitamente se torna uma espada tipo estilete
-na sua mão! Você escolherá:"
-    menu:
-        "Avançar e lutar":
-            jump dois75
-        "Abaixar a espada e conversar com ele":
-            jump cinco6
-
-label dois75:
-    n "Você reconhece o mecanismo como sendo uma Miríade de Bolso, um objeto encantado que pode se
-transformar em qualquer tipo de armas e outros artefatos úteis. Vocês dois se preparam para a
-batalha."
-    jump batalha_elfo_negro
-
-label batalha_elfo_negro:
-    show mc normal at left:
-        zoom 0.551111111
-    with fade
-
-    #show guarda1 at right:
-    #    zoom 1.3
-    #with dissolve
-
-    #show guarda2:
-    #    xpos 1050
-    #    ypos 400
-    #    zoom 0.9
-    #with dissolve
-
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
-    $ oponente_hp = oponente_max_hp
-    $ mago_hp = mago_max_hp
-    $ elixir_left = 13
-
-    show screen batalha_generica
-
-    while (oponente_hp > 0):
-
-        if mago_hp > 0:
-            menu:
-
-                "Ataque com espada (2 a 3 de dano)":
-
-                    play sound "musics/efeito_sonoro/ataque espada.mp3"
-
-                    $ mago_damage = renpy.random.randint(2, 3)
-                    $ oponente_hp -= mago_damage
-                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
-
-
-                "Bola de fogo (3 a 7 de dano)":
-
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
-
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
-
-
-
-                "Raio arcano (3 a 10 de dano)":
-
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
-
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
-
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
-        else:
-            hide screen batalha_generica
-            jump final_ruim
-
-        if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
-
-            $ mago_hp -= oponente_damage
-
-            n " {i}*o oponente te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
-
-            play sound "musics/efeito_sonoro/gemido-combate.mp3"
-
-    hide screen batalha_generica
-    'oponente derrotado!!!'
-    hide elfo_negro with dissolve
-    hide mc normal with dissolve
-    jump dois72
-
-label dois72:
-    $renpy.notify("dinheiro e miríade pilhados")
-    n "Você revista os bolsos dele e encontra oito Peças de Ouro. A Miríade de Bolso infelizmente foi
-danificada na luta, mas talvez você possa encontrar algum uso para ela, podendo levá-la com você. Você irá:"
-    menu:
-        "Investigar a Adega dos Vinhos":
-            jump dois42
-        "Atravessá-la e seguir adiante pela porta do outro lado do aposento":
-            jump nove5
-
-label dois42:
-    n "As garrafas e barriletes contêm centenas de diferentes vinhos. Alguns são extremamente velhos e
-valiosos. Em um dos cantos do aposento, há uma mesa posta para a degustação, com duas garrafas e copos. Você irá:"
-    menu:
-        "Provar uma amostra do vinho tinto":
-            jump dois4
-        "Provar uma amostra do vinho branco":
-            jump um05
-        "Seguir adiante e não provar nenhum vinho":
-            jump nove5
-
-label dois4:
-    n "Você prova o vinho e, enquanto está apreciando o seu sabor, ouve um ruído tilintante. Você se vira
-para olhar na direção de onde o ruído está vindo e fica horrorizado ao ver que as garrafas nas
-prateleiras estão se mexendo sozinhas."
-    n "Uma garrafa voa do lugar onde está e se projeta na sua
-direção, errando por pouco a sua cabeça e se espatifando na parede atrás de você. Uma outra voa na
-sua direção, depois outra, até que você está recebendo uma chuva de garrafas vindas de todas as
-direções."
-    n "Você toma consciência de que sua única defesa é usar o Encanto do Escudo."
-    menu:
-        "Usar Encanto do Escudo":
-            jump tres72
-        "Não usar Encanto do Escudo":
-            jump dois19
-
-label tres72:
-    n "Ao lançar seu Encanto do Escudo, uma garrafa ainda atinge você no ombro. Você não sente nada.
-Alguma coisa não está muito certa, e você tenta cancelar o Encanto. Infelizmente, ele já foi lançado,
-e você pode ver as garrafas se quebrando de encontro a seu escudo mágico."
-    n "A garrafa que acabou de atingir você desapareceu. Você xinga ao compreender que o vinho que você acabou de provar
-deveria ter algumas propriedades alucinógenas, e que você está imaginando o ataque das garrafas.
-Quando esta idéia lhe ocorre, as garrafas param de vir sobre você."
-    n "Você pisca e olha de novo. Todas as garrafas estão em seus lugares nas estantes, como é normal!
-    Você resolve seguir adiante."
-    jump nove5
-
-label dois19:
-    n "Você se abaixa e protege a cabeça. Uma garrafa atinge você, depois outra e mais outra - mas você
-não sente nada! Como pode ser isso? Aí você compreende o que está acontecendo. O vinho devia
-conter alguma poção alucinógena que está fazendo você imaginar este ataque de garrafas."
-    n "Num instante, o ruído cessa. Você levanta a cabeça para ver que, como você desconfiava, todas as
-garrafas estão em seus lugares nas estantes. Com grande alívio, você segue adiante e sai da Adega
-de Vinhos."
-    jump nove5
-
-label um05:
-    n "O vinho é bastante amargo e, ao saboreá-lo em sua boca, você sente uma sensação de ardência.
-Você cospe o vinho no chão e, para sua surpresa, um jato de chamas irrompe dos seus lábios!"
-    n "Você pode levar uma amostra do vinho com você e usá-lo ao invés de lançar um Encanto do Fogo,
-sempre que a opção de Encanto do Fogo for dada. Você segue adiante na direção de uma porta que
-leva mais para o interior da adega."
-    jump nove5
-
-label tres38:
-    n "A porta abre para uma passagem. Você segue a passagem sempre em frente por algum tempo,
-passando por muitas curvas na rocha. Você encontra outra passagem que vem da direita, mas segue
-adiante direto. Finalmente, o caminho acaba se alargando."
-    jump nove0
-
-label nove0:
-    scene bg15 at truecenter:
-        zoom 1.0922222222
-    with dissolve
-    show mulher_roupa at right:
-        zoom 0.41
-        xpos 1500
-    n "A passagem se alarga, e você está agora andando ao longo de um rio que corre. Bem à frente, há
-uma mulher que parece estar lavando roupa."
-    n "Ela tem uma cesta com roupas a seu lado, e há vários conjuntos de ceroula e camiseta de baixo
-pendurados em um varal atrás dela. Você:"
-    menu:
-        "Desembainhará a sua espada e avançará":
-            jump um76
-        "Cumprimentará ela e tentará estabelecer uma conversa":
-            jump dois1
-        "Usará a sua percepção Extra-Sensorial para descobrir quem ela é":
-            jump tres29
-
-label um76:
-    n "Quando você se aproxima, ela se volta para olhar para você. Sem se perturbar nem um pouco com a
-sua arma, ela diz: 'Abaixe sua arma, jovem forasteiro. Sou apenas uma velha. Não farei mal a você.' Você irá:"
-    menu:
-        "Ignorar as palavras dela e continuar avançando":
-            jump um27
-        "Abaixar a espada e conversar com ela":
-            jump dois1
-        "Parar e usar um Encanto de Percepção Extra-Sensorial":
-            jump tres29
-
-label dois1:
-    n "'O que traz você a estas paragens?' ela pergunta. Você conta a ela sua história, evitando
-cuidadosamente revelar a sua verdadeira missão. Ela aconselha você a afastar-se desse lugar, caso
-conheça alguma magia."
-    n "As criaturas que você encontrou até agora não se comparam com as que
-habitam o interior da Torre da Cidadela propriamente dita. Ela diz que você jamais encontrará o
-senhor sem conseguir primeiro o Velo e deseja sorte para você em sua missão."
-    jump seis
-
-label tres29:
-    n "Você se concentra na mente dela e fica chocada ao descobrir que ela não está viva, como parece,
-mas que já morreu há muitos anos."
-    n "Desde que um incêndio violento - uma maldição lançada sobre ela por Balthus Dire em pessoa, por ela
-não ter cumprido as ordens de lavar suas vestes a tempo para uma reunião importante - matou-a e às suas crianças,
-seu corpo espectral foi condenado a lavar roupas eternamente."
-    n "Ela é de fato uma pobre miserável. Você agora repara que ela está ficando
-zangada e desconfiada com a sua presença. Ela está murmurando alguma cantilena muito baixo. Você irá: "
-    menu:
-        "Tentar conversar com ela":
-            jump dois1
-        "Tentar passar rapidamente por ela seguindo o caminho":
-            jump dois21
-
-label dois21:
-    n "Quando você se adianta, ela faz um gesto peculiar com as mãos e abaixa a cabeça, resmungando
-muito baixo."
-    jump um27
-
-label um27:
-    n "Ela levanta a cabeça e solta um chamado no ar e você interrompe seus passos."
-    show fantasmagorico at right:
-        zoom 2.0
-        ypos 640
-    with dissolve
-    n "Após o ar ficar muito forte, você consegue distinguir um corpo fantasmagórico com rosto há muito já morto.
-'Proteja-me, meu filho!' ela grita, e de repente ele cerca você."
-    n "Ele te ataca com pancadas de ar, que causam uma ardência dolorosa. O par de braços dele se enrosca em torno
-de seu pescoço, tornando a respiração difícil e apertando cada vez mais."
-    n "Você distribui golpes com sua espada, mas isso causa pouco dano ao Fantasma. O aperto o estrangula cada vez mais, e você terá que usar a sua
-magia para se libertar, a não ser que tenha alguma coisa em sua mochila para oferecer à mulher. Você:"
-
-    menu:
-        "Oferecerá um Espelho de Prata a ela":
-            if (espelho == True):
-                jump tres87
-                $espelho = False
-            else:
-                play sound "musics/efeito_sonoro/nao tem o item.mp3"
-                $renpy.notify("você não possui esse item!")
-                n "Ela fica irritada pois acha que você tentou enganá-la.
-                Assim, o fantasma parte para cima e você desembainha sua espada"
-                jump batalha_fantasmas
-
-        "Usará um Encanto do Fogo (teste de sorte)":
-            $ d20roll = renpy.random.randint(1, 20)
-
-            if (d20roll>= 13):
-                $renpy.notify("sucesso de sorte")
-                play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
-                n "você teve sucesso ao lançar o encanto"
-                play sound "musics/efeito_sonoro/bola de fogo.mp3"
-                jump dois40
-
-            else:
-                $renpy.notify("fracasso de sorte")
-                play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
-                n "Você não teve sucesso ao lançar o encanto"
-                n "se prepare para lutar!"
-                jump batalha_fantasmas
-        "Desembainhará a sua espada":
-            jump batalha_fantasmas
-
-
-label batalha_fantasmas:
-    hide mulher_roupa
-    with dissolve
-
-    show mc normal at left:
-        zoom 0.6
-    with fade
-
-    #show guarda1 at right:
-    #    zoom 1.3
-    #with dissolve
-
-    #show guarda2:
-    #    xpos 1050
-    #    ypos 400
-    #    zoom 0.9
-    #with dissolve
-
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
-    $ oponente_hp = oponente_max_hp
-    $ mago_hp = mago_max_hp
-    $ elixir_left = 13
-
-    show screen batalha_generica
-
-    while (oponente_hp > 0):
-
-        if mago_hp > 0:
-            menu:
-
-                "Ataque com espada (2 a 3 de dano)":
-
-                    play sound "musics/efeito_sonoro/ataque espada.mp3"
-
-                    $ mago_damage = renpy.random.randint(2, 3)
-                    $ oponente_hp -= mago_damage
-                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
-
-
-                "Bola de fogo (3 a 7 de dano)":
-
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
-
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
-
-
-
-                "Raio arcano (3 a 10 de dano)":
-
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
-
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
-
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
-        else:
-            hide screen batalha_generica
-            jump final_ruim
-
-        if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
-
-            $ mago_hp -= oponente_damage
-
-            n " {i}*o oponente te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
-
-            play sound "musics/efeito_sonoro/gemido-combate.mp3"
-
-    hide screen batalha_generica
-    'oponente derrotado!!!'
-    hide mc normal with fade
-    hide fantasmagorico
-    jump seis
-
-label tres87:
-    n "À simples menção de um Espelho de Prata, ela se levanta, ergue as mãos e ordena ao Fantasma
-que pare. Você dá a ela o Espelho, e ela diz que você pode seguir o seu caminho. Você tem sorte
-de estar vivo."
-    jump seis
-
-label dois40:
-    n "Você ergue uma mão flamejante, passando-a pelas costas do fantasma, que está apertando seu
-pescoço. A roupa se incendeia, e um grito silencioso sai da boca morta dentro dela. O
-Fantasma recua. Você ateia mais fogo enquanto ele bate em retirada."
-    n "Andando cuidadosamente para a frente, você mantém o Fantasma à distância até passar em
-segurança pela mulher."
-    jump seis
-
-label seis:
-    n "O caminho segue ao longo do rio por vários metros e depois volta a penetrar na rocha. Você segue o
-caminho por algum tempo."
-    jump tres67
-
+label tres38: ##incompleto
 
 label um08:
     n "Você agarra a corda firmemente, recua e toma impulso na direção do rio pútrido. Subitamente, a
@@ -2548,11 +2198,11 @@ label sete3:
     menu:
         "preparar para lutar?":
             jump batalha_cobras
-        "usar encanto de fogo?":
+        "usar encanto de fogo? (teste de sorte)":
 
-            $ d20roll = renpy.random.randint(1, 20)
+            $ d2021roll = renpy.random.randint(1, 20)
 
-            if (d20roll>= 10):
+            if (d2021roll>= 12):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 n "você teve sucesso ao lançar o encanto e as chamas vao em direção à cobra do esgoto"
@@ -2589,33 +2239,30 @@ label dois04:
 
 label um12:
 
-    play music "musics/Keys of Moon - Enchanted.mp3"
-
     n "Você se desvencilha da Cobra de Esgoto morta e tenta atravessar a água. Você chega do outro lado
     sem maiores incidentes, mas está com certeza ansioso para tomar um banho rápido!"
 
     hide cobra_esgoto
+    play music "musics/yt1s.com - D J Pinto  Tension EpicOrchestralCinematicMFY  No Copyright Music.mp3"
 
     n " Você continua ao longo da passagem até chegar a uma encruzilhada, onde pode seguir em frente ou tomar a
     passagem da esquerda."
     menu cobra:
-        "ir para a esquerda?":
+        "ir para a esquerda? (ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump cobra
             jump dois12
         "seguir em frente?":
             jump tres67
 
-label dois12:
-    n "Tomando a bifurcação da esquerda, você segue um caminho que acaba por se juntar a uma outra
-passagem que conduz para a direção norte. Você segue este novo caminho por algum tempo, até
-que ele acaba por se alargar."
-    jump nove0
+label dois12: ##incompleto
 
 label tres67:
     scene passagem_esgoto at center:
         zoom 2.0
 
     n "Alguma distância adiante na passagem, você chega a uma junção de quatro caminhos. Você toma o
-    caminho do norte, que acaba chegando a uma grande porta de madeira."
+    caminho do norte, que acaba chegando a urna grande porta de madeira."
     n "Você não consegue ouvir nada escutando pelo buraco da fechadura. Você tentará abrir a porta lentamente e sem ruído ou derrubá-la à força?"
     menu:
         "abrir a porta com cautela?":
@@ -2639,10 +2286,9 @@ label dois57:
     scene sala_golem:
         zoom 1.3
 
-    show pedroso at right:
-        ypos 2200
-        xpos 2470
-        zoom 1.8
+    show pedroso:
+        ypos 100
+        zoom 1.5
     with dissolve
 
     n "Você olha à sua volta no aposento. Está iluminado somente pela sua tocha. Embora seja um
@@ -2658,9 +2304,13 @@ label dois57:
     menu sala_golem:
         "correr para a porta do outro lado do aposento?":
             jump dois37
-        "tentar falar com a criatura?":
+        "tentar falar com a criatura? (ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump sala_golem
             jump tres57
-        "avançar lentamente na direção das caixas no canto?":
+        "avançar lentamente na direção das caixas no canto? (ainda em desenvolvimento)":
+            $renpy.notify("opção invalida!")
+            jump sala_golem
             jump dois00
 
 label dois37:
@@ -2672,163 +2322,9 @@ label dois37:
 
     jump um69
 
-label tres57:
-    n "A criatura é aparentemente surda-muda. Você a saúda em todas as línguas que conhece, mas ela
-continua de pé em silêncio. Você se desloca na direção do centro do aposento."
-    jump dois00
+label tres57: ##incompleto
 
-label dois00:
-    n "Ao seu primeiro movimento, a criatura parece sair de seu transe e caminha na sua direção. Ao ver
-isso, você irá:"
-    menu:
-        "Correr para a porta do outro lado do aposento":
-            jump dois37
-        "partir na direção das caixas e arriscar-se a enfrentar este gigante silencioso":
-            jump nove8
-
-label nove8:
-    n "O Golem que avança na sua direção é uma criatura que se move com lentidão, e você alcança
-facilmente as caixas. Enquanto você luta com as fechaduras, o Golem chega até você. Você pode:"
-    menu:
-        "Desembainhar a sua espada e lutar contra a criatura":
-            jump batalha_golem
-        "Lançar um Encanto de Cópia de Criatura (teste de sorte)":
-            $ d20roll = renpy.random.randint(1, 20)
-
-            if (d20roll>= 10):
-                $renpy.notify("sucesso de sorte")
-                play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
-                n "Uma cópia perfeita do Golem forma-se na sua frente. Você ordena que ela ataque a verdadeira criatura!"
-                jump um47
-            else:
-                $renpy.notify("fracasso de sorte")
-                play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
-                n "Você errou uma palavra do encanto e o golem parte para cima!"
-                jump batalha_golem
-        "Deixar as caixas de lado e correr para a porta":
-            jump dois37
-
-label batalha_golem:
-    show mc normal at left:
-        zoom 0.6
-    with fade
-
-    #show guarda1 at right:
-    #    zoom 1.3
-    #with dissolve
-
-    #show guarda2:
-    #    xpos 1050
-    #    ypos 400
-    #    zoom 0.9
-    #with dissolve
-
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
-    $ oponente_hp = oponente_max_hp
-    $ mago_hp = mago_max_hp
-    $ elixir_left = 13
-
-    show screen batalha_generica
-
-    while (oponente_hp > 0):
-
-        if mago_hp > 0:
-            menu:
-
-                "Ataque com espada (2 a 3 de dano)":
-
-                    play sound "musics/efeito_sonoro/ataque espada.mp3"
-
-                    $ mago_damage = renpy.random.randint(2, 3)
-                    $ oponente_hp -= mago_damage
-                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
-
-
-                "Bola de fogo (3 a 7 de dano)":
-
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
-
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
-
-
-
-                "Raio arcano (3 a 10 de dano)":
-
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
-
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
-
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
-        else:
-            hide screen batalha_generica
-            jump final_ruim
-
-        if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
-
-            $ mago_hp -= oponente_damage
-
-            n " {i}*o oponente te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
-
-            play sound "musics/efeito_sonoro/gemido-combate.mp3"
-
-    hide screen batalha_generica
-    'oponente derrotado!!!'
-    hide pedroso with dissolve
-    hide mc normal
-    jump um47
-
-label um47:
-    n "O Golem desaba no chão e se parte em pedaços. Aliviado, você anda até as caixas e as examina.
-Você tentará abrir:"
-    menu:
-        "A primeira caixa":
-            jump dois60
-        "A segunda caixa":
-            jump um29
-
-label um29:
-    n "Você luta com a caixa por algum tempo, tentando abri-la. Então puxa a espada e a golpeia,
-mas a única coisa que consegue é fazer sua espada perder o fio. Você não consegue abrir a caixa. O que irá fazer?: "
-    menu:
-        "Tentar abrir a primeira caixa":
-            jump dois60
-        "Deixar as caixas de lado e seguirá em frente":
-            jump dois37
-
-label dois60:
-    n "Depois de alguma insistência, a caixa abre. Há uma chave de prata lá dentro. Você:"
-    menu:
-        "Tentará usar a chave na segunda caixa":
-            jump tres4
-        "Pegará a chave e partirá para a porta de saída?":
-            jump dois37
-
-label tres4:
-    n "A chave gira e, retirando a tranca, você abre a caixa, encontrando outra chave, dessa vez talhada em
-um metal verde cintilante. Você irá:"
-    menu:
-        "Explorar um pouco mais o quarto":
-            jump oito9
-        "Sair do aposento com as duas chaves":
-            jump dois37
-
-label oito9:
-    n "Lá dentro há um vidro grande que
-contém uma aranha. Mas não é uma aranha comum; esta criatura tem o rosto de um velho. Ele está
-falando com você, mas você não consegue entender o que ele está dizendo."
-    n "Um barulho chama a sua atenção, você se vira e vê que a porta por onde você entrou está começando a abrir.
-    Você põe o vidro na sua mochila e parte para a outra porta."
-    $aranha_garrafa = True
-    jump dois37
+label dois00: ##incompleto
 
 label um69:
 
@@ -2861,9 +2357,9 @@ label um9:
     Encanto da Levitação, poderá voar e descer, fora de perigo, na sacada em cima."
     menu:
         "usar encanto de levitação? (teste de sorte)":
-            $ d20roll = renpy.random.randint(1, 20)
+            $ d2022roll = renpy.random.randint(1, 20)
 
-            if (d20roll>= 10):
+            if (d2022roll>= 13):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 n "Você obteve sucesso ao conjurar o encanto e consegue subir a rampa!"
@@ -2899,6 +2395,8 @@ label tres17:
     with dissolve
 
     n "Ele realmente aparenta ser um adversário poderoso. Você pode agora continuar pela escadaria do lado esquerdo, ou pela escadaria do lado direito."
+    hide balthus
+
     menu:
         "ir pela escadaria da esquerda?":
             jump um9
@@ -2923,14 +2421,20 @@ label tres63:
 
     scene portais at center:
         zoom 2.0
-    n "Há três portais ao longo da sacada. Você experimentará:"
+
+    play music "musics/easter egg.mp3"
+
+    n "Há três portais ao longo da sacada."
+
+    n "você nota um estranho desenho de um pássaro, semelhante a uma andorinha, perto dos portais, o que será que ele significa?"
+
+    n "Você experimentará:"
     menu portais:
         "o portal da esquerda?":
             jump dois28
         "o portal do centro?":
             jump seis4
-        "o portal da direita?(ainda em desenvolvimento)":
-            jump portais
+        "o portal da direita?":
             jump tres04
 
 label dois28:
@@ -2942,10 +2446,10 @@ label dois28:
     escolherá:"
 
     menu porta:
-        "tentar arrombar?":
-            $ d20roll = renpy.random.randint(1, 20)
+        "tentar arrombar? (teste de sorte)":
+            $ d2023roll = renpy.random.randint(1, 20)
 
-            if (d20roll>= 10):
+            if (d2023roll>= 15):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 n "a porta abre e voce acessa a sala!"
@@ -2955,10 +2459,10 @@ label dois28:
                 play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
                 n "você nao conseguiu abrir a porta e volta para a porta do centro"
                 jump seis4
-        "usar encanto de força?":
-            $ d20roll = renpy.random.randint(1, 20)
+        "usar encanto de força? (teste de sorte)":
+            $ d2024roll = renpy.random.randint(1, 20)
 
-            if (d20roll>= 7):
+            if (d2024roll>= 6):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
                 n "a porta abre e voce acessa a sala!"
@@ -2992,6 +2496,8 @@ label seis4:
 
     show goblins at center:
     with dissolve
+
+    play sound "musics/efeito_sonoro/risada goblin.mp3"
 
     n "No meio do assoalho, e olhando para você com curiosidade, estão algumas pequenas criaturas. Têm aparência
     humana, mas possuem pele verde, orelhas pontudas e olhos muito apertados. Qual será a sua
@@ -3060,15 +2566,16 @@ label um82:
     De repente, um rosto luminoso, branco e fantasmagórico, vem voando na sua direção."
 
     show ganjee at truecenter
+    with dissolve
+
+    play sound "musics/efeito_sonoro/fantasma_sussuro.mp3"
 
     n "Você se encolhe horrorizado, atira-se no chão e começa a se sentir muito assustado. Por causa desse medo extremo, qualquer batalha contra essas criaturas vai ser de extrema dificuldade!"
     n "você pensa nas seguintes opções:"
     menu quarto_ganjee:
         "usar encanto?":
             jump oito5
-        "desembainhar a sua espada? (ainda em desenvolvimento)":
-            $renpy.notify("opção invalida!")
-            jump quarto_ganjee
+        "se preparar para lutar":
             jump dois48
         "procurar um artefato na mochila?":
             jump tres22
@@ -3077,7 +2584,16 @@ label oito5:
     n "as ganjees riam da sua atitude e nao causa nenhum efeito! so lhe resta procurar um artefato na mochila!"
     jump tres22
 
-label dois48: ##incompleto
+label dois48:
+    n "você desembainha sua espada e os inimigos começam a rir de você e partem em sua direção!"
+    jump batalha_ganjees
+
+label morte_ganjees:
+    play music "musics/yt1s.com - D J Pinto  Tension EpicOrchestralCinematicMFY  No Copyright Music.mp3"
+
+    n "após a derrota, as ganjees desaparecem, como se deixassem de existir, com um grito estridente que afeta um pouco a sua audição"
+    n "dessa forma o caminho esta livre!"
+    jump tres28
 
 label tres22:
 
@@ -3091,12 +2607,11 @@ label tres22:
                 $renpy.notify("você não possui esse item!")
                 jump ganjees
         "tentar falsificar um artefato? (teste de sorte)":
-            $ d20roll = renpy.random.randint(1, 20)
+            $ d2025roll = renpy.random.randint(1, 20)
 
-            if (d20roll>= 1):
+            if (d2025roll>= 8):
                 $renpy.notify("sucesso de sorte")
                 play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
-                n "as ganjees aceitam seu artefato e deixam você passar"
                 jump dois91
             else:
                 $renpy.notify("fracasso de sorte")
@@ -3111,12 +2626,20 @@ label tres22:
                 $renpy.notify("você não possui esse item!")
                 jump ganjees
 
-label tres9: ##incompleto
+label tres9:
+    n "as gajees gritam 'Racknee!' como se fosse um velho amigo delas e te ordenam a entregar o vidro a elas!"
+    n "você pensa em jogar o vidro no chão ou usar ele como barganha para poder passar:"
+    menu:
+        "fazer um acordo para que elas te deixem passar":
+            jump dois91
+        "jogar o vidro no chão":
+            n "as ganjees gritam com você fdalando que você matou o Racknee e partem em sua direção para vingar o amigo!"
+            jump batalha_ganjees
 
 label dois91:
 
     n "'O que é isso?' pergunta uma voz fantasmagórica. Você negocia com eles. Você deixará que eles
-    fiquem com o unguento, se eles deixarem você passar pelo aposento, já que você não está
+    fiquem com o frasco, se eles deixarem você passar pelo aposento, já que você não está
     interessado neles."
     n "Uma fantasmagórica mão aparece do nada e tenta arrancar o vidro da sua mão,
     mas você o guarda rapidamente. 'É de fato o Unguento da Cura', você ouve uma das vozes dizendo
@@ -3179,7 +2702,7 @@ label tres28:
 
 label dois29:
 
-    play music "musics/Keys of Moon - Enchanted.mp3"
+    play music "musics/passagem esgoto.mp3"
 
     hide hydra
     hide hydra_shiny
@@ -3199,12 +2722,16 @@ label dois29:
 
 label seis7:
     n "Uma das cabeças morde profundamente o seu braço. e você se prepara para uma batalha ate a morte com a hidra!"
+
+    $ oponente_max_hp = 70
+    $ oponente_hp = oponente_max_hp
+
     jump batalha_hidra
 
 label um43:
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d2026roll = renpy.random.randint(1, 20)
 
-    if (d20roll>= 10):
+    if (d2026roll>= 13):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "Você se concentra e lança seu Encanto. aparece uma hidra que, para sua surpresa,
@@ -3227,6 +2754,10 @@ label um43:
                     $renpy.notify("você não possui esse item!")
                     jump hidra2
             "puxar sua espada da bainha e ir para a luta?":
+
+                $ oponente_max_hp = 70
+                $ oponente_hp = oponente_max_hp
+
                 jump batalha_hidra
 
 label tres7:
@@ -3327,9 +2858,9 @@ label quatro2:
     n "Você pode tentar levar com você um Véu de Ouro que se
     encontra sobre a cama. Teste a sua Sorte."
 
-    $ d20roll = renpy.random.randint(1, 20)
+    $ d2027roll = renpy.random.randint(1, 20)
 
-    if (d20roll>= 10):
+    if (d2027roll>= 14):
         $renpy.notify("sucesso de sorte")
         play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
         n "voce teve sorte e conseguiu pegar o véu de ouro!"
@@ -3346,7 +2877,91 @@ label quatro2:
         n "Você não teve sorte e saiu sem o véu de ouro"
         jump um40
 
-label tres04: ##incompleto
+label tres04:
+    scene sala_gargula at center:
+        zoom 2.3
+
+    n "voce passa pelo portal e penetra no aposento. É bastante grande e está decorado com vários entalhes.
+    Parece ser alguma coisa como o estúdio de um artista, e há diversas estátuas inacabadas de pedra
+    alinhadas na parede."
+    show gargula at center
+    n "No centro do aposento, há um grande GÁRGULA de pedra sobre uma caixa
+    entalhada em pedra. Quando você entra no aposento, a criatura faz ruído ao virar a cabeça na sua
+    direção. Lentamente, ele desperta para a vida, descendo do seu pedestal."
+    n "Está bloqueando o seu caminho pelo aposento para uma porta do outro lado. Você vai:"
+    menu gargula:
+        "desembainhar sua espada e avançar":
+            jump um72
+        "usar um encanto!(teste de sorte)":
+            jump dois6
+        "usar frasco de Essência de Erva de Porco":
+            if(essencia_porco):
+                jump dois14
+            else:
+                play sound "musics/efeito_sonoro/nao tem o item.mp3"
+                $renpy.notify("você não possui esse item!")
+                jump gargula
+        "voltar rapidamente pelo portal e ir para o portal do centro":
+            jump seis4
+
+label um72:
+    n "Você avança e desfere um golpe na criatura. Com um ruído estridente, sua espada repica no corpo
+    de pedra. Compreendendo que não conseguirá causar danos a ela com sua arma, você pode lançar
+    um Encanto, ou usar alguma coisa que esteja na sua mochila."
+    menu gargula2:
+        "usar um encanto!":
+            jump dois6
+        "usar frasco de Essência de Erva de Porco":
+            if(essencia_porco):
+                jump dois14
+            else:
+                play sound "musics/efeito_sonoro/nao tem o item.mp3"
+                $renpy.notify("você não possui esse item!")
+                jump gargula2
+
+label dois6:
+    n "você pensa em duas possibilidades de encanto:"
+    menu:
+        "usar encanto de fraqueza":
+            $ d2010roll = renpy.random.randint(1, 20)
+
+            if (d2010roll>=10):
+                $renpy.notify("sucesso de sorte")
+                play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
+                n "A criatura geme quando o Encanto faz efeito. Seu enorme peso tornou-se agora um fardo terrível
+                para ela. Ela ainda se arrasta na sua direção, mas você consegue desviar-se e contorná-la, partindo
+                na direção da porta do outro lado do aposento."
+                jump um40
+            else:
+                $renpy.notify("fracasso de sorte")
+                play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
+                n "o encanto não dá certo e só lhe resta fugir de volta para o portal do centro"
+                jump seis4
+
+        "usar encanto copia de criatura":
+            $ d2010roll = renpy.random.randint(1, 20)
+
+            if (d2010roll>=10):
+                $renpy.notify("sucesso de sorte")
+                play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
+                n "Uma réplica da criatura se materializa entre vocês dois. A uma ordem sua, a batalha começa:"
+                jump batalha_gargula
+            else:
+                $renpy.notify("fracasso de sorte")
+                play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
+                n "o encanto falha, aparecendo apenas uma rocha imovel na sua frente e so lhe resta fugir de volta para o portal do centro"
+                jump seis4
+
+label seis2:
+    n "você parte em direção a porta do outro lado da sala!"
+    jump um40
+
+label dois14:
+    n "Você tira a tampado Frasco e esparrama o líquido verde sobre a criatura. Ela rosna e grita no ar,
+    pondo as mãos em volta do pescoço. O líquido parece estar queimando intensamente o Gárgula, e
+    uma fumaça sobe pelo ar. Alguns momentos depois, a criatura jaz morta no chão."
+    n "você segue em frente pela porta do outro lado do aposento!"
+    jump um40
 
 label dois17:
     scene topo_torre
@@ -3415,7 +3030,7 @@ label final_submissao:
     $renpy.notify("fim de jogo")
 
     n "Sua jornada termina aqui..."
-    return
+    jump creditos
 
 label despertar:
 
@@ -3464,13 +3079,81 @@ label despertar_balthus:
     play music "musics/fase 2.mp3"
 
     n "O lorde do caos havia lancado um encantamento antigo e proibido, os anos de estudo do mago garatiram que ele sabia do que se tratava.
-    'Antigos espirítos de Yore,transformem essa forma decadente em ldabaoth',Balthus havia desistido de sua forma humana para tentar a vitória,a luta continua!"
+    'Atigos espirítos de Yore,transformem essa forma decadente em ldabaoth',Balthus havia desistido de sua forma humana para tentar a vitória,a luta continua!"
 
     jump batalha_balthus2
+
+label morte_balthus:
+
+    scene arena_final2:
+        zoom 1.3
+    with dissolve
+
+    show balthus bombado at center:
+        ypos 1500
+        zoom 1.5
+    with dissolve
+
+    b "como isso pode acontecer?? eu era invencivel!!"
+
+    play sound "musics/efeito_sonoro/balthus morrendo.mp3"
+
+    show morte_balthus1 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus2 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus3 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus4 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus5 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus6 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus7 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus8 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus9 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus10 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus11 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus12 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus13 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus14 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+    show morte_balthus15 at center with dissolve:
+        zoom 9.0
+    pause 0.1
+
+
+    hide balthus
+
+    jump fim_batalha
 
 label fim_batalha:
 
     hide balthus
+
+
 
     scene topo_torre
 
@@ -3490,11 +3173,11 @@ label final_alvorecer:
         zoom 2.2
     n "Você se dirige a varanda e contempla, tudo isso seria destruido caso você tivesse falhado, tal realização te enche de orgulho,seu sofrimento não foi em vão,
     é hora de voltar para casa e abracar todos aqueles que ama!
-    Sua jornada termina aqui,mas sempre que houver escuridão, o mago retornará!"
+    Sua jornada termina aqui,mas sempre que houver escuridao, o mago escuridão,o mago retornará!"
 
     $renpy.notify("fim de jogo")
 
-    return
+    jump creditos
 
 label final_lorde:
 
@@ -3506,6 +3189,31 @@ label final_lorde:
 
     n "Sua jornada jamais terá fim lorde do caos, para aqueles que anseiam pelo poder, as correntes da avareza, da arrogância jamais te deixarâo livre,vida longa ao novo governante!"
 
+    jump creditos
+
+label creditos:
+
+    play music "musics/trilha creditos.mp3"
+
+    $renpy.notify("por favor, aprecie os créditos")
+
+    $ credits_speed = 240 #scrolling speed in seconds
+    scene creditos
+    with dissolve
+    show theend:
+        yanchor 0.5 ypos 0.5
+        xanchor 0.5 xpos 0.5
+    with dissolve
+    with Pause(3)
+    hide theend
+    show cred at Move((0.5, 5.0), (0.5, 0.0), credits_speed, repeat=False, bounce=False, xanchor="center", yanchor="bottom")
+    with Pause(credits_speed)
+    show thanks:
+        yanchor 0.5 ypos 0.5
+        xanchor 0.5 xpos 0.5
+    with dissolve
+    with Pause(5)
+    hide thanks
     return
 
 label batalha_guardas:
@@ -3527,50 +3235,67 @@ label batalha_guardas:
         zoom 0.9
     with dissolve
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 45
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
+
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha1:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada (5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
-                    $ oponente_hp -= mago_damage
+                    $ oponente_hp -= 5
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha1
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha1
 
-                "Raio arcano (3 a 10 de dano)":
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
-
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
-
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
         else:
             hide screen batalha_generica
             jump final_ruim
@@ -3606,56 +3331,75 @@ label batalha_criaturas:
     show goblin1 at right:
         xpos 2050
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 90
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha2:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha2
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha2
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(5, 8)
 
             $ mago_hp -= oponente_damage
 
@@ -3679,56 +3423,76 @@ label batalha_porteiro:
     play music "musics/Makai Symphony - Dragon Castle.mp3"
 
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 70
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha3:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
 
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha3
 
+                "Raio arcano (1 a 12 de dano)":
 
-                "Raio arcano (3 a 10 de dano)":
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha3
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
         else:
             hide screen batalha_generica
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(4, 8)
 
             $ mago_hp -= oponente_damage
 
@@ -3744,56 +3508,75 @@ label batalha_tentaculo:
 
     play music "musics/Makai Symphony - Dragon Castle.mp3"
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 60
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha4:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha4
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha4
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(4, 8)
 
             $ mago_hp -= oponente_damage
 
@@ -3809,67 +3592,74 @@ label batalha_contra_um:
 
     play music "musics/Makai Symphony - Dragon Castle.mp3"
 
-    #hide guarda1
-    #hide guarda2
-
     show mc normal at left:
         zoom 0.6
     with fade
 
-    #show guarda1 at right:
-        #zoom 1.3
-    #with dissolve
-
-    #show guarda2:
-        #xpos 1050
-        #ypos 400
-        #zoom 0.9
-    #with dissolve
-
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 70
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha5:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha5
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha5
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
@@ -3897,56 +3687,76 @@ label batalha_contra_dois:
         zoom 0.6
     with fade
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 90
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha6:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha6
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha6
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(4, 9)
 
             $ mago_hp -= oponente_damage
 
@@ -3965,70 +3775,86 @@ label batalha_calacorm:
     play music "musics/Makai Symphony - Dragon Castle.mp3"
 
     n "A criatura entra em seu aposento e parte para cima de você!"
-    show calacorm at right:
-        zoom 1.5
     show mc normal at left:
         zoom 0.6
     with dissolve
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 110
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha7:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha7
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha7
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(4, 9)
 
             $ mago_hp -= oponente_damage
 
-            n " {i}*o oponente te arrasta para o seu covil!*{/i} (dano recebido - [oponente_damage]hp)"
+            n " {i}*ele investe em sua direção*{/i} (dano recebido - [oponente_damage]hp)"
 
             play sound "musics/efeito_sonoro/gemido-combate.mp3"
 
     hide screen batalha_generica
-    hide calacorm with dissolve
-    hide mc normal with dissolve
     "Oponente derrotado e você parte em fuga!"
     jump um74
 
@@ -4039,60 +3865,80 @@ label batalha_gark:
     show mc normal at left:
         zoom 0.6
     with dissolve
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 90
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha8:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha8
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha8
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(4, 9)
 
             $ mago_hp -= oponente_damage
 
-            n " {i}*o oponente te arrasta para o seu covil!*{/i} (dano recebido - [oponente_damage]hp)"
+            n " {i}*o oponente te da uma marretada!!*{/i} (dano recebido - [oponente_damage]hp)"
 
             play sound "musics/efeito_sonoro/gemido-combate.mp3"
 
@@ -4112,50 +3958,70 @@ label batalha_cobras:
         zoom 1.3
     with dissolve
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 50
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha9:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha9
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha9
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
@@ -4185,56 +4051,76 @@ label batalha_morena1:
         zoom 1.3
     with dissolve
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 60
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha10:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha10
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha10
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(5, 8)
 
             $ mago_hp -= oponente_damage
 
@@ -4258,66 +4144,202 @@ label batalha_morena2:
         zoom 0.9
     with dissolve
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 90
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha11:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha11
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha11
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
 
-            $ mago_hp -= oponente_damage
+            $ chance_acerto = renpy.random.randint(1, 100)
 
-            n " {i}*a morena te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+            if (chance_acerto<70):
 
-            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+                $ oponente_damage = renpy.random.randint(7, 10)
+
+                $ mago_hp -= oponente_damage
+
+                play sound "musics/efeito_sonoro/morena2.mp3"
+
+                n " {i}*a morena te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+
+                play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+            else:
+                n "a morena lança um raio laser dos olhos que você consegue desviar, aproveitando isso para dar um contra ataque com sua espada!"
+                play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                $ mago_damage = 5
+                $ oponente_hp -= mago_damage
+                mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
     hide screen batalha_generica
     'Lucretia derrotada!!!'
     jump morte_morena
+
+label batalha_ganjees:
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+    show mc normal at left:
+        zoom 0.6
+    with fade
+
+    show ganjee at right:
+    with dissolve
+
+    $ oponente_max_hp = 55
+    $ mago_max_hp = 60
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu batalha12:
+
+                "Ataque com espada ( 5 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    #$ mago_damage = 5
+                    #$ oponente_hp -= mago_damage
+                    #mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+                    n "você ve sua espada atravessar o corpo da criatura sem causar dano algum!"
+                    $renpy.notify("ataque ineficaz contra espectros!!")
+
+
+                "Bola de fogo (2 a 8 de dano)":
+
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 30
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha12
+
+                "Raio arcano (1 a 12 de dano)":
+
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 5
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha12
+
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
+        else:
+            hide screen batalha_generica
+            jump final_ruim
+
+        if(oponente_hp > 0):
+
+            $ chance_acerto = renpy.random.randint(1, 100)
+
+            if (chance_acert < 65):
+
+                $ oponente_damage = renpy.random.randint(2, 6)
+
+                $ mago_hp -= oponente_damage
+
+                n " {i}*a ganjee te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+
+                play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+            else:
+                n "a ganjee parte em sua direção mas você consegue desviar!"
+
+    hide screen batalha_generica
+    "ganjees derrotados!"
+    jump morte_ganjees
 
 label batalha_hidra:
 
@@ -4333,56 +4355,76 @@ label batalha_hidra:
     play music "musics/Makai Symphony - Dragon Castle.mp3"
 
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
-    $ oponente_hp = oponente_max_hp
+    #$ oponente_max_hp = 30
+    $ mago_max_hp = 60
+    #$ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha13:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 30
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha13
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 5
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha13
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(4, 10)
 
             $ mago_hp -= oponente_damage
 
@@ -4408,58 +4450,77 @@ label batalha_hidra_vs_hidra:
     play music "musics/Makai Symphony - Dragon Castle.mp3"
 
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 70
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha14:
 
-                "Ataque com garras (2 a 3 de dano)":
+                "Ataque com garras ( 7 de dano)":
 
-                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+                    play sound "musics/efeito_sonoro/garras hidra.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Avanço das cabeças(3 a 7 de dano)":
+                "Avanço das cabeças(3 a 9 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    play sound "musics/efeito_sonoro/hidra ataque cabeça.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
+                    $ mago_damage = renpy.random.randint(3, 8)
                     $ oponente_hp -= mago_damage
                     "Raaaah!!!!!!! (dano causado - [mago_damage]hp)"
 
+                "Sopro flamejante (1 a 15 de dano)":
 
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                "Sopro flamejante (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 15)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        "shushhhh (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha14
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                #"tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                #    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                #    $ elixirHP_left -= 1
+                #    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+                #"tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                #    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                #    $ elixirMP_left -= 1
+                #    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
-            jump final_ruim
+
+            hide hydra_shiny
+
+            n "a sua hidra pereceu! cabe a você terminar o trabalho que ela começou"
+
+            jump batalha_hidra
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(4, 10)
 
-            $ mago_hp -= oponente_damage
+            $ mago_hp -= 30
 
             n " {i}*o oponente te arrasta para o seu covil!*{/i} (dano recebido - [oponente_damage]hp)"
 
@@ -4483,50 +4544,73 @@ label batalha_balthus1:
         zoom 0.7
     with dissolve
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 120
+    $ mago_max_hp = 100
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 80
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_balthus
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha15:
 
-                "estilo yore tormenta das espadas (2 a 3 de dano)":
+                "estilo yore tormenta das espadas (10 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 10
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "estilo yore rugido do dragao (3 a 7 de dano)":
+                "estilo yore rugido do dragao (6 a 14 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "estilo yore! rugido do dragao!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(6, 14)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "estilo yore! rugido do dragao!!!!! (dano causado - [mago_damage]hp)"
+
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha15
 
 
+                "estilo yore desabrochar arcano (6 a 20 de dano)":
 
-                "estilo yore desabrochar arcano (3 a 10 de dano)":
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                        $ mago_damage = renpy.random.randint(6, 20)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "estilo yore! desabrochar arcano!!!!! (dano causado - [mago_damage]hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "estilo yore! desabrochar arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha15
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
         else:
             hide screen batalha_balthus
             jump final_ruim
@@ -4555,69 +4639,104 @@ label batalha_balthus2:
 
     show balthus bombado at right:
         ypos 1500
+        xpos 2100
         zoom 1.5
     with dissolve
 
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 180
+    $ mago_max_hp = 100
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 80
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_balthus
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha16:
 
-                "estilo yore tormenta das espadas (2 a 3 de dano)":
+                "estilo yore tormenta das espadas (10 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 10
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "estilo yore rugido do dragao (3 a 7 de dano)":
+                "estilo yore rugido do dragao (6 a 14 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "estilo yore! rugido do dragao!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(6, 14)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "estilo yore! rugido do dragao!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha16
 
 
+                "estilo yore desabrochar arcano (6 a 20 de dano)":
 
-                "estilo yore desabrochar arcano (3 a 10 de dano)":
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                        $ mago_damage = renpy.random.randint(6, 20)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "estilo yore! desabrochar arcano!!!!! (dano causado - [mago_damage]hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "estilo yore! desabrochar arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha16
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
         else:
             hide screen batalha_balthus
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
 
-            $ mago_hp -= oponente_damage
+            $ chance_acerto = renpy.random.randint(1, 100)
 
-            n " {i}*o grande Balthus te ataca !*{/i} (dano recebido - [oponente_damage]hp)"
+            if (chance_acerto < 75):
 
-            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+                $ oponente_damage = renpy.random.randint(2, 6)
+
+                $ mago_hp -= oponente_damage
+
+                n " {i}*o grande Balthus te ataca !*{/i} (dano recebido - [oponente_damage]hp)"
+
+                play sound "musics/efeito_sonoro/gemido-combate.mp3"
+            else:
+                n "balthus avança em sua direção com poder nas mãos, mas você consegue desviar aproveitando a chance para contraatacar com sua espada!"
+                play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                $ mago_damage = 5
+                $ oponente_hp -= mago_damage
+                mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
     hide screen batalha_balthus
     'Balthus derrotado!!!'
-    jump fim_batalha
+    jump morte_balthus
 
 label batalha_giras:
     show mc invertido at right:
@@ -4625,50 +4744,70 @@ label batalha_giras:
         xpos 2350
     with dissolve
     #show giras
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 65
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica1
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha17:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
+                    $ mago_damage = 5
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha17
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha17
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
@@ -4678,7 +4817,7 @@ label batalha_giras:
 
             $ mago_hp -= oponente_damage
 
-            n " {i}*o oponente te arrasta para o seu covil!*{/i} (dano recebido - [oponente_damage]hp)"
+            n " {i}*os oponentes mordem seus braços!*{/i} (dano recebido - [oponente_damage]hp)"
 
             play sound "musics/efeito_sonoro/gemido-combate.mp3"
 
@@ -4693,50 +4832,74 @@ label batalha_devlin:
     show mc normal at left:
         zoom 0.6
     with dissolve
-    $ oponente_max_hp = 30
-    $ mago_max_hp = 50
+    $ oponente_max_hp = 60
+    $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
-    $ elixir_left = 13
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
 
     show screen batalha_generica
 
     while (oponente_hp > 0):
 
         if mago_hp > 0:
-            menu:
+            menu batalha18:
 
-                "Ataque com espada (2 a 3 de dano)":
+                "Ataque com espada ( 5 de dano)":
 
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                    $ mago_damage = renpy.random.randint(2, 3)
-                    $ oponente_hp -= mago_damage
-                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+                    #$ mago_damage = 5
+                    #$ oponente_hp -= mago_damage
+                    #mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+                    n "você ve sua espada atravessar o corpo da criatura sem causar dano algum!"
+                    $renpy.notify("ataque ineficaz contra espectros!!")
 
 
-                "Bola de fogo (3 a 7 de dano)":
+                "Bola de fogo (2 a 8 de dano)":
 
-                    play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
 
-                    $ mago_damage = renpy.random.randint(3, 7)
-                    $ oponente_hp -= mago_damage
-                    mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        $ mago_damage = renpy.random.randint(1, 4)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                        n "o ataque quase não causa dano! o inimigo é feito de puro fogo!"
+                        $renpy.notify("ataque é ineficaz!!")
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha18
 
+                "Raio arcano (1 a 12 de dano)":
 
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
 
-                "Raio arcano (3 a 10 de dano)":
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha18
 
-                    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
 
-                    $ mago_damage = renpy.random.randint(3, 10)
-                    $ oponente_hp -= mago_damage
-                    mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
-                "tomar elixir da vida (tem [elixir_left] elixires)" if elixir_left > 0:
-                    $ mago_hp = min(mago_hp+5, mago_max_hp)
-                    $ elixir_left -= 1
-                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 5 hp)"
         else:
             hide screen batalha_generica
             jump final_ruim
@@ -4753,3 +4916,97 @@ label batalha_devlin:
     hide screen batalha_generica
     'Oponente derrotado e você ganha a chance de inspecionar outro item da cozinha!'
     jump um7
+
+label batalha_gargula:
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+    show gargula_clone at left:
+        zoom 1.8
+    with dissolve
+
+    show gargula at right:
+    with dissolve
+
+    $ oponente_max_hp = 60
+    $ mago_max_hp = 60
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 0
+    $ elixirMP_left = 0
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu batalha19:
+
+                "Ataque com garra ( 8 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = 8
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+
+                "Bola de fogo (2 a 8 de dano)":
+
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha19
+
+                "choque do trovão (1 a 12 de dano)":
+
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha19
+
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
+        else:
+            hide screen batalha_generica
+            n "você fica com medo de enfrentar a gargula sozinho e corre de volta para o portal do meio"
+            jump seis4
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(2, 6)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*a gargula te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    hide gargula
+    "gargula derrotado!"
+    jump seis2
