@@ -11,6 +11,7 @@ init python:
     velo_ouro      = False
     sabe_senha     = False
     essencia_porco = False
+    morte_goblins  = True
 
 define flash = Fade(.25, 0, .75, color="#fff")
 transform flip:
@@ -18,10 +19,10 @@ transform flip:
 
 init python:
     credits1 = ('Wanderer é uma produção grupo 7', 'UNB FGA'), ('PO(product owner)','André Corrêa'), ('Scrum master', 'João Pedro de Camargo Vaz'), ('Scrum team', 'Vinicius Assumpção'), ('Scrum team', 'César Umeda'),('Scrum team', 'Gabriel Roger'),('Artista Responsável', '@qEROsene'), ('Direção de arte', 'Dartmol203'), ('Direção de arte', 'Viniman27'), ('Edição', 'Cesarheroyuki')
-    credits2 = ('formatação', 'Djonga'), ('formatação', 'Roger'), ('agradecimento ao material fornecido por', 'Editora Marques Saraiva'), ('agradecimento ao material fornecido por', 'GDC game audio'), ('agradecimento ao material fornecido por', "Ren'py engine"), ('agradecimento ao material fornecido por', 'Breaking Copyrights'), ('agradecimento ao material fornecido por', 'netFontes'), ('agradecimento ao material fornecido por', 'pngWing'), ('agradecimento ao material fornecido por', 'Fantasy Background Music'), ('agradecimento ao material fornecido por', 'Rush Garcia')
+    credits2 = ('formatação', 'Djonga'), ('formatação', 'Roger'), ('agradecimento ao material fornecido por', 'Editora Marques Saraiva'), ('agradecimento ao material fornecido por', 'GDC game audio'), ('agradecimento ao material fornecido por', "Ren'py engine"), ('agradecimento ao material fornecido por', 'Breaking Copyrights'), ('agradecimento ao material fornecido por', 'netFontes'), ('agradecimento ao material fornecido por', 'pngWing'), ('agradecimento ao material fornecido por', 'Fantasy Background Music'), ('agradecimento ao material fornecido por', 'Rush Garcia'), ('agradecimento ao material fornecido por', 'Hiroyuki Sawano')
     credits3 = ('E um muito obrigado a todos que participaram da beta aberta!', 'MARIANAR GAMER'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Katsuia'), ('E um muito obrigado a todos que participaram da beta aberta!', 'quEROSene'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Mikkhaelll'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Pedro Henrique Elias Pereira'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Neeko'), ('E um muito obrigado a todos que participaram da beta aberta!', 'HeregeD'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Gabrielle'), ('E um muito obrigado a todos que participaram da beta aberta!', 'O Bram'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Felpeldel')
     credits4 = ('E um muito obrigado a todos que participaram da beta aberta!', '(GS) Luw'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Alamux'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Akaeboshi'), ('E um muito obrigado a todos que participaram da beta aberta!', 'lulinha'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Milton'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Ada Amaris'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Isabella'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Srta Fooshang'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Flávio'), ('E um muito obrigado a todos que participaram da beta aberta!', 'ITZdeath')
-    credits5 = ('E um muito obrigado a todos que participaram da beta aberta!', 'Caio26'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Furyjoker'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Lucas Soares'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Manuzini'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Lucas Rodrigues Lopes'), ('E um muito obrigado a todos que participaram da beta aberta!', 'XXX_Lima_XXX'), ('E um muito obrigado a todos que participaram da beta aberta!', '404SkillNotFound'), ('E um muito obrigado a todos que participaram da beta aberta!', 'impunky_e'), ('E o autor que tornou esse projeto possivel', 'Steve Jackson')
+    credits5 = ('E um muito obrigado a todos que participaram da beta aberta!', 'Caio26'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Furyjoker'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Lucas Soares'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Manuzini'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Lucas Rodrigues Lopes'), ('E um muito obrigado a todos que participaram da beta aberta!', 'XXX_Lima_XXX'), ('E um muito obrigado a todos que participaram da beta aberta!', '404SkillNotFound'), ('E um muito obrigado a todos que participaram da beta aberta!', 'impunky_e'), ('E um muito obrigado a todos que participaram da beta aberta!', 'Nabiki'), ('E o autor que tornou esse projeto possivel', 'Steve Jackson')
     credits_s = "{size=80}Créditos\n\n"
     c1 = ''
     for c in credits1:
@@ -52,8 +53,7 @@ init python:
     credits_s += "\n{size=40}Engine\n{size=60}Ren'py\n7.4.4.1239" #Don't forget to set this to your Ren'py version
 
 init:
-#    image cred = Text(credits_s, font="myfont.ttf", text_align=0.5) #use this if you want to use special fonts
-    image cred = Text(credits_s, text_align=0.5)
+    image cred   = Text(credits_s, text_align=0.5)
     image theend = Text("{size=80}O Fim!", text_align=0.5)
     image thanks = Text("{size=80}obrigado por jogar!", text_align=0.5)
 
@@ -64,6 +64,10 @@ define n               = Character("narrador")
 define mc              = Character("Mago")
 define l               = Character("Lucretia")
 define b               = Character("Balthus")
+define V               = Character("Viniman, arauto da criação")
+define A               = Character("Dartmol, arauto da destruição")
+define U               = Character("???")
+define a2              = Character("Os arautos")
 
 image Mapa = "images/Mapa.png"
 
@@ -126,6 +130,12 @@ image cria1            = "images/cria1.png"
 image cria2            = "images/cria2.png"
 image gargula          = "images/gargula.png"
 image gargula_clone    = "images/gargula2.png"
+image elfo_negro       = "images/PW elfo negro.png"
+image mulher_roupa     = "images/mulher_roupa.png"
+image fantasmagorico   = "images/fantasmagorico.png"
+image golem_clone      = "images/golem clone.png"
+image viniman          = "images/arauto cria.png"
+image dartmol          = "images/arauto dest.png"
 
 ## backgrounds
 image entrada_caos     = "images/PW entrada cidadela.jpg"
@@ -178,6 +188,13 @@ image bg10             = "images/bg10.jpg"
 image bg11             = "images/bg11.jpg"
 image bg12             = "images/bg12.jpg"
 image sala_gargula     = "images/sala estatuas.jpg"
+image bg13             = "images/porta adega.jpg"
+image bg14             = "images/bg14.png"
+image bg15             = "images/lava-roupa.jpg"
+image criacao          = "images/criacao.jpg"
+image destruicao       = "images/destruição.jpg"
+image arautos          = "images/2 arautos.png"
+image casa_prota       = "images/casa.jpg"
 image creditos         = "images/creditos/creditos.png"
 
 # The game starts here.
@@ -207,10 +224,10 @@ label start:
     window hide
     pause
 
-    stop music fadeout 1
+    $nome = renpy.input("Qual é o seu nome?")
+    $Protagonista1 = nome
+
     play music "musics/inicio_epico.mp3" fadein 1
-
-
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
@@ -269,7 +286,7 @@ label start:
     Há um caminho melhor para atravessar a Cidadela. Se você o descobrir, terá êxito com um  mínimo de risco para a sua pessoa.
     Talvez você precise de várias viagens para descobrir o caminho  mais fácil para atravessar a Cidadela"
 
-    n "antes da sua saida, o rei te chama e te entraga um saco de couro com um punhado de moedas de ouro para auxiliar na sua jornada."
+    n "antes da sua saida, o rei te chama e entrega um saco de couro com um punhado de moedas de ouro para auxiliar na sua jornada."
 
     $renpy.notify("adquiriu dinheiro!")
 
@@ -279,6 +296,9 @@ label start:
     você pode ver sua silhueta contra o céu escuro... "
 
     $dinheiro = True
+
+    if (nome == 'caçador de arautos'):
+        jump final_alt
 
     jump um
 
@@ -342,10 +362,10 @@ label um:
             jump dois0
 
 label dois61:
-    n "O Macaco-Cachorro pede para ver as suas ervas. Por sorte, você tinha apanhado alguns punhados de ervas no caminho, e você mostra isso a eles."
+    n "O Macaco e o Cachorro pedem para ver as suas ervas. Por sorte, você tinha apanhado alguns punhados de ervas no caminho, e você mostra isso a eles."
 
-    n "Inclinando a cabeça para um lado, a criatura olha para você com desconfiança.
-    Pergunta a você então o nome do guarda que veio tratar, uma coisa que não estava nos seus planos!"
+    n "Inclinando a cabeça para um lado, as criaturas olham para você com desconfiança.
+    Perguntam a você então o nome do guarda que veio tratar, uma coisa que não estava nos seus planos!"
 
     n "Você pensa rapidamente em um nome para enganar a criatura:"
     menu:
@@ -357,13 +377,13 @@ label dois61:
             jump tres94
 
 label oito1:
-    n "O Macaco-Cachorro ri e diz a você que Kylltrog é um preguiçoso que não serve para nada, e que não vale a pena salvá-lo.
-    Você solta um suspiro de alívio quando ele caminha de volta e grita para chamar o porteiro.
+    n "O Macaco e o Cachorro riem e dizem a você que Kylltrog é um preguiçoso que não serve para nada, e que não vale a pena salvá-lo.
+    Você solta um suspiro de alívio quando eles caminham de volta e gritam para chamar o porteiro.
     Alguns momentos depois, o porteiro aparece e abre uma pequena porta para deixar você entrar."
     jump dois51
 
 label um75:
-    n "A criatura nunca ouviu falar de nenhum Pincus no interior da Cidadela. O Cachorro que está segurando a clava rosna e dá um passo adiante."
+    n "As criaturas nunca ouviram falar de nenhum Pincus no interior da Cidadela. O Cachorro que está segurando a clava rosna e dá um passo adiante."
     menu:
         "Escolher outro nome rapidamente (Teste de sorte)":
             jump um10
@@ -389,7 +409,7 @@ label um10:
 label tres94:
     n "As criaturas se olham, como se o nome não fosse estranho para eles, mas elas não conseguiram se lembrar exatamente de onde o conheciam.
     Você rapidamente acrescenta que ele está na turma do primeiro andar."
-    n "Eles dão de ombros e acabam por decidir que você deve estar falando a verdade. O Macaco-Cachorro chama o porteiro, que finalmente aparece para deixar você entrar."
+    n "Eles dão de ombros e acabam por decidir que você deve estar falando a verdade. O Macaco e o Cachorro chamam o porteiro, que finalmente aparece para deixar você entrar."
     jump dois51
 
 label dois30:
@@ -485,7 +505,7 @@ label um79:
     play music "musics/sb_phoenix.mp3"
     n "Quando você sai das sombras na direção do centro do pátio, uma voz no vento grita: 'Pare! Fique onde está!'
     Você olha a sua volta, mas não consegue ver ninguém que esteja se dirigindo a você."
-    n "Você dá mais dois passos. A voz sinistra ordena de novo que você parem, e, dessa vez, uma flecha zune pelo ar e cai próximo ao seu pé esquerdo.
+    n "Você dá mais dois passos. A voz sinistra ordena de novo que você pare, e, dessa vez, uma flecha zune pelo ar e cai próximo ao seu pé esquerdo.
     Você pula para trás. Porém, ainda assim não vê ninguém e não pode se mexer."
     n "Dessa forma, você: "
     menu:
@@ -521,7 +541,7 @@ label tres41:
 
 label tres78:
     n "Você dá alguns passos adiante, e uma outra flecha erra por pouco o seu pé."
-    n "Mais uns poucos passos e uma flecha rasga a sua túnica, arranhando o seu antibraço.
+    n "Mais uns poucos passos e uma flecha rasga a sua túnica, arranhando o seu antebraço.
     Você ainda não consegue ver ninguém, nem de onde as flechas estão vindo."
     n "Depois de alguns passos, surge mais uma flecha, mas essa rasga a sua perna. Você grita alto"
     play sound "musics/efeito_sonoro/gemido-combate.mp3"
@@ -740,6 +760,7 @@ label um34:
     obviamente um tanto espantados com seu modo confiante e cochicham entre eles."
     n "A orquisa diz a você que será preciso uma senha, 'CIMITARRA', para entrar. Você pergunta a respeito do frasco de líquido dentro da caixa, o que faz com que eles fiquem agitados, então você:"
     $sabe_senha = True
+    play sound "musics/efeito_sonoro/item encontrado.mp3"
     $renpy.notify("agora você sabe a senha! mas aonde vai usar?")
 
     menu:
@@ -1509,7 +1530,7 @@ label dois43:
     n "A passagem se estende por vários metros e depois termina em uma porta. Você escuta junto à porta
     e ouve uma respiração profunda e pesada vindo lá de dentro, como se alguma criatura de grande
     porte estivesse dormindo ali."
-    n "Cuidadosamente, você experimenta a maçaneta, e a porta abre. Logona entrada, embora o aposento
+    n "Cuidadosamente, você experimenta a maçaneta, e a porta abre. Logo na entrada, embora o aposento
     esteja escuro, você consegue ver uma criatura muito grande, semelhante a um Goblin, adormecida no chão."
     n "Você pode se arriscar a entrar no aposento na ponta dos pés"
     jump tres52
@@ -1698,7 +1719,8 @@ label dois38:
     n "Ele indica uma seção das estantes, e você leva um livro para uma das mesas para ler. O livro é extremamente informativo, traçando a história da Cidadela.
     A Torre Negra foi construída pelo avô de Balthus Dire."
     n "À medida em que foi se tornando um santuário para as forças do mal, a lei e a ordem foram gradualmente dando lugar ao caos, devido à luta das criaturas monstruosas para
-    ascender na hierarquia do poder. O avô de Dire acabou se vendo na necessidade de se proteger de seus próprios seguidores, criando vários sistemas de segurança entre as criaturas e seus próprios
+    ascender na hierarquia do poder."
+    n "O avô de Dire acabou se vendo na necessidade de se proteger de seus próprios seguidores, criando vários sistemas de segurança entre as criaturas e seus próprios
     aposentos, destacando-se entre eles a Armadilha do Poço da Perdição e uma Fechadura de Combinação mágica na porta de seu próprio quarto. A combinação da fechadura é 217."
     n "Você lê mais sobre a Cidadela e então escolhe perguntar ao homem:"
     menu:
@@ -1768,10 +1790,10 @@ label dois34:
     criatura com aparência de lagarto que se arrasta descendo o corredor, trazendo nas mãos uma moringa e uma terrina."
     show calacorm at center:
         zoom 1.5
-    n "O animal tem duas cabeças que conversam entre si enquanto ele caminha. Sua pele é cinzenta e coberta de escamas, e uma cauda longa se estende pela passagem atrás dele."
+    n "O animal tem a pele alaranjada e coberta de escamas, e uma cauda longa se estende pela passagem atrás dele."
     n "Ele para na sua porta e empurra a moringa e a terrina por uma pequena abertura para dentro de sua cela, e depois se afasta para sentar-se a uma mesa do outro lado do corredor. Você recebeu pão e
     caldo."
-    hide calacorm
+    hide calacorm with dissolve
     menu:
         "Você vai comer e beber?":
             jump tres97
@@ -1802,7 +1824,7 @@ label um93:
     else:
         $renpy.notify("fracasso de sorte")
         play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
-        n "Infelizmente, já tentaram subornar a critura, e ela não cai no seu Encanto!"
+        n "Infelizmente, já tentaram subornar a criatura, e ela não cai no seu Encanto!"
         jump batalha_calacorm
 
 label seis9:
@@ -1826,8 +1848,6 @@ label tres44:
             jump cinco
 
 label sete:
-
-
 
     n "A porta está trancada. Você pode tentar pô-la abaixo, batendo nela com o ombro, ou
     pode lançar um Encanto da Força sobre você mesmo e tentar arrancar a porta das suas dobradiças."
@@ -2150,14 +2170,11 @@ label tres23:
     menu sala_oseamus:
         "abrir a porta com maçaneta de latao?":
             jump tres86
-        "abrir a porta com maçaneta de cobre?(ainda em desenvolvimento)":
-            $renpy.notify("opção invalida!")
-            jump sala_oseamus
+
+        "abrir a porta com maçaneta de cobre?":
             jump um44
 
-        "abrir a porta com maçaneta de bronze? (ainda em desenvolvimento)":
-            $renpy.notify("opção invalida!")
-            jump sala_oseamus
+        "abrir a porta com maçaneta de bronze?":
             jump tres38
 
 label tres86:
@@ -2178,9 +2195,280 @@ label tres86:
         "agarrar a corda e se balançar para o outro lado?":
             jump um08
 
-label um44: ##incompleto
+label um44:
+    scene bg13 at truecenter:
+        zoom 0.7
+    play music "musics/adega.mp3"
+    n "A porta abre e você entra em um corredor estreito. Você segue por ele algum tempo, até que
+    finalmente chega a uma outra porta: desta vez é uma porta larga entalhada, com a inscrição 'Adega
+    de Vinhos' gravada nela."
+    n "Você experimenta a maçaneta e ela abre. Você espia do lado de dentro, esticando o pescoço,
+    e vê filas e mais filas de prateleiras cheias de garrafas contendo... vinho? O
+    aposento é pouco iluminado pela luz de várias velas."
+    n "O fato de você abrir a porta fez com que uma
+    pequena sineta soasse, e uma figura vem na sua direção por um dos corredores. Assim, você:"
+    scene bg14 at truecenter:
+        zoom 1.09
+    show elfo_negro at center:
+        zoom 0.8
+    with dissolve
+    menu:
+        "Desembainhará a sua espada e se preparará para se defender":
+            jump um54
+        "Verá o que este sujeito pode ter a dizer":
+            jump cinco6
 
-label tres38: ##incompleto
+label cinco6:
+    n "O Elfo Negro que se aproxima de você é bem vestido. Ele pergunta se você é um
+    convidado ou um aventureiro. Você diz que é um convidado que veio até embaixo para provar o
+    vinho que ele guarda em sua famosa Adega de Vinhos."
+    n "Com um certo orgulho, ele mostra a você as garrafas de safras que ele guarda para seu Senhor, o Feiticeiro.
+    Algumas delas, ele afirma, possuem poderes mágicos. Ele pergunta se você não quer experimentar o vinho. Você prefere: "
+    menu:
+        "Provar o vinho tinto":
+            jump um20
+        "Provar o vinho rosé":
+            jump tres34
+        "Recusar a oferta dele e seguir adiante no seu caminho":
+            jump nove5
+
+label um20:
+    n "Você prova o vinho e balança a cabeça afirmativamente. A safra é excelente de fato, com um sabor
+    revigorante e rico. Você agradece ao Elfo e segue adiante."
+    jump nove5
+
+label tres34:
+    n "Você toma dois goles. Não é ruim! Você enche a boca, mas, ao fazê-lo, fica imaginando porque o
+    Elfo está rindo. De repente, ele pergunta se você é realmente um convidado."
+    n "Embora sua mente esteja confirmando que você é de fato um convidado, sua voz está dizendo que não é, que você veio
+    para pôr um fim nos planos de conquista de Balthus Dire! Você pragueja ao compreender que o
+    vinho deve conter uma dose de Soro da Verdade."
+    n "O Elfo Negro agora sabe da sua missão e deve ser impedido de dizer a outros.
+    Você desembainha a sua espada e, ao fazê-lo, ele puxa um pequeno mecanismo metálico da bolsa presa em volta da cintura dele.
+    Com um toque, isso se transforma em uma arma de lâmina em serra."
+    jump dois75
+
+label nove5:
+    n "No lado mais distante da Adega de Vinhos, há uma porta de madeira, que você experimenta. Ela
+    abre para uma passagem que conduz adiante por vários metros."
+    jump tres67
+
+label um54:
+    n "Quando você puxa a espada, a figura para e pega alguma coisa da bolsa em sua cintura. Quando ele
+    se aproxima mais, você pode ver que a criatura é um ELFO NEGRO; alto e magro."
+    n "Na sua mão, ele traz um pequeno mecanismo de algum tipo.
+    Ele vê você, manipula o mecanismo que subitamente se torna uma espada tipo estilete
+    na sua mão! Você escolherá:"
+    menu:
+        "Avançar e lutar":
+            jump dois75
+        "Abaixar a espada e conversar com ele":
+            jump cinco6
+
+label dois75:
+    n "Você reconhece o mecanismo como sendo uma Miríade de Bolso, um objeto encantado que pode se
+    transformar em qualquer tipo de armas e outros artefatos úteis. Vocês dois se preparam para a
+    batalha."
+    jump batalha_elfo_negro
+
+label dois72:
+    $renpy.notify("dinheiro e miríade pilhados")
+    play sound "musics/efeito_sonoro/item encontrado.mp3"
+    play music "musics/'descoberta'.mp3"
+    n "Você revista os bolsos dele e encontra oito Peças de Ouro. A Miríade de Bolso infelizmente foi
+    danificada na luta, mas talvez você possa encontrar algum uso para ela, podendo levá-la com você. Você irá:"
+    menu:
+        "Investigar a Adega dos Vinhos":
+            jump dois42
+        "Atravessá-la e seguir adiante pela porta do outro lado do aposento":
+            jump nove5
+
+label dois42:
+    n "As garrafas e barriletes contêm centenas de diferentes vinhos. Alguns são extremamente velhos e
+    valiosos. Em um dos cantos do aposento, há uma mesa posta para a degustação, com duas garrafas e copos. Você irá:"
+    menu:
+        "Provar uma amostra do vinho tinto":
+            jump dois4
+        "Provar uma amostra do vinho branco":
+            jump um05
+        "Seguir adiante e não provar nenhum vinho":
+            jump nove5
+
+label dois4:
+    n "Você prova o vinho e, enquanto está apreciando o seu sabor, ouve um ruído tilintante. Você se vira
+    para olhar na direção de onde o ruído está vindo e fica horrorizado ao ver que as garrafas nas
+    prateleiras estão se mexendo sozinhas."
+    n "Uma garrafa voa do lugar onde está e se projeta na sua
+    direção, errando por pouco a sua cabeça e se espatifando na parede atrás de você. Uma outra voa na
+    sua direção, depois outra, até que você está recebendo uma chuva de garrafas vindas de todas as
+    direções."
+    n "Você toma consciência de que sua única defesa é usar o Encanto do Escudo."
+    menu:
+        "Usar Encanto do Escudo":
+            jump tres72
+        "Não usar Encanto do Escudo":
+            jump dois19
+
+label tres72:
+    n "Ao lançar seu Encanto do Escudo, uma garrafa ainda atinge você no ombro. Você não sente nada.
+    Alguma coisa não está muito certa, e você tenta cancelar o Encanto. Infelizmente, ele já foi lançado,
+    e você pode ver as garrafas se quebrando de encontro a seu escudo mágico."
+    n "A garrafa que acabou de atingir você desapareceu. Você xinga ao compreender que o vinho que você acabou de provar
+    deveria ter algumas propriedades alucinógenas, e que você está imaginando o ataque das garrafas.
+    Quando esta idéia lhe ocorre, as garrafas param de vir sobre você."
+    n "Você pisca e olha de novo. Todas as garrafas estão em seus lugares nas estantes, como é normal!
+    Você resolve seguir adiante."
+    jump nove5
+
+label dois19:
+    n "Você se abaixa e protege a cabeça. Uma garrafa atinge você, depois outra e mais outra - mas você
+    não sente nada! Como pode ser isso? Aí você compreende o que está acontecendo. O vinho devia
+    conter alguma poção alucinógena que está fazendo você imaginar este ataque de garrafas."
+    n "Num instante, o ruído cessa. Você levanta a cabeça para ver que, como você desconfiava, todas as
+    garrafas estão em seus lugares nas estantes. Com grande alívio, você segue adiante e sai da Adega
+    de Vinhos."
+    jump nove5
+
+label um05:
+    n "O vinho é bastante amargo e, ao saboreá-lo em sua boca, você sente uma sensação de ardência.
+    Você cospe o vinho no chão e, para sua surpresa, um jato de chamas irrompe dos seus lábios!"
+    n "Você segue adiante na direção de uma porta que
+    leva mais para o interior da adega."
+    jump nove5
+
+label tres38:
+    n "A porta abre para uma passagem. Você segue a passagem sempre em frente por algum tempo,
+    passando por muitas curvas na rocha. Você encontra outra passagem que vem da direita, mas segue
+    adiante direto. Finalmente, o caminho acaba se alargando."
+    jump nove0
+
+label nove0:
+    scene bg15 at truecenter:
+        zoom 2.4
+    with dissolve
+    show mulher_roupa at right:
+        zoom 0.41
+        xpos 1500
+    with dissolve
+    n "A passagem se alarga, e você está agora andando ao longo de um rio que corre. Bem à frente, há
+    uma mulher que parece estar lavando roupa."
+    n "Ela tem uma cesta com roupas a seu lado, e há vários conjuntos de ceroula e camiseta de baixo
+    pendurados em um varal atrás dela. Você:"
+
+    play music "musics/medo.mp3"
+
+    menu:
+        "Desembainhará a sua espada e avançará":
+            jump um76
+        "Cumprimentará ela e tentará estabelecer uma conversa":
+            jump dois1
+        "Usará a sua percepção Extra-Sensorial para descobrir quem ela é":
+            jump tres29
+
+label um76:
+    n "Quando você se aproxima, ela se volta para olhar para você. Sem se perturbar nem um pouco com a
+    sua arma, ela diz: 'Abaixe sua arma, jovem forasteiro. Sou apenas uma velha. Não farei mal a você.' Você irá:"
+    menu:
+        "Ignorar as palavras dela e continuar avançando":
+            jump um27
+        "Abaixar a espada e conversar com ela":
+            jump dois1
+        "Parar e usar um Encanto de Percepção Extra-Sensorial":
+            jump tres29
+
+label dois1:
+    n "'O que traz você a estas paragens?' ela pergunta. Você conta a ela sua história, evitando
+    cuidadosamente revelar a sua verdadeira missão. Ela aconselha você a afastar-se desse lugar, caso
+    conheça alguma magia."
+    n "As criaturas que você encontrou até agora não se comparam com as que
+    habitam o interior da Torre da Cidadela propriamente dita. Ela diz que você jamais encontrará o
+    senhor sem conseguir primeiro o Velo e deseja sorte para você em sua missão."
+    jump seis
+
+label tres29:
+    n "Você se concentra na mente dela e fica chocada ao descobrir que ela não está viva, como parece,
+    mas que já morreu há muitos anos."
+    n "Desde que um incêndio violento - uma maldição lançada sobre ela por Balthus Dire em pessoa, por ela
+    não ter cumprido as ordens de lavar suas vestes a tempo para uma reunião importante - matou-a e às suas crianças,
+    seu corpo espectral foi condenado a lavar roupas eternamente."
+    n "Ela é de fato uma pobre miserável. Você agora repara que ela está ficando
+    zangada e desconfiada com a sua presença. Ela está murmurando alguma cantilena muito baixo. Você irá: "
+    menu:
+        "Tentar conversar com ela":
+            jump dois1
+        "Tentar passar rapidamente por ela seguindo o caminho":
+            jump dois21
+
+label dois21:
+    n "Quando você se adianta, ela faz um gesto peculiar com as mãos e abaixa a cabeça, resmungando
+    muito baixo."
+    jump um27
+
+label um27:
+    n "Ela levanta a cabeça e solta um chamado no ar e você interrompe seus passos."
+    show fantasmagorico at right:
+        zoom 2.0
+        ypos 640
+    with dissolve
+    n "Após o ar ficar muito forte, você consegue distinguir um corpo fantasmagórico com rosto há muito já morto.
+    'Proteja-me, meu filho!' ela grita, e de repente ele cerca você."
+    n "Ele te ataca com pancadas de ar, que causam uma ardência dolorosa. O par de braços dele se enrosca em torno
+    de seu pescoço, tornando a respiração difícil e apertando cada vez mais."
+    n "Você distribui golpes com sua espada, mas isso causa pouco dano ao Fantasma. O aperto o estrangula cada vez mais, e você terá que usar a sua
+    magia para se libertar, a não ser que tenha alguma coisa em sua mochila para oferecer à mulher. Você:"
+
+    menu:
+        "Oferecerá um Espelho de Prata a ela":
+            if (espelho == True):
+                $espelho = False
+                $renpy.notify("item removido!")
+                play sound "musics/efeito_sonoro/item perdido.mp3"
+                jump tres87
+
+            else:
+                play sound "musics/efeito_sonoro/nao tem o item.mp3"
+                $renpy.notify("você não possui esse item!")
+                n "Ela fica irritada pois acha que você tentou enganá-la.
+                Assim, o fantasma parte para cima e você desembainha sua espada"
+                jump batalha_fantasmas
+
+        "Usará um Encanto do Fogo (teste de sorte)":
+            $ d2099roll = renpy.random.randint(1, 20)
+
+            if (d2099roll>= 13):
+                $renpy.notify("sucesso de sorte")
+                play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
+                n "você teve sucesso ao lançar o encanto"
+                play sound "musics/efeito_sonoro/bola de fogo.mp3"
+                jump dois40
+
+            else:
+                $renpy.notify("fracasso de sorte")
+                play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
+                n "Você não teve sucesso ao lançar o encanto"
+                n "se prepare para lutar!"
+                jump batalha_fantasmas
+        "Desembainhará a sua espada":
+            jump batalha_fantasmas
+
+label tres87:
+    n "À simples menção de um Espelho de Prata, ela se levanta, ergue as mãos e ordena ao Fantasma
+    que pare. Você dá a ela o Espelho, e ela diz que você pode seguir o seu caminho. Você tem sorte
+    de estar vivo."
+    jump seis
+
+label dois40:
+    n "Você ergue uma mão flamejante, passando-a pelas costas do fantasma, que está apertando seu
+    pescoço. A roupa se incendeia, e um grito silencioso sai da boca morta dentro dela. O
+    Fantasma recua. Você ateia mais fogo enquanto ele bate em retirada."
+    n "Andando cuidadosamente para a frente, você mantém o Fantasma à distância até passar em
+    segurança pela mulher."
+    jump seis
+
+label seis:
+    n "O caminho segue ao longo do rio por vários metros e depois volta a penetrar na rocha. Você segue o
+    caminho por algum tempo."
+    jump tres67
 
 label um08:
     n "Você agarra a corda firmemente, recua e toma impulso na direção do rio pútrido. Subitamente, a
@@ -2248,21 +2536,23 @@ label um12:
     n " Você continua ao longo da passagem até chegar a uma encruzilhada, onde pode seguir em frente ou tomar a
     passagem da esquerda."
     menu cobra:
-        "ir para a esquerda? (ainda em desenvolvimento)":
-            $renpy.notify("opção invalida!")
-            jump cobra
+        "ir para a esquerda?":
             jump dois12
         "seguir em frente?":
             jump tres67
 
-label dois12: ##incompleto
+label dois12:
+    n "Tomando a bifurcação da esquerda, você segue um caminho que acaba por se juntar a uma outra
+    passagem que conduz para a direção norte. Você segue este novo caminho por algum tempo, até
+    que ele acaba por se alargar."
+    jump nove0
 
 label tres67:
     scene passagem_esgoto at center:
         zoom 2.0
 
     n "Alguma distância adiante na passagem, você chega a uma junção de quatro caminhos. Você toma o
-    caminho do norte, que acaba chegando a urna grande porta de madeira."
+    caminho do norte, que acaba chegando a uma grande porta de madeira."
     n "Você não consegue ouvir nada escutando pelo buraco da fechadura. Você tentará abrir a porta lentamente e sem ruído ou derrubá-la à força?"
     menu:
         "abrir a porta com cautela?":
@@ -2304,13 +2594,11 @@ label dois57:
     menu sala_golem:
         "correr para a porta do outro lado do aposento?":
             jump dois37
-        "tentar falar com a criatura? (ainda em desenvolvimento)":
-            $renpy.notify("opção invalida!")
-            jump sala_golem
+
+        "tentar falar com a criatura?":
             jump tres57
-        "avançar lentamente na direção das caixas no canto? (ainda em desenvolvimento)":
-            $renpy.notify("opção invalida!")
-            jump sala_golem
+
+        "avançar lentamente na direção das caixas no canto?":
             jump dois00
 
 label dois37:
@@ -2322,9 +2610,99 @@ label dois37:
 
     jump um69
 
-label tres57: ##incompleto
+label tres57:
+    n "A criatura é aparentemente surda-muda. Você a saúda em todas as línguas que conhece, mas ela
+    continua de pé em silêncio. Você se desloca na direção do centro do aposento."
+    jump dois00
 
-label dois00: ##incompleto
+label dois00:
+    n "Ao seu primeiro movimento, a criatura parece sair de seu transe e caminha na sua direção. Ao ver
+    isso, você irá:"
+    menu:
+        "Correr para a porta do outro lado do aposento":
+            jump dois37
+        "partir na direção das caixas e arriscar-se a enfrentar este gigante silencioso":
+            jump nove8
+
+label nove8:
+    n "O Golem que avança na sua direção é uma criatura que se move com lentidão, e você alcança
+    facilmente as caixas. Enquanto você luta com as fechaduras, o Golem chega até você. Você pode:"
+    menu:
+        "Desembainhar a sua espada e lutar contra a criatura":
+
+            $ oponente_max_hp = 60
+            $ oponente_hp = oponente_max_hp
+
+            jump batalha_golem
+        "Lançar um Encanto de Cópia de Criatura (teste de sorte)":
+            $ d2098roll = renpy.random.randint(1, 20)
+
+            if (d2098roll>= 14):
+                $renpy.notify("sucesso de sorte")
+                play sound "musics/efeito_sonoro/sorte-sucesso.mp3"
+                n "durante a conjuração da criatura, você se confunde colocando algumas palavras elementais junto ao encanto!"
+                n "dessa forma, o seu golem sofreu uma transformação, se tornando um elemental misto de eletricidade e fogo!"
+                jump batalha_golem_vs_golem
+            else:
+                $renpy.notify("fracasso de sorte")
+                play sound "musics/efeito_sonoro/sorte-fracasso.mp3"
+                n "Você errou uma palavra do encanto e o golem parte para cima!"
+
+                $ oponente_max_hp = 60
+                $ oponente_hp = oponente_max_hp
+
+                jump batalha_golem
+        "Deixar as caixas de lado e correr para a porta":
+            jump dois37
+
+label um47:
+
+    play music "musics/yt1s.com - Magic Fantasy Music  The Mystic  Beautiful Violin.mp3"
+
+    n "O Golem desaba no chão e se parte em pedaços. Aliviado, você anda até as caixas e as examina.
+    Você tentará abrir:"
+    menu:
+        "A primeira caixa":
+            jump dois60
+        "A segunda caixa":
+            jump um29
+
+label um29:
+    n "Você luta com a caixa por algum tempo, tentando abri-la. Então puxa a espada e a golpeia,
+    mas a única coisa que consegue é fazer sua espada perder o fio. Você não consegue abrir a caixa. O que irá fazer?: "
+    menu:
+        "Tentar abrir a primeira caixa":
+            jump dois60
+        "Deixar as caixas de lado e seguirá em frente":
+            jump dois37
+
+label dois60:
+    n "Depois de alguma insistência, a caixa abre. Há uma chave de prata lá dentro. Você:"
+    menu:
+        "Tentará usar a chave na segunda caixa":
+            jump tres4
+        "Pegará a chave e partirá para a porta de saída?":
+            jump dois37
+
+label tres4:
+    n "A chave gira e, retirando a tranca, você abre a caixa, encontrando outra chave, dessa vez talhada em
+    um metal verde cintilante. Você irá:"
+    menu:
+        "Explorar um pouco mais o quarto":
+            jump oito9
+        "Sair do aposento com as duas chaves":
+            jump dois37
+
+label oito9:
+    n "Lá dentro há um vidro grande que
+    contém uma aranha. Mas não é uma aranha comum; esta criatura tem o rosto de um velho. Ele está
+    falando com você, mas você não consegue entender o que ele está dizendo."
+    n "Um barulho chama a sua atenção, você se vira e vê que a porta por onde você entrou está começando a abrir.
+    Você põe o vidro na sua mochila e parte para a outra porta."
+    $renpy.notify("aranha no frasco adquirida!!!")
+    play sound "musics/efeito_sonoro/item encontrado.mp3"
+    $aranha_garrafa = True
+    jump dois37
 
 label um69:
 
@@ -2487,6 +2865,8 @@ label seis4:
     scene portais at center:
         zoom 2.0
 
+    play music "musics/rota djonga.mp3"
+
     n "Você ouve junto à porta e consegue escutar vozes esganiçadas rindo e brigando. Você experimenta
     a maçaneta e a porta abre. O lado de dentro é um aposento de cores vivas."
     scene quarto_goblin
@@ -2519,6 +2899,13 @@ label dois86:
 
     n "As pequenas criaturas guincham e se amontoam quando você se aproxima. Você passa todas a fio
     de espada, mas eles não oferecem nenhuma resistência!"
+
+    $ morte_goblins = True
+
+    $renpy.notify("nossa você realmente fez isso...")
+
+    $renpy.notify("os arautos vão se lembrar da sua escolha...")
+
     n "Você fica um pouco desconfiado com essa
     batalha tão fácil e dirige-se para a porta do outro lado do aposento."
     jump um40
@@ -2556,6 +2943,8 @@ label um82:
 
     scene quarto_escuro at center:
         zoom 1.5
+
+    play music "musics/medo.mp3" volume 2.0
 
     n "Você se sente sugado para o interior do aposento. Como que por um passe de mágica, sua tocha
     tremula e se apaga. O aposento está escuro como breu. De nenhum lugar, mas ainda assim de toda
@@ -2723,7 +3112,7 @@ label dois29:
 label seis7:
     n "Uma das cabeças morde profundamente o seu braço. e você se prepara para uma batalha ate a morte com a hidra!"
 
-    $ oponente_max_hp = 70
+    $ oponente_max_hp = 80
     $ oponente_hp = oponente_max_hp
 
     jump batalha_hidra
@@ -2851,6 +3240,12 @@ label quatro2:
     n "Ela olha para a sua oferta e seus olhos se arregalam. 'Deixe-me ver isso', ela ordena. Você avança
     cuidadosamente na direção dela e mostra a escova. Ela pega o objeto e passa vários minutos
     admirando-o."
+
+    $renpy.notify("removeu escova de cabelo!!")
+    play sound "musics/efeito_sonoro/item perdido.mp3"
+
+    $ escova_cabelo = False
+
     n "'Isto é de fato uma obra de arte', ela diz, e se levanta da cama para experimentá-la
     em frente ao espelho. Ao escovar os cabelos dela, eles assumem um brilho incomum, cintilando
     suavemente. Ela fica fascinada com seu presente, e esta é a sua chance de sair sem ser notado pela
@@ -2885,6 +3280,7 @@ label tres04:
     Parece ser alguma coisa como o estúdio de um artista, e há diversas estátuas inacabadas de pedra
     alinhadas na parede."
     show gargula at center
+    with dissolve
     n "No centro do aposento, há um grande GÁRGULA de pedra sobre uma caixa
     entalhada em pedra. Quando você entra no aposento, a criatura faz ruído ao virar a cabeça na sua
     direção. Lentamente, ele desperta para a vida, descendo do seu pedestal."
@@ -3079,7 +3475,7 @@ label despertar_balthus:
     play music "musics/fase 2.mp3"
 
     n "O lorde do caos havia lancado um encantamento antigo e proibido, os anos de estudo do mago garatiram que ele sabia do que se tratava.
-    'Atigos espirítos de Yore,transformem essa forma decadente em ldabaoth',Balthus havia desistido de sua forma humana para tentar a vitória,a luta continua!"
+    'Antigos espirítos de Yore,transformem essa forma decadente em ldabaoth',Balthus havia desistido de sua forma humana para tentar a vitória,a luta continua!"
 
     jump batalha_balthus2
 
@@ -3149,6 +3545,35 @@ label morte_balthus:
 
     jump fim_batalha
 
+label facada:
+    hide screen batalha_balthus
+
+    show balthus normal at right:
+        zoom 0.7
+    with flash
+    with dissolve
+
+    n "Balthus volta a a sua forma humana, no entanto degastado e ferido.Ele pateticamente cai de joelhos,olha para cima em sua direção e diz:"
+
+    b "Mago! Você já provou seu valor,governe ao meu lado,aqueles porcos imundos do vale não merecem sua salvação,torne-se um lorde do caos ao meu lado!"
+
+    n "O mago se aproxima a passos lentos de Balthus e com o olhar penetrante o examina"
+
+    mc "..."
+    mc "...."
+    mc "Posso ter sido um escravo do meu destino Balthus,eu nunca escolhi ser um mago, eu não escolhi me arriscar na sua maldita cidadela! Mas agora..."
+    mc "Eu escolho matá-lo! Ó 'lorde do caos'"
+
+    play sound "musics/efeito_sonoro/facada.mp3"
+
+    n "O mago invoca um punhal e apunha-la Balthus em sua jugular,enquanto o observa cair sem vida, um fim mortal para aquele que se dizia um deus"
+
+    hide balthus
+
+    hide mc
+
+    jump fim_batalha
+
 label fim_batalha:
 
     hide balthus
@@ -3173,7 +3598,7 @@ label final_alvorecer:
         zoom 2.2
     n "Você se dirige a varanda e contempla, tudo isso seria destruido caso você tivesse falhado, tal realização te enche de orgulho,seu sofrimento não foi em vão,
     é hora de voltar para casa e abracar todos aqueles que ama!
-    Sua jornada termina aqui,mas sempre que houver escuridao, o mago escuridão,o mago retornará!"
+    Sua jornada termina aqui,mas sempre que houver escuridao, o mago retornará!"
 
     $renpy.notify("fim de jogo")
 
@@ -3192,6 +3617,7 @@ label final_lorde:
     jump creditos
 
 label creditos:
+    $ quick_menu = False
 
     play music "musics/trilha creditos.mp3"
 
@@ -3257,6 +3683,7 @@ label batalha_guardas:
                     play sound "musics/efeito_sonoro/ataque espada.mp3"
 
                     $ oponente_hp -= 5
+                    $mago_damage = 5
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
 
@@ -3677,6 +4104,8 @@ label batalha_contra_um:
     'oponente derrotado!!!'
     n "Dessa forma, você prossegue a sua jornada para a Torre Negra"
     $renpy.notify("Punhal pilhado!")
+    play sound "musics/efeito_sonoro/item encontrado.mp3"
+
     jump dois18
 
 label batalha_contra_dois:
@@ -3767,10 +4196,14 @@ label batalha_contra_dois:
     hide screen batalha_generica
     'oponentes derrotados!!!'
     $renpy.notify("Punhal pilhado!")
+    play sound "musics/efeito_sonoro/item encontrado.mp3"
     n "Dessa forma, você prosseguirá com a sua jornada para a Torre Negra."
     jump dois18
 
 label batalha_calacorm:
+
+    show calacorm at right:
+        zoom 1.5
 
     play music "musics/Makai Symphony - Dragon Castle.mp3"
 
@@ -3843,6 +4276,7 @@ label batalha_calacorm:
                     n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
         else:
+            hide batalha_generica
             jump final_ruim
 
         if(oponente_hp > 0):
@@ -4276,6 +4710,7 @@ label batalha_ganjees:
                     #mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
                     n "você ve sua espada atravessar o corpo da criatura sem causar dano algum!"
                     $renpy.notify("ataque ineficaz contra espectros!!")
+                    play sound "musics/efeito_sonoro/nao tem o item.mp3"
 
 
                 "Bola de fogo (2 a 8 de dano)":
@@ -4285,7 +4720,7 @@ label batalha_ganjees:
 
                         $ mago_damage = renpy.random.randint(2, 8)
                         $ oponente_hp -= mago_damage
-                        $ mago_mp -= 30
+                        $ mago_mp -= 6
                         mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
                     else:
                         $renpy.notify("mana insuficiente!!")
@@ -4324,7 +4759,7 @@ label batalha_ganjees:
 
             $ chance_acerto = renpy.random.randint(1, 100)
 
-            if (chance_acert < 65):
+            if (chance_acerto < 65):
 
                 $ oponente_damage = renpy.random.randint(2, 6)
 
@@ -4450,7 +4885,7 @@ label batalha_hidra_vs_hidra:
     play music "musics/Makai Symphony - Dragon Castle.mp3"
 
 
-    $ oponente_max_hp = 70
+    $ oponente_max_hp = 80
     $ mago_max_hp = 60
     $ oponente_hp = oponente_max_hp
     $ mago_hp = mago_max_hp
@@ -4520,7 +4955,7 @@ label batalha_hidra_vs_hidra:
         if(oponente_hp > 0):
             $ oponente_damage = renpy.random.randint(4, 10)
 
-            $ mago_hp -= 30
+            $ mago_hp -= oponente_damage
 
             n " {i}*o oponente te arrasta para o seu covil!*{/i} (dano recebido - [oponente_damage]hp)"
 
@@ -4585,6 +5020,8 @@ label batalha_balthus1:
                         play sound "musics/efeito_sonoro/sem mana.mp3"
                         jump batalha15
 
+                    if oponente_hp <= 0:
+                        jump segredo
 
                 "estilo yore desabrochar arcano (6 a 20 de dano)":
 
@@ -4616,7 +5053,7 @@ label batalha_balthus1:
             jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(6, 10)
 
             $ mago_hp -= oponente_damage
 
@@ -4667,7 +5104,8 @@ label batalha_balthus2:
                     $ mago_damage = 10
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
-
+                    if(oponente_hp <= 0):
+                        jump facada
 
                 "estilo yore rugido do dragao (6 a 14 de dano)":
 
@@ -4719,7 +5157,7 @@ label batalha_balthus2:
 
             if (chance_acerto < 75):
 
-                $ oponente_damage = renpy.random.randint(2, 6)
+                $ oponente_damage = renpy.random.randint(8, 15)
 
                 $ mago_hp -= oponente_damage
 
@@ -4730,7 +5168,7 @@ label batalha_balthus2:
                 n "balthus avança em sua direção com poder nas mãos, mas você consegue desviar aproveitando a chance para contraatacar com sua espada!"
                 play sound "musics/efeito_sonoro/ataque espada.mp3"
 
-                $ mago_damage = 5
+                $ mago_damage = 10
                 $ oponente_hp -= mago_damage
                 mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
@@ -4739,6 +5177,7 @@ label batalha_balthus2:
     jump morte_balthus
 
 label batalha_giras:
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
     show mc invertido at right:
         zoom 0.9
         xpos 2350
@@ -4809,7 +5248,7 @@ label batalha_giras:
                     n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
 
         else:
-            hide screen batalha_generica
+            hide screen batalha_generica1
             jump final_ruim
 
         if(oponente_hp > 0):
@@ -4858,6 +5297,7 @@ label batalha_devlin:
                     #mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
                     n "você ve sua espada atravessar o corpo da criatura sem causar dano algum!"
                     $renpy.notify("ataque ineficaz contra espectros!!")
+                    play sound "musics/efeito_sonoro/nao tem o item.mp3"
 
 
                 "Bola de fogo (2 a 8 de dano)":
@@ -4952,8 +5392,6 @@ label batalha_gargula:
                     $ oponente_hp -= mago_damage
                     mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
 
-
-
                 "Bola de fogo (2 a 8 de dano)":
 
                     if(mago_mp >= 6):
@@ -4982,6 +5420,91 @@ label batalha_gargula:
                         play sound "musics/efeito_sonoro/sem mana.mp3"
                         jump batalha19
 
+        else:
+            hide screen batalha_generica
+            n "você fica com medo de enfrentar a gargula sozinho e corre de volta para o portal do meio"
+            jump seis4
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(5, 8)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*a gargula te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    hide gargula
+    "gargula derrotado!"
+    jump seis2
+
+label batalha_elfo_negro:
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+    show mc normal at left:
+        zoom 0.551111111
+    with fade
+
+    show elfo_negro at right:
+        zoom 0.8
+        ypos 1150
+    with dissolve
+
+    $ oponente_max_hp = 85
+    $ mago_max_hp = 60
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu batalha20:
+
+                "Ataque com espada ( 5 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = 5
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+                "Bola de fogo (2 a 8 de dano)":
+
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha20
+
+                "Raio arcano (1 a 12 de dano)":
+
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha20
+
                 "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
                     $ mago_hp = min(mago_hp+15, mago_max_hp)
                     $ elixirHP_left -= 1
@@ -4994,19 +5517,1068 @@ label batalha_gargula:
 
         else:
             hide screen batalha_generica
-            n "você fica com medo de enfrentar a gargula sozinho e corre de volta para o portal do meio"
-            jump seis4
+            jump final_ruim
 
         if(oponente_hp > 0):
-            $ oponente_damage = renpy.random.randint(2, 6)
+            $ oponente_damage = renpy.random.randint(4, 7)
 
             $ mago_hp -= oponente_damage
 
-            n " {i}*a gargula te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+            n " {i}*o oponente te ataca!!*{/i} (dano recebido - [oponente_damage]hp)"
 
             play sound "musics/efeito_sonoro/gemido-combate.mp3"
 
     hide screen batalha_generica
-    hide gargula
-    "gargula derrotado!"
-    jump seis2
+    'oponente derrotado!!!'
+    hide elfo_negro with dissolve
+    hide mc normal with dissolve
+    jump dois72
+
+label batalha_golem:
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+    show mc normal at left:
+        zoom 0.6
+    with fade
+
+    show pedroso:
+        zoom 1.7
+        ypos 100
+        xpos 600
+    with dissolve
+
+    #$ oponente_max_hp = 60
+    $ mago_max_hp = 60
+    #$ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu batalha21:
+
+                "Ataque com espada ( 5 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = 5
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+                "Bola de fogo (2 a 8 de dano)":
+
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha21
+
+                "Raio arcano (1 a 12 de dano)":
+
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha21
+
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
+        else:
+            hide screen batalha_generica
+            jump final_ruim
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(7, 8)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*o oponente te da um soco!!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    'oponente derrotado!!!'
+    hide pedroso with dissolve
+    hide mc normal
+    jump um47
+
+label batalha_fantasmas:
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+    hide mulher_roupa
+    with dissolve
+
+    show mc normal at left:
+        zoom 0.6
+    with fade
+
+    $ oponente_max_hp = 60
+    $ mago_max_hp = 60
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu batalha22:
+
+                "Ataque com espada ( 5 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    #$ mago_damage = 5
+                    #$ oponente_hp -= mago_damage
+                    #mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+                    n "você ve sua espada atravessar o corpo da criatura sem causar dano algum!"
+                    $renpy.notify("ataque ineficaz contra espectros!!")
+                    play sound "musics/efeito_sonoro/nao tem o item.mp3"
+
+                "Bola de fogo (2 a 8 de dano)":
+
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha22
+
+                "Raio arcano (1 a 12 de dano)":
+
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha22
+
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
+        else:
+            hide screen batalha_generica
+            jump final_ruim
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(4, 7)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*o oponente te ataca!!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    'oponente derrotado!!!'
+    hide mc normal with fade
+    hide fantasmagorico
+    jump seis
+
+label batalha_golem_vs_golem:
+    play music "musics/Makai Symphony - Dragon Castle.mp3"
+
+    show golem_clone at left:
+        zoom 1.0
+    with dissolve
+
+    show pedroso:
+        zoom 1.7
+        ypos 100
+        xpos 600
+    with dissolve
+
+    $ oponente_max_hp = 80
+    $ mago_max_hp = 80
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixirHP_left = 10
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 0
+    $ elixirMP_left = 0
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu batalha23:
+
+                "soco de pedra ( 8 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = 8
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+
+                "Bola de fogo (2 a 8 de dano)":
+
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha23
+
+                "choque do trovão (1 a 12 de dano)":
+
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha23
+
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
+        else:
+            hide golem_clone
+            hide screen batalha_generica
+            n "o seu golem pereceu, agora cabe a você terminar o que ele começou!"
+            jump batalha_golem
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(7, 8)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*o golem te ataca!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    hide pedroso
+    hide golem_clone
+    "golem derrotado!"
+    jump um47
+
+label segredo:
+    hide screen batalha_balthus
+    stop music
+    n "balthus cai ao chão, ofegante e antes de seu ultimo suspiro, ele te conta o real objetivo dele:"
+
+    b "durante meus anos de estudo duas entidades entraram em contato comigo, os arautos, eles disseram que eu tinha potencial e propuseram uma aposta comigo."
+    b "caso eu dominasse toda a região, eles me tornariam um deles, me chamariam de arauto da morte, na época eu aceitei sem pensar duas vezes."
+    b "entretanto, eu percebi que isso foi apenas uma grande mentira! que eles haviam me tornado apenas um escravo deles."
+    b "e agora que você me derrotou, eles devem vir atras de você, não cometa o mesmo erro que eu."
+
+    n "balthus levanta a mão em sua direção, como se fosse lançar uma magia em você."
+
+    play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+    n "antes que você pudesse fazer qualquer coisa para se defender, a rajada de mana te atinge em cheio, a imagem dos arautos aparece na sua mente, esse é a prova de que balthus disse a verdade?"
+
+    b "esse é o meu presente para você, espero que esses novos poderes lhe sirvam bem, faça a escolha correta."
+
+    n "apos isso, ele cai ao chão sem vida"
+
+    n "você sente uma tontura repentina e cai ao chão sem ter tempo de reação"
+
+    scene black with fade
+    if (morte_goblins):
+        jump arauto_destruicao
+    else:
+        jump arauto_criacao
+
+label arauto_destruicao:
+
+    scene destruicao:
+        zoom 2.4
+
+    n "Você olha para cima e observa oque parece ser uma entidade enorme, em meio a um cenário desolador"
+
+    show dartmol at center:
+        zoom 0.8
+    with dissolve
+
+    "Ah olá,você gosta mesmo de dormir hein?"
+    "Era pro Balthus estar aqui e tudo oque vejo é você..."
+    "[Protagonista1]"
+    "Parece que você destruiu meu brinquedo, mas o seu ainda está de pé..."
+    "Depois de todo o trabalho que eu tive pra arrumar todas as peças..."
+    "Bem isso não estava planejado, mas que seja! Farei jus ao meu nome como arauto da destruição!"
+    play music "musics/andrids theme.mp3"
+    A "Eu sou Dartmol, e serei seu adversário!!!"
+    A "Agora vamos!!!"
+    jump batalha_destruicao
+
+label arauto_criacao:
+
+    "acorde campeão, ja dormiu demais, tenho uma proposta pra você"
+    n "você abre os olhos e nota que esta em um ambiente totalmente novo, aparentemente um reino etereo"
+
+    scene criacao:
+        zoom 2.5
+
+    show viniman at center:
+        zoom 1.3
+    with dissolve
+
+    n "voce olha pra cima e nota uma gigantesca entidade te observando, possivelmente ela que te trouxe aqui"
+    "finalmente acordou, fazem 5 horas que te trouxe pra cá, esta cansado? quer um pedaço de bolo de limao e suco?"
+    "temos um assunto importante a tratar"
+    n "como num passe de magica, uma mesa com bolos e sucos aparece a sua frente."
+    n "voce pega um pedaço e ao dar uma mordida, você entra em extase, é a comida mais saborosa da sua vida!"
+    n "suas feridas e seu cansaço desaparecem, você esta em sua melhor forma!"
+    "agora que você esta pronto, preciso me apresentar, sou viniman, o arauto da criação!"
+    V "você tambem deve escutar, invasor, ou prefere que te chame de [Protagonista1]?"
+    V "nós os arautos preparamos com tanto carinho as peças e vocês atrapalharam tudo!"
+    V "mas eu encontrarei o perdão no meu coração, com uma condição, vocês dois terminarem o que Balthus começou, aceitam?"
+    menu:
+        "juntar-se a eles":
+            n "vocês aceitam a proposta"
+            V "muito bem, vocês fizeram a escolha correta!"
+            V "agora vá e cumpra a sua promessa!"
+            play sound "musics/efeito_sonoro/estalo.mp3"
+            jump final_lorde
+
+        "recusar a proposta":
+            play music "musics/viniman.mp3"
+            n "vocês rejeitam a proposta! falando que Balthus contou toda a verdade!"
+            V "aquele ingrato nos traiu?!?"
+            V "tudo bem... ja que é o que vocês querem, se preparem para sentir a minha ira!"
+            jump batalha_criacao
+
+label batalha_destruicao:
+
+    show mc bombado at left:
+        zoom 0.6
+    with dissolve
+
+    show dartmol at right:
+        zoom 0.8
+
+    $ oponente_max_hp = 250
+    $ mago_max_hp = 120
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixirHP_left = 10
+    $ mago_max_mp = 80
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
+
+    show screen batalha_dartmol
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu batalhadestru:
+
+                "estilo yore tormenta das espadas (15 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = 15
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+                "estilo yore rugido do dragao (6 a 14 de dano)":
+
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                        $ mago_damage = renpy.random.randint(6, 14)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "estilo yore! rugido do dragao!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalhadestru
+
+
+                "estilo yore desabrochar arcano (6 a 20 de dano)":
+
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                        $ mago_damage = renpy.random.randint(6, 20)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "estilo yore! desabrochar arcano!!!!! (dano causado - [mago_damage]hp)"
+
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalhadestru
+
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+25, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 25 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
+        else:
+            hide screen batalha_dartmol
+            jump recomeco
+
+        if(oponente_hp > 0):
+
+            $ chance_acerto = renpy.random.randint(1, 100)
+
+            if (chance_acerto < 75):
+
+                $ oponente_damage = renpy.random.randint(10, 20)
+
+                $ mago_hp -= oponente_damage
+
+                n " {i}*o grande arauto te ataca !*{/i} (dano recebido - [oponente_damage]hp)"
+
+                play sound "musics/efeito_sonoro/gemido-combate.mp3"
+            else:
+                n "dartmol avança em sua direção atirando raios de gelo, mas você consegue desviar aproveitando a chance para contraatacar com sua espada!"
+                play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                $ mago_damage = 15
+                $ oponente_hp -= mago_damage
+                mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+    hide screen batalha_dartmol
+    hide dartmol
+    'dartmol derrotado!!!'
+    jump morte_destru
+
+label batalha_criacao:
+
+    show mc bombado at left:
+        zoom 0.6
+    with dissolve
+
+    show viniman at right:
+        zoom 1.3
+
+    $ oponente_max_hp = 250
+    $ mago_max_hp = 120
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ elixirHP_left = 10
+    $ mago_max_mp = 80
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
+
+    show screen batalha_viniman
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu batalhacria:
+
+                "estilo yore tormenta das espadas (15 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ mago_damage = 15
+                    $ oponente_hp -= mago_damage
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+                "estilo yore rugido do dragao (6 a 14 de dano)":
+
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                        $ mago_damage = renpy.random.randint(6, 14)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "estilo yore! rugido do dragao!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalhacria
+
+
+                "estilo yore desabrochar arcano (6 a 20 de dano)":
+
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                        $ mago_damage = renpy.random.randint(6, 20)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "estilo yore! desabrochar arcano!!!!! (dano causado - [mago_damage]hp)"
+
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalhacria
+
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+25, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 25 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+
+        else:
+            hide screen batalha_viniman
+            jump recomeco
+
+        if(oponente_hp > 0):
+
+            $ chance_acerto = renpy.random.randint(1, 100)
+
+            if (chance_acerto < 75):
+
+                $ oponente_damage = renpy.random.randint(10, 20)
+
+                $ mago_hp -= oponente_damage
+
+                n " {i}*o arauto te ataca !*{/i} (dano recebido - [oponente_damage]hp)"
+
+                play sound "musics/efeito_sonoro/gemido-combate.mp3"
+            else:
+                n "viniman avança em sua direção com bolas de fogo nas mãos, mas você consegue desviar aproveitando a chance para contraatacar com sua espada!"
+                play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                $ mago_damage = 15
+                $ oponente_hp -= mago_damage
+                mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+    hide screen batalha_viniman
+    hide viniman
+    'viniman derrotado!!!'
+    jump morte_cria
+
+label morte_cria:
+    n "Em meio a uma névoa densa e fria, surge outro ser que emana grandiozidade, mais um arauto aparece diante de você"
+    play music "musics/andrids theme.mp3"
+
+    show dartmol at right:
+        zoom 0.8
+
+    A "Ora ora..."
+    A "Parece que viniman foi derrotado."
+    A " [Protagonista1], saiba que em condições normais eu destruiria você,meu irmão merecia muito mais que sua morte,junto de seu brinquedo patético..."
+    A "Mas viniman era honrado, e na medida do possível piedoso,ele nao aprovaria mais sangue."
+    A "Escolham seu próprio futuro,vocês fizeram por merecer."
+    A "Quem sabe nós voltemos a nos ver..."
+    A "Até mais"
+    A "..."
+    A "...."
+    jump final_real
+
+label morte_destru:
+    n "dartmol jaz morto no chão!"
+    n "você escruta um grande estrondo! aparecendo uma outra entidade, a qual voce julga ser o outro arauto"
+
+    play music "musics/viniman.mp3"
+
+    show viniman at right:
+        zoom 1.3
+
+    V "Mago! Invasor, ou devo dizer [Protagonista1]!"
+
+    V "o que vocês fizeram com meu irmão?!? ele provavelmente nao deu outra opção para vocês certo?"
+    V "ele sempre foi muito esquentadinho mesmo"
+    V "parabéns, voces alcançaram a liberdade de escolher o proprio destino! 'Ele' deve cuidar do resto, até mais"
+    n "viniman se retira, levando o corpo de seu irmão junto! quem seria esse tal de 'Ele'?"
+    jump final_real
+
+label final_real:
+
+    stop music
+
+    hide viniman
+    with pixellate
+    hide dartmol
+    with pixellate
+
+    scene black
+    with dissolve
+
+    U "..."
+    U "...."
+    U "....."
+
+    play sound "musics/efeito_sonoro/andando.mp3"
+
+    mc "Então esse é o limite..."
+    mc "..."
+    mc "...."
+
+    show mc at center:
+        zoom 0.6
+    with dissolve
+
+    play sound "musics/efeito_sonoro/batendo monitor.mp3"
+
+
+    mc "Você,aí do outro lado do que quer que seja isso!"
+    mc "Eu não sei oque diabos está acontecendo, tudo desapareceu, mas por algum motivo,você não."
+    mc "Você nao me parece um arauto, eles temeram você, na verdade não parece com nada que já encontrei antes."
+    mc "Eu estou preso neste vazio infernal a mais tempo do que gostaria, você é o tal [Protagonista1]?"
+
+    menu:
+        "sim":
+            mc-"E você pode me ajudar?"
+
+    menu:
+        "Eu nao sei como":
+            mc "Droga..."
+
+    mc "Se os arautos deram tanta atencão a você, deve ter algo que pode ser feito!"
+
+    U "Não se preocupem, mago, [Protagonista1], Já está acontecendo..."
+
+    mc "Oque?"
+
+    play music "musics/q lindo.mp3"
+    scene entrada_balthus:
+        zoom 2.0
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    scene quarto_hydra:
+        zoom 1.5
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    scene arena_final1:
+        zoom 1
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    scene topo_torre:
+        zoom 1
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    scene entrada_caos:
+        zoom 1.8
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    scene caminho_cidadela:
+        zoom 1.5
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    scene cidadela1:
+        zoom 1
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    scene portao:
+        zoom 1
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    scene sala_oseamus:
+        zoom 1.5
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    scene corredor_escuro:
+        zoom 3
+    show mc at center:
+        zoom 0.6
+    pause 3
+
+    mc "Será que era disso que o Balthus estava falando?"
+
+    scene esgoto:
+        zoom 1
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene sala_golem:
+        zoom 1.3
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene sala_jantar:
+        zoom 1
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene portais:
+        zoom 2.0
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene quarto_morena:
+        zoom 1
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene quarto_goblin:
+        zoom 1
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene biblioteca:
+        zoom 1
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene salao at truecenter:
+        zoom 1.5
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene prisao at truecenter:
+        zoom 2.8
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene bg14 at truecenter:
+        zoom 1.09
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene bg at truecenter:
+        zoom 2.0
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene quarto_escuro:
+        zoom 1.5
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene bg13 at truecenter:
+        zoom 0.7
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    scene casa_prota:
+        zoom 2.2
+    show mc at center:
+        zoom 0.6
+    pause 2
+
+    mc "Aquela é, minha antiga casa? Mas ela foi..."
+    U "Você não precisa mais lutar ,tsugausa,nunca mais."
+    mc "Meu nome?! Mas como..."
+    U "E [Protagonista1], seu trabalho foi executado com exímio."
+    U "Não esperaria menos do 'invasor'"
+    U "..."
+    U "...."
+    mc "Parece que Ele se foi,eu nem tive a chance de perguntar quem ele era..."
+    mc "Seja lá o que foi tudo isso, eu te devo um obrigado."
+    mc "Caramba eu estou sendo um babaca, não sei se da pra confiar nisso tudo mas finalmente parece que eu tenho paz,que eu tenho escolha..."
+    mc "Obrigado [Protagonista1],muito obrigado!"
+
+    hide mc
+    with dissolve
+    play sound "musics/efeito_sonoro/andando.mp3"
+
+    pause 4
+
+    stop sound
+
+    jump creditos
+
+label final_alt:
+
+    stop music
+
+    scene arautos at center:
+        zoom 3
+
+    show dartmol at right:
+        zoom 0.8
+
+    show viniman at left:
+        zoom 1.3
+
+    n "você misteriosamente é teleportado a um plano etereo de gelo e fogo, há duas entidades a sua frente conversando entre si"
+
+    n "eles notam a sua presença e olham para voce com um olhar inquisitivo"
+
+    a2 "Como você chegou aqui?!"
+
+    a2 "mas que Po..."
+
+    a2 "você nao deveria estar aqui!"
+    jump batalha_arautos
+
+label batalha_arautos:
+    play music "musics/batalha dupla.mp3"
+
+    show mc normal at left:
+        zoom 0.6
+    with fade
+
+    show dartmol at right:
+        zoom 0.8
+    with dissolve
+
+    show viniman:
+        xpos 1050
+        ypos 400
+        zoom 1.3
+    with dissolve
+
+    $ oponente_max_hp = 500
+    $ mago_max_hp = 60
+    $ oponente_hp = oponente_max_hp
+    $ mago_hp = mago_max_hp
+    $ mago_max_mp = 50
+    $ mago_mp = mago_max_mp
+    $ elixirHP_left = 10
+    $ elixirMP_left = 5
+
+
+    show screen batalha_generica
+
+    while (oponente_hp > 0):
+
+        if mago_hp > 0:
+            menu batalha1:
+
+                "Ataque com espada (5 de dano)":
+
+                    play sound "musics/efeito_sonoro/ataque espada.mp3"
+
+                    $ oponente_hp -= 5
+                    $mago_damage = 5
+                    mc "Raaaaah!!!!! (dano causado - [mago_damage]hp)"
+
+
+                "Bola de fogo (2 a 8 de dano)":
+                    if(mago_mp >= 6):
+                        play sound "musics/efeito_sonoro/bola de fogo.mp3"
+
+                        $ mago_damage = renpy.random.randint(2, 8)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 6
+                        mc "Bola de fogo!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha1
+
+                "Raio arcano (1 a 12 de dano)":
+
+                    if(mago_mp >= 10):
+                        play sound "musics/efeito_sonoro/raio arcano.mp3" volume 0.7
+
+                        $ mago_damage = renpy.random.randint(1, 12)
+                        $ oponente_hp -= mago_damage
+                        $ mago_mp -= 10
+                        mc "Raio arcano!!!!! (dano causado - [mago_damage]hp)"
+                    else:
+                        $renpy.notify("mana insuficiente!!")
+                        play sound "musics/efeito_sonoro/sem mana.mp3"
+                        jump batalha1
+
+                "tomar elixir da vida (tem [elixirHP_left] elixires)" if elixirHP_left > 0:
+                    $ mago_hp = min(mago_hp+15, mago_max_hp)
+                    $ elixirHP_left -= 1
+                    n "{i}*você sente suas feridas cicatrizarem!*{/i} (vida curada - 15 hp)"
+
+                "tomar elixir de mana (tem [elixirMP_left] elixires)" if elixirMP_left > 0:
+                    $ mago_mp = min(mago_mp+14, mago_max_mp)
+                    $ elixirMP_left -= 1
+                    n "{i}*você sente suas forças voltarem!*{/i} (mana restaurada - 14 mp)"
+        else:
+            hide screen batalha_generica
+            a2 "eliminamos esse pequeno problema, onde estavamos mesmo?"
+            jump final_ruim
+
+        if(oponente_hp > 0):
+            $ oponente_damage = renpy.random.randint(10, 10)
+
+            $ mago_hp -= oponente_damage
+
+            n " {i}*os arautos te atacam com fogo e gelo!*{/i} (dano recebido - [oponente_damage]hp)"
+
+            play sound "musics/efeito_sonoro/gemido-combate.mp3"
+
+    hide screen batalha_generica
+    'oponentes derrotados!!!'
+    jump dois51
+
+label recomeco:
+
+    scene arautos at center:
+        zoom 3
+    with dissolve
+
+    show dartmol at right:
+        zoom 0.8
+    with dissolve
+
+    show viniman at left:
+        zoom 1.3
+    with dissolve
+
+    A "é viniman... não alcançamos nosso objetivo novamente... o que acha de tentarmos de novo?"
+
+    V "Pensando bem... porque não?"
+
+    A "entao eu começo!"
+    play sound "musics/efeito_sonoro/estalo.mp3"
+    hide arautos
+    with dissolve
+
+    V "deixa comigo!"
+    play sound "musics/efeito_sonoro/estalo.mp3"
+
+    stop music
+    hide arautos
+    with dissolve
+
+    scene mapa
+
+    play music "musics/inicio_epico.mp3" fadein 1
+
+    n "O ordeiro e generoso povo do Vale dos Salgueiros vive há oito anos sob o terror e medo do
+    feiticeiro Balthus Dire."
+
+    n "Terror, porque o poder dele é realmente aterrorizante,  e medo causados
+    pela notícia que acabou chegando aos ouvidos desse povo, vinda dos domínios do feiticeiro, de que
+    seus ambiciosos planos de conquista começariam pelo próprio Vale."
+
+    n "Um fiel Semi-Elfo enviado em uma missão de espionagem à Torre Negra voltou galopando para o
+    Vale há três dias com uma mensagem desesperada."
+
+    n "Do interior das cavernas de Rocha Escarpada,
+    Balthus Dire tinha recrutado um exército de Caóticos e se preparava para atacar com eles o Vale
+    dentro de uma semana."
+
+    n "O bom Rei Salamon era um homem de ação. Foram enviados mensageiros por todo o Vale no
+    mesmo dia para preparar as defesas e convocar os homens para a guerra."
+
+    n "Foram enviados também cavaleiros à Grande Floresta de Yore para avisar aos Semi-Elfos que moravam lá e fazer um apelo
+    para que se aliassem às forças. O Rei Salamon era também um homem sábio."
+
+    n "Ele sabia muito bem que as notícias inevitavelmente chegariam aos ouvidos do Grande Mago de Yore, um mestre da
+    magia branca de grandes poderes, que vivia nas profundezas da floresta. O mago era velho e não
+    resistiria a uma batalha destas proporções."
+
+    n " Mas ele havia ensinado suas artes a vários jovens magos, e talvez um de seus discípulos de magia ajudasse o rei e seus súditos com coragem e ambição."
+
+    show mc normal at center:
+        zoom 0.6
+    with dissolve
+
+    n "Você é o aluno brilhante do Grande Mago de Yore. Ele tem sido um Mestre duro, e sua própria
+    impaciência muitas vezes foi mais forte do que você. Talvez um pouco precipitadamente, você
+    partiu de imediato para a corte de Salamon. O rei recebeu-o entusiasticamente e explicou seu plano."
+
+    n "A batalha poderia ser evitada sem derramamento de sangue se Balthus fosse assassinado antes que
+    seu exército pudesse ser reunido."
+
+    n "A missão que você tem pela frente é extremamente perigosa. Balthus Dire está cercado, em sua  Cidadela,
+    por uma multidão de criaturas assombrosas. Embora a Magia seja a sua arma mais forte,  haverá momentos em que você terá que confiar em sua espada para sobreviver."
+
+    n "O Rei Salamon expôs a você como seria a sua missão e o advertiu dos perigos que estavam à sua  frente.
+    Há um caminho melhor para atravessar a Cidadela. Se você o descobrir, terá êxito com um  mínimo de risco para a sua pessoa.
+    Talvez você precise de várias viagens para descobrir o caminho  mais fácil para atravessar a Cidadela"
+
+    n "antes da sua saida, o rei te chama e entrega um saco de couro com um punhado de moedas de ouro para auxiliar na sua jornada."
+
+    $renpy.notify("adquiriu dinheiro!")
+
+    play sound "musics/efeito_sonoro/item encontrado.mp3"
+
+    n "Você deixa o Vale dos Salgueiros na longa caminhada para a Torre Negra. No sopé da colina de  Rocha Escarpada,
+    você pode ver sua silhueta contra o céu escuro... "
+
+    $dinheiro = True
+
+    jump um
