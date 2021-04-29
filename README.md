@@ -13,10 +13,10 @@ Editora Marques Saraiva, GDC game audio, Ren'py engine, Breaking Copyrights, net
 integrantes do grupo:
 
 -André Corrêa (Dartmol203) Product Owner
--Vinicius Assumpção (Viniman27) Scrum Team
--Cesar Umeda (CesarUmeda) Scrum Team
--João Pedro Vaz (JoaoPedro0803) Scrum Master
--Gabriel Roger (GabrielRoger07) 
+- Vinicius Assumpção (Viniman27) Scrum Team
+- Cesar Umeda (CesarUmeda) Scrum Team
+- João Pedro Vaz (JoaoPedro0803) Scrum Master
+- Gabriel Roger (GabrielRoger07) Scrum Team
 
 Professor avaliador:
 
