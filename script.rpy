@@ -11,7 +11,7 @@ init python:
     velo_ouro      = False
     sabe_senha     = False
     essencia_porco = False
-    morte_goblins  = True
+    morte_goblins  = False
 
 define flash = Fade(.25, 0, .75, color="#fff")
 transform flip:
@@ -297,7 +297,7 @@ label start:
 
     $dinheiro = True
 
-    if (nome == 'caçador de arautos'):
+    if (nome == 'caçador de arautos' or nome == 'CAÇADOR DE ARAUTOS'):
         jump final_alt
 
     jump um
@@ -4563,7 +4563,7 @@ label batalha_morena1:
             play sound "musics/efeito_sonoro/gemido-combate.mp3"
 
     hide screen batalha_generica
-    'Lucretia derrotada!!!'
+    'manuzini derrotada!!!'
     jump despertar_morena
 
 label batalha_morena2:
@@ -5859,8 +5859,10 @@ label arauto_destruicao:
 
     n "Você olha para cima e observa oque parece ser uma entidade enorme, em meio a um cenário desolador"
 
-    show dartmol at center:
-        zoom 0.8
+    show dartmol at right:
+        zoom 0.5
+        xpos 2200
+        ypos 1500
     with dissolve
 
     "Ah olá,você gosta mesmo de dormir hein?"
@@ -5882,7 +5884,7 @@ label arauto_criacao:
     scene criacao:
         zoom 2.5
 
-    show viniman at center:
+    show viniman at right:
         zoom 1.3
     with dissolve
 
@@ -5900,8 +5902,9 @@ label arauto_criacao:
         "juntar-se a eles":
             n "vocês aceitam a proposta"
             V "muito bem, vocês fizeram a escolha correta!"
-            V "agora vá e cumpra a sua promessa!"
             play sound "musics/efeito_sonoro/estalo.mp3"
+            V "agora vá e cumpra a sua promessa!"
+
             jump final_lorde
 
         "recusar a proposta":
@@ -5918,7 +5921,10 @@ label batalha_destruicao:
     with dissolve
 
     show dartmol at right:
-        zoom 0.8
+        zoom 0.5
+        xpos 2700
+        ypos 1500
+
 
     $ oponente_max_hp = 250
     $ mago_max_hp = 120
@@ -6107,7 +6113,7 @@ label batalha_criacao:
 
                 play sound "musics/efeito_sonoro/gemido-combate.mp3"
             else:
-                n "viniman avança em sua direção com bolas de fogo nas mãos, mas você consegue desviar aproveitando a chance para contraatacar com sua espada!"
+                n "viniman avança em sua direção com bolas de fogo, mas você consegue desviar aproveitando a chance para contraatacar com sua espada!"
                 play sound "musics/efeito_sonoro/ataque espada.mp3"
 
                 $ mago_damage = 15
@@ -6124,13 +6130,16 @@ label morte_cria:
     play music "musics/andrids theme.mp3"
 
     show dartmol at right:
-        zoom 0.8
+        zoom 0.5
+        xpos 2700
+        ypos 1500
 
     A "Ora ora..."
     A "Parece que viniman foi derrotado."
     A " [Protagonista1], saiba que em condições normais eu destruiria você,meu irmão merecia muito mais que sua morte,junto de seu brinquedo patético..."
     A "Mas viniman era honrado, e na medida do possível piedoso,ele nao aprovaria mais sangue."
     A "Escolham seu próprio futuro,vocês fizeram por merecer."
+    A "daqui a pouco 'Ele' deve vir ao encontro de vocês, espero que se deem bem..."
     A "Quem sabe nós voltemos a nos ver..."
     A "Até mais"
     A "..."
@@ -6146,7 +6155,8 @@ label morte_destru:
     show viniman at right:
         zoom 1.3
 
-    V "Mago! Invasor, ou devo dizer [Protagonista1]!"
+    V "Mago!"
+    V "Invasor, ou devo dizer [Protagonista1]!"
 
     V "o que vocês fizeram com meu irmão?!? ele provavelmente nao deu outra opção para vocês certo?"
     V "ele sempre foi muito esquentadinho mesmo"
@@ -6379,7 +6389,9 @@ label final_alt:
         zoom 3
 
     show dartmol at right:
-        zoom 0.8
+        zoom 0.5
+        xpos 2700
+        ypos 1500
 
     show viniman at left:
         zoom 1.3
@@ -6398,18 +6410,21 @@ label final_alt:
 label batalha_arautos:
     play music "musics/batalha dupla.mp3"
 
-    show mc normal at left:
+    show mc normal:
         zoom 0.6
-    with fade
+        xpos 0
+        ypos 200
+    with dissolve
 
-    show dartmol at right:
-        zoom 0.8
+    show dartmol:
+        zoom 0.3
+        xpos 2500
+        ypos 1200
     with dissolve
 
     show viniman:
-        xpos 1050
-        ypos 400
-        zoom 1.3
+        xpos 900
+        zoom 1
     with dissolve
 
     $ oponente_max_hp = 500
